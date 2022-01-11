@@ -15,12 +15,12 @@ import services.IDictionaryService;
 public class DicontionaryController {
 
    private IDictionaryService dictionaryService = new DictionaryServiceImpl() ;
-    @GetMapping("index")
+    @GetMapping("dictionary")
     public String getDictionary() {
         return "index";
     }
 
-    @PostMapping("index")
+    @PostMapping("dictionary")
     public ModelAndView getWord(@RequestParam String word){
        String result = dictionaryService.getWord(word);
        return new ModelAndView("index", "result",result);
