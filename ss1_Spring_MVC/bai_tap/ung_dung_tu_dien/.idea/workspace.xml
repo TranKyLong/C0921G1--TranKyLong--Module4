@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7466a020-ae58-437a-802f-6671c6cc7dc8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.gradle/6.1/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.gradle/6.1/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.gradle/6.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.gradle/6.1/fileContent/fileContent.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.gradle/6.1/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.gradle/6.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.gradle/6.1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.gradle/6.1/javaCompile/classAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.gradle/6.1/javaCompile/javaCompile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.gradle/6.1/javaCompile/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.gradle/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/build/classes/java/main/config/CharsetFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/build/classes/java/main/dictionary_controller/DicontionaryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/build/classes/java/main/reponsitory/DictionaryReponsitoryImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/build/classes/java/main/reponsitory/IDictionaryReponsitory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/build/classes/java/main/services/DictionaryServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/build/classes/java/main/services/IDictionaryService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/build/libs/ung_dung_tu_dienaaa-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/build/tmp/war/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/src/main/java/config/CharsetFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/src/main/java/dictionary_controller/DicontionaryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/src/main/java/reponsitory/DictionaryReponsitoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/src/main/java/reponsitory/IDictionaryReponsitory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/src/main/java/services/DictionaryServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/src/main/java/services/IDictionaryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/src/main/webapp/WEB-INF/applicationContext.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/src/main/webapp/WEB-INF/dispatcher-servlet.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../thuc_hanh/quan_ly_khach_hang/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../thuc_hanh/quan_ly_khach_hang/customer-management" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="23XuOuiiN3VpQVKp9sCPELuyG2I" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\CodeGym\1_main_excercise\Module_4\bai_tap\ung_dung_tu_dien" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.569" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment />
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="_ung_dung_tu_dien" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="62394" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="LOCAL" value="false" />
+      <deployment />
+      <server-settings>
+        <data>
+          <option name="targets">
+            <list>
+              <WatchedTargetModelImpl>
+                <option name="name" value="CONTEXT_XML" />
+                <name>CONTEXT_XML</name>
+              </WatchedTargetModelImpl>
+              <StagingTargetModelImpl>
+                <option name="name" value="STAGING" />
+                <name>STAGING</name>
+              </StagingTargetModelImpl>
+            </list>
+          </option>
+          <option name="transportHostId" />
+        </data>
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="TOMCAT_LOCALHOST_LOG_ID" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="62421" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7466a020-ae58-437a-802f-6671c6cc7dc8" name="Default Changelist" comment="" />
+      <created>1641892723104</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1641892723104</updated>
+      <workItem from="1641892725453" duration="132000" />
+      <workItem from="1641916787386" duration="452000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="248" y="6" key="#Project_Structure" timestamp="1641917075210">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="248" y="6" key="#Project_Structure/0.0.1536.864@0.0.1536.864" timestamp="1641917075210" />
+    <state x="546" y="309" key="#Tomcat_Server" timestamp="1641916896292">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="546" y="309" key="#Tomcat_Server/0.0.1536.864@0.0.1536.864" timestamp="1641916896292" />
+    <state x="222" y="86" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1641917132711">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="222" y="86" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1641917132711" />
+    <state x="491" y="70" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable" timestamp="1641917055064">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="491" y="70" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable/0.0.1536.864@0.0.1536.864" timestamp="1641917055064" />
+    <state x="548" y="174" key="FileChooserDialogImpl" timestamp="1641917230792">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="548" y="166" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1641892855498" />
+    <state x="548" y="174" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1641917230792" />
+    <state x="297" y="66" key="new project wizard" timestamp="1641917245553">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="208" y="22" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1641892856765" />
+    <state x="297" y="66" key="new project wizard/0.0.1536.864@0.0.1536.864" timestamp="1641917245553" />
+  </component>
+</project>
