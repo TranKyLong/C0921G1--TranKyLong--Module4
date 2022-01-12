@@ -7,7 +7,7 @@
 <body>
 
 <h1>MONEY CONVERTER</h1>
-<form method="post">
+<form action="convert" method="post">
     <table>
         <tr>
             <td><p>enter exchange rate</p>
@@ -18,13 +18,13 @@
         <tr>
             <td><p> Enter the amount of USD you want to transfer </p>
             <td><input type="number" name="usd" id="usd"></td>
-            </td>
+
         </tr>
         <tr >
             <td colspan="2" >
-                <a type="" href="convert">
+
                     <button type="submit">CONVERT</button>
-                </a>
+
             </td>
         </tr>
         <tr>

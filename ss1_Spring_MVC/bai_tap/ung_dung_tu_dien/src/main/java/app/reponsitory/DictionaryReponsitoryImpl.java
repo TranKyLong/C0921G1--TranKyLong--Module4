@@ -24,8 +24,6 @@ public class DictionaryReponsitoryImpl implements IDictionaryReponsitory {
             if (word.equals(entry.getKey())) {
                 return entry.getValue();
             }
-
-
         }
         return "NOT FOUND";
     }
