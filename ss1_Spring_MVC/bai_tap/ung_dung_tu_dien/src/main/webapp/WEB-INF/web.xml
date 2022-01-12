@@ -26,7 +26,7 @@
     </servlet-mapping>
     <filter>
         <filter-name>CharsetFilter</filter-name>
-        <filter-class>config.CharsetFilter</filter-class>
+        <filter-class>app.config.CharsetFilter</filter-class>
         <init-param>
             <param-name>requestEncoding</param-name>
             <param-value>UTF-8</param-value>
