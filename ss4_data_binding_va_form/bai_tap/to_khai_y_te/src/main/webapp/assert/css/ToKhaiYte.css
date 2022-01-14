@@ -1,0 +1,39 @@
+* {
+
+    box-sizing: border-box;
+}
+
+.batbuoc {
+    font-style: italic;
+    color: red;
+}
+
+
+input {
+ 
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+table {
+
+    width: 100%;
+}
+
+.inputfull {
+    width: 95%;
+}
+
+.trieuchung {
+    border: black 1px solid;
+    border-collapse: collapse;
+}
+
+.trieuchung td {
+    border: black 1px solid;
+}
+
+.tieude {
+    background: #c1d6cc;
+    font-weight: bold;
+}
