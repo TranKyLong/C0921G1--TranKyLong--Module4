@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class EmailController {
@@ -21,7 +22,7 @@ public class EmailController {
         langList.add("Japanese");
         langList.add("Chinese");
 
-        model.addAttribute("langList",langList);
+        model.addAttribute("langList", langList);
 
         List<Integer> pageList = new ArrayList<>();
         pageList.add(5);
@@ -31,18 +32,17 @@ public class EmailController {
         pageList.add(25);
         pageList.add(50);
         pageList.add(100);
-        model.addAttribute("pageList",pageList);
+        model.addAttribute("pageList", pageList);
 
         EmailConfig emailConfig = new EmailConfig();
         model.addAttribute("email", emailConfig);
         return "/index";
     }
 
-    @PostMapping("email")
-    public ModelAndView getConfig(@ModelAttribute EmailConfig emailConfig){
-        List<EmailConfig>configList = new ArrayList<>();
-        configList.add(emailConfig);
-        return new ModelAndView("index","config",configList);
+    @PostMapping("configList")
+    public String getConfig(@ModelAttribute EmailConfig emailConfig, Model model) {
+        model.addAttribute("emailConfig", emailConfig);
+        return "configList";
 
     }
 }

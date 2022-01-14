@@ -8,7 +8,7 @@
 </head>
 <body>
 <h3>SETTING</h3>
-<form:form action="email" method="post" modelAttribute="email">
+<form:form action="configList" method="post" modelAttribute="email">
     <table>
         <tr>
             <td><p>Language</p></td>
@@ -48,8 +48,6 @@
     <button type="reset"> cancel</button>
 
 </form:form>
-<c:forEach items="${config}" var="configed">
-    <h5>${configed.toString()}</h5>
-</c:forEach>
+
 </body>
 </html>
