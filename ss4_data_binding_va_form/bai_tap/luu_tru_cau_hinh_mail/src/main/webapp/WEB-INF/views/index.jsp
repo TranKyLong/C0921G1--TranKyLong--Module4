@@ -15,7 +15,7 @@
             <td>
                 <form:select multiple="none" path="language">
                     <form:option value="-1" label="------- Select One -------"/>
-                    <form:options items="${langList}" />
+                    <form:options items="${langList}"/>
                 </form:select>
             </td>
         </tr>
@@ -23,11 +23,11 @@
         <tr>
             <td>Page Size</td>
             <td>
-                    <%--                <form:select multiple="true" path="pageSize">--%>
-                    <%--                    <form:option value="-1" label="------- Select One -------"/>--%>
-                    <%--                    <form:options items="${pageList}"/>--%>
+                <form:select multiple="true" path="pageSize">
+                    <form:option value="-1" label="------- Select One -------"/>
+                    <form:options items="${pageList}"/>
 
-                    <%--                </form:select>--%>
+                </form:select>
             </td>
         </tr>
         <tr>
