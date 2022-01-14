@@ -8,21 +8,36 @@
 
     <link rel="stylesheet" href="../../assert/css/ToKhaiYte.css" type="text/css">
     <link rel="stylesheet" href="../../assert/boostrap/css/bootstrap.min.css">
+    <style>
+        input{
+            pointer-events: none;
+            background: #bababa;
+            border: #545d65;
+            color:black ;
+        }
+        input:focus{
+            outline: none;
+        }
+        body{
+            background: #c2ceff;
+        }
+    </style>
 </head>
 <body>
-<div class="text-center">
+<div class="text-center" >
     <strong>TỜ KHAI Y TẾ</strong> <br>
     <strong>ĐÂY LÀ TÀI LIỆU QUAN TRỌNG, THÔNG TIN CỦA ANH/CHỊ SẼ GIÚP CƠ QUAN Y TẾ LIÊN LẠC KHI CÀN THIẾT ĐỂ PHÒNG CHÓNG
         DỊCH BỆNH TRUYỀN NHIÊM</strong>
     <strong class="text-danger"> Khuyến cáo: Khai báo thông tin sai là vi phạm pháp luật Việt Nam và có thể xử lý hình
         sự </strong>
+    <h4 class="text-success"> KHAI BÁO THÀNH CÔNG</h4>
 </div>
 
-<form:form action="/khaibaolai" method="post" modelAttribute="tokhaicomplete" cssClass="align-content-center">
+<form:form action="/khaibaolai"  method="post" modelAttribute="tokhaicomplete" cssClass="align-content-center">
     <fieldset >
         <div class="container">
             <p>Họ tên (ghi chữ IN HOA) <span class="batbuoc">(*)</span></p>
-            <form:input path="hoTen"/>
+            <form:input path="hoTen" readonly="true"/>
 
             <table>
                 <tr>
@@ -143,7 +158,7 @@
                     <td><form:radiobutton path="tieuChay" value="false"/></td>
                 </tr>
                 <tr>
-                    <td><p>Khó thở<span class="batbuoc">(*)</span></p></td>
+                    <td ><p>Khó thở<span class="batbuoc">(*)</span></p></td>
                     <td><form:radiobutton path="khoTho" value="true"/></td>
                     <td><form:radiobutton path="khoTho" value="false"/></td>
                     <td><p>Xuất huyết ngoài da<span class="batbuoc">(*)</span></p></td>

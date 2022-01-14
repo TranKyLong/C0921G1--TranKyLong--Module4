@@ -175,8 +175,8 @@
                         động vật
                         <span class="batbuoc">(*)</span></p>
                     </td>
-                    <td><form:radiobutton path="dauHong" value="true"/></td>
-                    <td><form:radiobutton path="dauHong" value="false"/></td>
+                    <td><form:radiobutton path="dongVat" value="true"/></td>
+                    <td><form:radiobutton path="dongVat" value="false"/></td>
                 </tr>
 
                 <tr>
@@ -185,8 +185,8 @@
                             class="batbuoc">(*)</span>
                         </p>
                     </td>
-                    <td><form:radiobutton path="phatBan" value="true"/></td>
-                    <td><form:radiobutton path="phatBan" value="false"/></td>
+                    <td><form:radiobutton path="tiepXuc" value="true"/></td>
+                    <td><form:radiobutton path="tiepXuc" value="false"/></td>
                 </tr>
 
             </table>
