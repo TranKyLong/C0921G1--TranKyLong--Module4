@@ -38,7 +38,6 @@
         <div class="container">
             <p>Họ tên (ghi chữ IN HOA) <span class="batbuoc">(*)</span></p>
             <form:input path="hoTen" readonly="true"/>
-
             <table>
                 <tr>
                     <td>
