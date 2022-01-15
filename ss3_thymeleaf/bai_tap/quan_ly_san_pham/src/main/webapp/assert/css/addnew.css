@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box
+}
+
+.centerer table {
+    margin: 0 auto;
+}
+
+.centerer {
+
+
+}
+
+
+td {
+    padding: 5px;
+}
