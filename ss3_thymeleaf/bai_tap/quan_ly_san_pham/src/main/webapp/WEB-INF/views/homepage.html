@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="">
-
-    <!--    <link rel="stylesheet" href="../../assert/css/product.css" type="text/css">-->
-    <link rel="stylesheet" href="../../assert/css/product.css">
     <link rel="stylesheet" href="../../assert/boostrap/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="../../assert/css/product.css">
 </head>
+
 <body>
 <div class="container">
-    <div>
+    <div class="row">
         <div class="centerer">
             <h2 class="text-center">PRODUCT LIST</h2>
             <div class="text-center text-success" th:if="${complete}">
                 <span th:text="${complete}"></span>
             </div>
-
-            <form action="search">
-                <span>SEARCH BY NAME: </span> <input type="text" name="searchname">
-                <button type="submit"  class="btn btn-success  ">SEARCH</button>
-            </form>
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <form action="search">
+                        <span>SEARCH BY NAME: </span> <input type="text" name="searchname">
+                        <button type="submit">SEARCH</button>
+                    </form>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <form action="/addNew">
+                        <button type="submit" class="float-end">ADD NEW PRODUCT</button>
+                    </form>
+                </div>
+            </div>
             <table>
                 <thead>
                 <tr>
@@ -30,28 +35,26 @@
                     <th> NAME</th>
                     <th> COST</th>
                     <th colspan="3"> ACTION</th>
-
                 </tr>
-
                 </thead>
                 <tbody>
-
                 <tr th:each="row : ${list}">
                     <td th:text="${row.id}"></td>
                     <td th:text="${row.name}"></td>
                     <td th:text="${row.cost}"></td>
-                    <td><a class="text-danger" th:href="@{/{id}/delete(id=${row.getId()})}"> DELETE</a></td>
-                    <td><a class="text-primary" th:href="@{/{id}/update(id=${row.getId()})}"> UPDATE</a></td>
-                    <td><a class="text-success" th:href="@{/{id}/view(id=${row.getId()})}"> VIEW</a></td>
+                    <td><a class="text-danger" th:href="@{/{id}/delete(id=${row.getId()})}"> Delete</a></td>
+                    <td><a class="text-primary" th:href="@{/{id}/update(id=${row.getId()})}">Edit</a></td>
+                    <td><a class="text-success" th:href="@{/{id}/view(id=${row.getId()})}">View</a></td>
                 </tr>
                 </tbody>
             </table>
-            <a type="button" class="btn btn-success rounded-pill " href="/addNew"> ADD NEW PRODUCT</a>
         </div>
-
-
     </div>
 </div>
-<script src="../../assert/boostrap/js/bootstrap.min.js"></script>
+
 </body>
+
+
+
+<script src="../../assert/boostrap/js/bootstrap.min.js"></script>
 </html>

@@ -1,33 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Antique&display=swap');
+
 * {
+    text-decoration: none !important;
+    color: white;
     box-sizing: border-box;
 }
 
-table {
-    border: 1px solid #2b2b2b;
-    min-width: 100%;
+h1 {
+    color: red;
+}
 
+td {
+    background: rgb(22, 2, 9);
+    background: radial-gradient(circle, rgba(22, 2, 9, 1) 23%, rgba(68, 0, 12, 1) 100%);
 
 }
 
-table tr, table td {
-    height: 50px;
-    text-align: center;
-    border-collapse: collapse;
-    border: 1px solid #2b2b2b;
-}
-
-th {
-    background-color: #0c4128;
+th, button {
     color: white;
+    font-family: 'Shippori Antique', sans-serif;
     font-weight: bold;
-
+    background: rgba(110, 0, 124, 0.8);
+    background: linear-gradient(0deg, rgba(110, 0, 124, 1) 9%, rgba(27, 0, 9, 1) 100%);
 }
 
-
-.centerer table {
-    margin: 30px auto;
+button {
+    font-weight: unset;
+    border: 1px solid transparent;
 }
 
-a {
-    text-decoration: none;
+button:hover {
+    border: 1px solid white;
+    background: #19070c;
+}
+
+body {
+    background: url(https://i.pinimg.com/originals/01/5a/17/015a1757e67f766a12621af543b3a5fd.jpg) no-repeat;
+    height: 100%;
+    background-size: cover;
+}
+
+table th, table td {
+    border-collapse: collapse;
+    text-align: center;
+    height: 50px;
+}
+
+table {
+    border-collapse: collapse;
+    border-radius: 30px;
+    /*border: 1px solid #2b2b2b;*/
+    min-width: 100%;
+    margin: 25px auto;
+}
+
+.centerer h2 {
+    margin: 25px;
+    font-family: 'Shippori Antique', sans-serif;
+}
+
+.centerer {
+    margin: 0 auto;
+}
+
+a:hover {
+    color: white;
+}
+
+.find input, .find button {
+    margin: auto;
+    height: 100%;
+    border: none;
+}
+
+.find {
+    height: 30px;
+
 }

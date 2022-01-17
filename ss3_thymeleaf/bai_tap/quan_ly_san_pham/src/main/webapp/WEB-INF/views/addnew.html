@@ -3,37 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>ADD NEW</title>
-    <link rel="stylesheet" href="../../assert/css/addnew.css">
+    <link rel="stylesheet" href="../../assert/css/product.css">
     <link rel="stylesheet" href="../../assert/boostrap/css/bootstrap.min.css">
+    <style>
+        table {
+            width: 30px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
-    <div class="centerer">
-        <form th:action="@{/save}" th:object="${newproduct}"
-              method="POST" novalidate="novalidate">
-            <input type="hidden" th:field="*{id}"/>
-            <table>
-                <tr>
-                    <td><label>Name</label></td>
-                    <td><input type="text" th:field="*{name}"/></td>
-                </tr>
-                <tr>
-                    <td><label>Cost</label></td>
-                    <td><input type="number" th:field="*{cost}"/></td>
-                </tr>
-                <tr>
-                    <td><label>Note</label></td>
-                    <td><input type="text" th:field="*{note}"/></td>
-                </tr>
-                <tr>
-                    <td><label>Producer</label></td>
-                    <td><input type="text" th:field="*{nsx}"/></td>
-                </tr>
 
-            </table>
-            <button class="btn btn-success rounded-pill " type="submit"> ADD</button>
-        </form>
-    </div>
-</div>
+
+    <form th:action="@{/save}" th:object="${newproduct}"
+          method="POST" novalidate="novalidate">
+        <input type="hidden" th:field="*{id}"/>
+
+        <table>
+            <tr>
+                <td><label>Name</label></td>
+                <td><input type="text" th:field="*{name}"/></td>
+            </tr>
+            <tr>
+                <td><label>Cost</label></td>
+                <td><input type="number" th:field="*{cost}"/></td>
+            </tr>
+            <tr>
+                <td><label>Note</label></td>
+                <td><input type="text" th:field="*{note}"/></td>
+            </tr>
+            <tr>
+                <td><label>Producer</label></td>
+                <td><input type="text" th:field="*{nsx}"/></td>
+            </tr>
+
+        </table>
+
+        <button type="submit"> ADD</button>
+
+
 </body>
 </html>

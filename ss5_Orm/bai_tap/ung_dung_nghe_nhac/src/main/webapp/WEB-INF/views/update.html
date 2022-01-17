@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CREATE NEW</title>
+</head>
+<body>
+<h3> ADD NEW SONG</h3>
+<form th:action="@{saveNewSong}" th:object="${updateSong}"
+      method="POST" novalidate="novalidate">
+    <input type="hidden" th:field="*{id}">
+    <table>
+        <tr>
+            <td class="toright"> Song name:</td>
+            <td><input type="text" th:field="*{songName}"></td>
+        </tr>
+        <tr>
+            <td class="toright"> Author:</td>
+            <td><input type="text" th:field="*{artistName}"></td>
+        </tr>
+        <tr>
+            <td class="toright"> Category:</td>
+            <td><input type="text" th:field="*{category}"></td>
+        </tr>
+        <tr>
+            <td class="toright"> Link:</td>
+            <td><input type="text" th:field="*{songLink}"></td>
+        </tr>
+    </table>
+    <button type="submit"> Update </button>
+</form>
+</body>
+</html>

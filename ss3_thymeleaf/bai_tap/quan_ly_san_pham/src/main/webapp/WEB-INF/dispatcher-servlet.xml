@@ -26,6 +26,7 @@
         <property name="suffix" value=".html" />
     </bean>
 
+
     <bean id="engine" class="org.thymeleaf.spring4.SpringTemplateEngine">
         <property name="templateResolver" ref="viewResolver" />
     </bean>
