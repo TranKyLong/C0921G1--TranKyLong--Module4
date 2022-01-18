@@ -9,7 +9,7 @@ public interface IStudentService {
 
     void save(Student student);
 
-    Student findByIndex(int index);
+    Student findById(int index);
 
     List<Student> searchByName(String keyword);
 }

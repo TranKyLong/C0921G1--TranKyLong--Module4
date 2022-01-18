@@ -4,12 +4,14 @@ plugins {
     id 'java'
 }
 
-group = 'blog'
+group = 'vn.codegym'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
     mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'https://repo.spring.io/snapshot' }
 }
 
 dependencies {

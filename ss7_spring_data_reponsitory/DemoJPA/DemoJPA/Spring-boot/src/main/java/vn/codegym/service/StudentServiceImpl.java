@@ -24,7 +24,7 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public Student findByIndex(int id) {
+    public Student findById(int id) {
         return  null;
     }
 

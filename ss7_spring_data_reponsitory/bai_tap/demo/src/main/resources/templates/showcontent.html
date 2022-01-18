@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Read</title>
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        h3 {
+            color: #45a049;
+            font-style: italic;
+        }
+
+        .writer {
+            text-decoration: underline;
+            color: #45a049;
+        }
+
+        .content {
+            min-height: 200px;
+            border-radius: 15px;
+            background: rgba(0, 250, 154, 0.99);
+            width: 90%;
+            margin: 15px auto;
+            border: 1px solid #b3b2b4;
+            padding: 15px;
+        }
+
+        a {
+            border-radius: 15px;
+            padding: 8px;
+            background: sandybrown;
+        }
+
+        .view {
+            min-height: 300px;
+            border-radius: 25px;
+            padding: 25px;
+            background: white;
+            width: 92%;
+            margin: 5px auto;
+        }
+
+        body {
+            background: seagreen;
+        }
+    </style>
+</head>
+<body>
+<div class="view">
+    <h3 th:text="${readBlog.get().id}"></h3>
+    <p>Writer: <span class="writer" th:text="${readBlog.get().writer}"></span></p>
+    <p style="color: grey" th:text="${readBlog.get().postingDay}"></p>
+    <p> Category: <span style="color: grey" th:text="${readBlog.get().category}"> </span></p>
+    <br>
+    <div class="content">
+        <div th:text="${readBlog.get().content}"></div>
+    </div>
+    <footer>
+        <a href="/blog">return home</a>
+    </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CREATE NEW</title>
+    <style th:replace="layoutCss :: form">
+    </style>
+</head>
+<body>
+<div class="container">
+    <h3> UPDATE BLOG</h3>
+
+    <form action="/saveupdate" th:object="${updateBlog}" method="POST">
+        <input type="hidden" th:field="*{id}">
+        <table>
+            <tr>
+                <td class="toright"> Blog Title:</td>
+                <td><input type="text" th:field="*{title}"></td>
+            </tr>
+            <tr>
+                <td class="toright"> Writer:</td>
+                <td><input type="text" th:field="*{writer}"></td>
+            </tr>
+            <tr>
+                <td class="toright"> Category:</td>
+                <td>
+                    <select th:field="*{category}">
+                        <option th:each="cate : ${categoryList}" th:value="${cate}" th:text="${cate}">
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="toright"> Posting Day:</td>
+                <td><input type="date" th:field="*{postingDay}"></td>
+            </tr>
+            <tr>
+                <td class="toright"> Content:</td>
+                <td><textarea th:field="*{content}"></textarea></td>
+            </tr>
+
+        </table>
+        <button type="submit"> UPDATE </button>
+    </form>
+</div>
+</body>
+</html>
