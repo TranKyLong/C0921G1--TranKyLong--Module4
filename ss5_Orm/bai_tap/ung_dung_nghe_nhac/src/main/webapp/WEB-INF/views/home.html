@@ -5,33 +5,35 @@
     <title>Title</title>
     <link rel="stylesheet" href="../../assert/boostrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assert/css/style.css">
-</head>
-<body>
 
-<h1 class="red"> Home </h1>
-<h3 th:text="${messenger}"></h3>
-<a href="/create"> ADD NEW SONG</a>
-<table>
-    <thead>
-    <tr>
-        <th> Song Name</th>
-        <th> Author</th>
-        <th> Category</th>
-        <th> Link</th>
-        <th colspan="2"> Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="song :${list}">
-        <td th:text="${song.songName}"></td>
-        <td th:text="${song.artistName}"></td>
-        <td th:text="${song.category}"></td>
-        <td th:text="${song.songLink}"></td>
-        <td><a th:href="@{delete/{id}/(id=${song.getId()})}">Delete</a></td>
-        <td><a th:href="@{update/{id}/(id=${song.getId()})}">Update</a></td>
-    </tr>
-    </tbody>
-</table>
+    <style th:replace="layout :: style"></style>
+</head>
+<body class="mybody">
+
+<h1 class="pagetitle"> Song List </h1>
+
+
+<div class="divTable">
+    <div class="mess">
+        <h3 th:text="${messenger}"></h3>
+    </div>
+    <a href="/create"> ADD NEW SONG</a>
+    <table>
+
+        <tbody>
+        <tr th:each="song :${list}">
+            <td class="nameCell">
+                <p class="songName" th:text="${song.songName}"></p>
+                <p class="author" th:text="${song.artistName}"></p>
+            </td>
+            <td class="categoryCell" th:text="${song.category}"></td>
+            <td><a th:href="${song.songLink}" target="_blank"> Play </a></td>
+            <td><a th:href="@{delete/{id}/(id=${song.getId()})}">Delete</a></td>
+            <td><a th:href="@{update/{id}/(id=${song.getId()})}">Update</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 <script src="../../assert/boostrap/js/bootstrap.min.js"></script>
 </body>

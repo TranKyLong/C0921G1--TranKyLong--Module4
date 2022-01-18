@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <title>CREATE NEW</title>
 </head>
+<style th:replace="layout :: form"></style>
 <body>
-<h3> ADD NEW SONG</h3>
-<form th:action="@{saveNewSong}" th:object="${updateSong}"
-      method="POST" novalidate="novalidate">
+<div class="theTable">
+<h3> UPDATE SONG</h3>
+<form action="/saveupdate"  th:object="${updateSong}"
+      method="POST" >
     <input type="hidden" th:field="*{id}">
     <table>
         <tr>
@@ -29,5 +31,6 @@
     </table>
     <button type="submit"> Update </button>
 </form>
+</div>
 </body>
 </html>

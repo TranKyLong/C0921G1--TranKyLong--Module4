@@ -3,30 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>CREATE NEW</title>
+    <style th:replace="layout :: form"></style>
 </head>
 <body>
-<h3> ADD NEW SONG</h3>
-<form th:action="@{save}" th:object="${mysong}" method="POST" novalidate="novalidate">
-    <input type="hidden" th:field="*{id}">
-    <table>
-        <tr>
-            <td class="toright"> Song name:</td>
-            <td><input type="text" th:field="*{songName}"></td>
-        </tr>
-        <tr>
-            <td class="toright"> Author:</td>
-            <td><input type="text" th:field="*{artistName}"></td>
-        </tr>
-        <tr>
-            <td class="toright"> Category:</td>
-            <td><input type="text" th:field="*{category}"></td>
-        </tr>
-        <tr>
-            <td class="toright"> Link:</td>
-            <td><input type="text" th:field="*{songLink}"></td>
-        </tr>
-    </table>
-    <button type="submit"> ADD TO LIST</button>
-</form>
+<div class="theTable">
+    <h3> ADD NEW SONG</h3>
+    <form th:action="@{save}" th:object="${mysong}" method="POST" novalidate="novalidate">
+        <input type="hidden" th:field="*{id}">
+        <table>
+            <tr>
+                <td class="toright"> Song name:</td>
+                <td><input type="text" th:field="*{songName}"></td>
+            </tr>
+            <tr>
+                <td class="toright"> Author:</td>
+                <td><input type="text" th:field="*{artistName}"></td>
+            </tr>
+            <tr>
+                <td class="toright"> Category:</td>
+                <td><input type="text" th:field="*{category}"></td>
+            </tr>
+            <tr>
+                <td class="toright"> Link:</td>
+                <td><input type="text" th:field="*{songLink}"></td>
+            </tr>
+        </table>
+        <button type="submit"> ADD TO LIST</button>
+
+    </form>
+</div>
 </body>
 </html>

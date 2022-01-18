@@ -50,7 +50,6 @@ public class ProductController {
     public String dupdateProduct(@PathVariable int id, Model model) {
         model.addAttribute("updateproduct", iProductService.findById(id));
         return "update";
-
     }
 
     @PostMapping("updated")

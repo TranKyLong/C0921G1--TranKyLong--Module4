@@ -47,10 +47,10 @@ public class SongController {
     @GetMapping("update/{id}")
     public String showUpdateForm(@PathVariable Long id, Model model) {
         model.addAttribute("updateSong", iSongService.findById(id));
-        return "/update";
+        return "update";
     }
 
-    @PostMapping("saveNewSong")
+    @PostMapping("/saveupdate")
     public String saveUpdate (Song mySong, RedirectAttributes ra){
         iSongService.save(mySong);
         ra.addFlashAttribute("messenger", "Update song successfuly");

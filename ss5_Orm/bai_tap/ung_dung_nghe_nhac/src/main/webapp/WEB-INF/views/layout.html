@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style th:fragment="style">
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+        * {
+            color: white;
+            box-sizing: border-box;
+        }
+
+        td {
+            padding: 5px;
+            background: rgb(22, 2, 9);
+            background: radial-gradient(circle, rgba(22, 2, 9, 0.5) 23%, rgba(68, 0, 12, 0.2) 100%);
+        }
+
+        th {
+            opacity: 80%;
+            background: rgb(110, 0, 124);
+            background: linear-gradient(0deg, rgba(110, 0, 124, 1) 9%, rgba(27, 0, 9, 1) 100%);
+        }
+
+        body {
+            background: url(https://i.pinimg.com/originals/01/5a/17/015a1757e67f766a12621af543b3a5fd.jpg) no-repeat;
+            height: 100%;
+            background-size: cover;
+        }
+
+
+        .pagetitle {
+            text-decoration: underline;
+            font-family: 'Lobster', cursive;
+            text-align: center;
+            margin: 20px auto;
+            color: #fcbda2;
+        }
+
+        table {
+            margin: 20px auto;
+            width: 100%;
+        }
+
+        .songName {
+            margin: 8px 0;
+            font-weight: bold;
+            font-size: 21px;
+            text-shadow: 3px 3px 3px 50px #6610f2;
+        }
+
+        .author {
+            font-style: italic;
+            text-decoration: underline;
+            opacity: 80%;
+        }
+
+        .nameCell {
+            width: 40%;
+        }
+
+        .categoryCell {
+            width: 30%;
+        }
+
+        .divTable {
+            width: 85%;
+            margin: 0 auto;
+        }
+
+        .mess {
+            color: mediumspringgreen;
+        }
+    </style>
+    <style th:fragment="form">
+        .theTable {
+            width: 30%;
+            margin: 0 auto;
+        }
+
+        .pagetitle {
+            text-decoration: underline;
+            font-family: 'Lobster', cursive;
+            text-align: center;
+            margin: 20px auto;
+            color: #fcbda2;
+        }
+
+        table {
+            margin: 20px auto;
+            width: 100%;
+        }
+
+        * {
+            color: white;
+            box-sizing: border-box;
+        }
+
+        td {
+            padding: 5px;
+            background: rgb(22, 2, 9);
+            background: radial-gradient(circle, rgba(22, 2, 9, 0.5) 23%, rgba(68, 0, 12, 0.2) 100%);
+        }
+
+        th {
+            opacity: 80%;
+            background: rgb(110, 0, 124);
+            background: linear-gradient(0deg, rgba(110, 0, 124, 1) 9%, rgba(27, 0, 9, 1) 100%);
+        }
+
+        body {
+            background: url(https://i.pinimg.com/originals/01/5a/17/015a1757e67f766a12621af543b3a5fd.jpg) no-repeat;
+            height: 100%;
+            background-size: cover;
+        }
+
+        input[type=text], select, textarea {
+            background: #240034;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        button {
+            background: #a02e55;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>

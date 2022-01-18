@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Read</title>
+    <style>
+        h3 {
+            color: #45a049;
+            font-style: italic;
+        }
+
+        .writer {
+            text-decoration: underline;
+            color: #45a049;
+        }
+
+        .content {
+            border-radius: 15px;
+            background: rgba(0, 250, 154, 0.99);
+            width: 90%;
+            margin: 15px auto;
+            border: 1px solid #b3b2b4;
+            padding: 15px;
+        }
+
+        a {
+            border-radius: 15px;
+            padding: 8px;
+            background: sandybrown;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h3 th:text="${readBlog.title}"></h3>
+    <p>Writer: <span class="writer" th:text="${readBlog.writer}"></span></p>
+    <p style="color: grey" th:text="${readBlog.postingDay}"></p>
+    <br>
+    <div class="content">
+        <div th:text="${readBlog.content}"></div>
+    </div>
+    <a href="/blog">return home</a>
+</div>
+</body>
+</html>
