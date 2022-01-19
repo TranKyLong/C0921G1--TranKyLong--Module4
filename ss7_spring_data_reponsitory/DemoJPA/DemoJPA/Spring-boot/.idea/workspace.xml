@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="62a09229-849d-4de0-bcb2-5ea0a2f88d25" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../../ss3_thymeleaf/thuc_hanh/spring-customer-management-thymleaf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ss3_thymeleaf/thuc_hanh/spring-customer-management-thymleaf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ss5_Orm/thuc_hanh/quan_ly_khach_hang/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ss5_Orm/thuc_hanh/quan_ly_khach_hang/customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../DemoJPA.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.gradle/6.1/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.gradle/6.1/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.gradle/6.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.gradle/6.1/fileContent/fileContent.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.gradle/6.1/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.gradle/6.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.gradle/6.1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.gradle/6.1/javaCompile/classAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.gradle/6.1/javaCompile/javaCompile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.gradle/6.1/javaCompile/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.gradle/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.gradle/checksums/sha1-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/build/classes/java/main/vn/codegym/config/AppConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/build/classes/java/main/vn/codegym/config/AppInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/build/classes/java/main/vn/codegym/controller/HelloController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/build/classes/java/main/vn/codegym/controller/StudentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/build/classes/java/main/vn/codegym/model/Student.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/build/classes/java/main/vn/codegym/repository/IStudentRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/build/classes/java/main/vn/codegym/repository/StudentRepositoryImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/build/classes/java/main/vn/codegym/service/IStudentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/build/classes/java/main/vn/codegym/service/StudentServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/build/libs/JPA-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/build/tmp/war/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/src/main/java/vn/codegym/config/AppConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/src/main/java/vn/codegym/config/AppInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/src/main/java/vn/codegym/controller/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/src/main/java/vn/codegym/controller/StudentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/src/main/java/vn/codegym/model/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/src/main/java/vn/codegym/repository/IStudentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/src/main/java/vn/codegym/repository/StudentRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/src/main/java/vn/codegym/service/IStudentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/src/main/java/vn/codegym/service/StudentServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/src/main/webapp/WEB-INF/views/hello.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/src/main/webapp/WEB-INF/views/layout.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/src/main/webapp/WEB-INF/views/list.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/src/main/webapp/WEB-INF/views/student/create.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/src/main/webapp/WEB-INF/views/student/edit.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/src/main/webapp/WEB-INF/views/student/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JPA/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vn/codegym/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vn/codegym/controller/StudentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vn/codegym/model/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vn/codegym/repository/IStudentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vn/codegym/service/IStudentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vn/codegym/service/StudentServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/student/create.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/student/edit.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/student/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/vn/codegym/ApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../thuc_hanh/quan_ky_khach_hang/spring-customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../../thuc_hanh/quan_ky_khach_hang/spring-customer-management" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\DevTool\BuildTools\Maven\.m2\repository" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="23qrgd69jeYo6H06kZBmAGPuvOq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../bai_tap/demo" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\WorkSpace\03_Company\02_CodeGym\02_Class\2021\C0921G1\Module_4\SourceDemo\Spring-boot\src\main\resources\templates" />
+      <recent name="D:\WorkSpace\03_Company\02_CodeGym\02_Class\2021\C0921G1\Module_4\SourceDemo\Spring-boot\src\main\java\vn\codegym" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Spring-boot.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vn.codegym.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="62a09229-849d-4de0-bcb2-5ea0a2f88d25" name="Changes" comment="" />
+      <created>1642472574035</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1642472574035</updated>
+      <workItem from="1642472575555" duration="4497000" />
+      <workItem from="1642512646217" duration="692000" />
+      <workItem from="1642515794075" duration="21000" />
+      <workItem from="1642515983891" duration="137000" />
+      <workItem from="1642519947756" duration="355000" />
+      <workItem from="1642526601838" duration="1606000" />
+      <workItem from="1642573676753" duration="84000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="548" y="186" key="FileChooserDialogImpl" timestamp="1642573761018">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="548" y="186" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1642573761018" />
+    <state x="208" y="92" key="new project wizard" timestamp="1642516119887">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="208" y="92" key="new project wizard/0.0.1536.864@0.0.1536.864" timestamp="1642516119887" />
+  </component>
+</project>

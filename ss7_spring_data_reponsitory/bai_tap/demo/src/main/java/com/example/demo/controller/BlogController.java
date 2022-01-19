@@ -4,6 +4,9 @@ package com.example.demo.controller;
 import com.example.demo.model.Blog;
 import com.example.demo.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.SortDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,14 +35,21 @@ public class BlogController {
         categoryList.add("Political Blogs");
     }
 
-
     @Autowired
     IBlogService iBlogService;
 
     @GetMapping({"", "blog"})
-    public String showHomePage(Model model, RedirectAttributes ra) {
-        model.addAttribute("list", iBlogService.showALL());
+    public String showHomePage(Model model, RedirectAttributes ra,
+                               Optional<String> findTitle,
+                               @PageableDefault(size = 8) @SortDefault(sort = "category") Pageable pageable) {
         ra.addFlashAttribute("messenger", "");
+
+        if (!findTitle.isPresent() || findTitle.equals("")) {
+            model.addAttribute("list", iBlogService.findAll(pageable));
+        } else {
+            model.addAttribute("findTitle",findTitle.get());
+            model.addAttribute("list", iBlogService.findByTitleContaining(findTitle.get(),pageable));
+        }
         return "home";
     }
 
@@ -66,9 +76,9 @@ public class BlogController {
     }
 
     @GetMapping("update/{id}")
-    public ModelAndView showUpdateForm(@PathVariable Integer id,Model model) {
+    public ModelAndView showUpdateForm(@PathVariable Integer id, Model model) {
         model.addAttribute("categoryList", categoryList);
-        Optional<Blog> updateBlog =  iBlogService.findById(id);
+        Optional<Blog> updateBlog = iBlogService.findById(id);
         if (updateBlog.isPresent()) {
             ModelAndView modelAndView = new ModelAndView("update");
             modelAndView.addObject("updateBlog", updateBlog.get());
@@ -88,8 +98,9 @@ public class BlogController {
 
     @GetMapping("reading/{id}")
     public ModelAndView showReadPage(@PathVariable Integer id) {
-        Optional<Blog> readBlog =  iBlogService.findById(id);
+        Optional<Blog> readBlog = iBlogService.findById(id);
         return new ModelAndView("showcontent", "readBlog", readBlog);
 
     }
+
 }
