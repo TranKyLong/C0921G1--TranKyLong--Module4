@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<h2> Song List</h2>
+<div>
+    <a href="/addNew">Add new Song</a>
+</div>
+<table>
+    <tr th:each="song: ${songList}">
+        <td>
+            <p th:text="${song.songName}"></p>
+            <p th:text="${song.singer}"></p>
+        </td>
+        <td>
+<!--            <a th:href="@{update/{id}/(id=${song.id})}"> Update</a>-->
+        </td>
+    </tr>
+</table>
+</body>
+</html>
