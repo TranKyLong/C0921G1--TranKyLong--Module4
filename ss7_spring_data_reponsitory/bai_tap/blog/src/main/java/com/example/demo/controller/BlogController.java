@@ -47,8 +47,8 @@ public class BlogController {
         if (!findTitle.isPresent() || findTitle.equals("")) {
             model.addAttribute("list", iBlogService.findAll(pageable));
         } else {
-            model.addAttribute("findTitle",findTitle.get());
-            model.addAttribute("list", iBlogService.findByTitleContaining(findTitle.get(),pageable));
+            model.addAttribute("findTitle", findTitle.get());
+            model.addAttribute("list", iBlogService.findByTitleContaining(findTitle.get(), pageable));
         }
         return "home";
     }
