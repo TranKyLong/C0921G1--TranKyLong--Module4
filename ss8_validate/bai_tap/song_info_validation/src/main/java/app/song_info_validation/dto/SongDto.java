@@ -8,22 +8,16 @@ import java.lang.annotation.Annotation;
 public class SongDto  {
     private Integer id;
 
-    @NotBlank
+//    @NotBlank
     private String songName;
 
-    @NotBlank
+//    @NotBlank
     private String singer;
 
     @NotBlank
     private String category;
 
     public SongDto() {
-    }
-
-    public SongDto(String songName, String singer, String category) {
-        this.songName = songName;
-        this.singer = singer;
-        this.category = category;
     }
 
     public Integer getId() {

@@ -30,7 +30,7 @@ public class SongController {
     @GetMapping("addNew")
     public ModelAndView showCreatePage(RedirectAttributes ra) {
 
-        return new ModelAndView("addnew", "newSong", new SongDto());
+        return new ModelAndView("createpage", "newSong", new SongDto());
     }
 
     @PostMapping("saveSong")
@@ -39,11 +39,11 @@ public class SongController {
                            RedirectAttributes ra,
                            Model model) {
 
-        if (bs.hasErrors()) {
+        if (bs.hasFieldErrors()) {
 //            if (songDto != null) {
 //                model.addAttribute(songDto);
 //            }
-            return "addnew";
+            return "createpage";
         } else {
             Song song = new Song();
             BeanUtils.copyProperties(songDto, song);

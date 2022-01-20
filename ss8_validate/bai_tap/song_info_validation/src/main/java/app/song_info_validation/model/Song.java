@@ -17,11 +17,6 @@ public class Song {
     public Song() {
     }
 
-    public Song(String songName, String singer, String category) {
-        this.songName = songName;
-        this.singer = singer;
-        this.category = category;
-    }
 
     public Integer getId() {
         return id;

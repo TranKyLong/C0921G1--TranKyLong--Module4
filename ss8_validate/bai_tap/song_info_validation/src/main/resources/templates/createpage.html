@@ -34,16 +34,16 @@
                 <div class="card-body">
                     <h2 class="title">Add new song</h2>
                     <form method="POST" th:action="@{saveSong}" th:object="${newSong}">
-                        <input type="hidden" th:field="*{id}">
-                        <div class="input-group">
-                            <input th:field="*{songName}" class="input--style-3" type="text" placeholder="Enter song name" >
-                        </div>
-                        <div class="input-group">
-                            <input th:field="*{singer}" class="input--style-3" type="text" placeholder="Enter Singer">
-                        </div>
+<!--                        <input type="hidden" th:field="*{id}">-->
+<!--                        <div class="input-group">-->
+<!--                            <input th:field="*{songName}" class="input&#45;&#45;style-3" type="text" placeholder="Enter song name" >-->
+<!--                        </div>-->
+<!--                        <div class="input-group">-->
+<!--                            <input th:field="*{singer}" class="input&#45;&#45;style-3" type="text" placeholder="Enter Singer">-->
+<!--                        </div>-->
                         <div class="input-group">
                             <input  th:field="*{category}" class="input--style-3" type="text" placeholder="Category">
-<!--                            <div th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>-->
+                            <div th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>
                         </div>
                         <div class="p-t-10">
                             <button class="btn btn--pill btn--green" type="submit">Submit</button>
@@ -64,7 +64,7 @@
     <!-- Main JS-->
     <script src="js/global.js"></script>
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 
 </html>
 <!-- end document-->
