@@ -3,22 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/myCss.css">
 </head>
-<body>
-<h2> Song List</h2>
-<div>
-    <a href="/addNew">Add new Song</a>
+<body class="bg">
+<div class="container">
+    <div class="centerer">
+        <h2 class="tit text-center"> Song List</h2>
+        <div>
+            <a href="/addNew" class="btn btn-outline-success text-decoration-none">Add new Song</a>
+        </div>
+        <div class="text-success fst-italic">
+            <div th:text="${mess}"></div>
+        </div>
+        <table class="table table-dark table-hover ">
+            <tr th:each="song: ${songList}">
+                <td>
+                    <div class="songName" th:text="${song.songName}"></div>
+                    <div class="singer" th:text="${song.singer}"></div>
+                </td>
+                <td>
+                    <div class="songName text-center text-decoration-underline" th:text="${song.category}"></div>
+                </td>
+                <td>
+                    <div class="text-center">
+                        <a type="button" class="btn btn-outline-warning text-decoration-none"
+                           th:href="@{updateSong/{id}/(id=${song.id})}"> Update</a>
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
-<table>
-    <tr th:each="song: ${songList}">
-        <td>
-            <p th:text="${song.songName}"></p>
-            <p th:text="${song.singer}"></p>
-        </td>
-        <td>
-<!--            <a th:href="@{update/{id}/(id=${song.id})}"> Update</a>-->
-        </td>
-    </tr>
-</table>
+<script src="js/bootstrap.js"></script>
 </body>
 </html>

@@ -8,17 +8,20 @@
 
 </head>
 <body>
+
 <div class="container">
-    <h1> Home </h1>
-    <h3 th:text="${messenger}"></h3>
+    <a class="text-decoration-none" href="/blog"><h1> Home </h1></a>
+
+    <h4 class="bg-dark" th:text="${messenger}"></h4>
 
     <a href="/create"> ADD NEW BLOG</a>
 
     <div class="findForm">
         <form action="/blog">
             <div class="input-group mb-3">
-                <span class="bg-success input-group-text" id="basic-addon1">Find by Blog's Title</span>
-                <input name="findTitle" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                <span class="text-white bg-success input-group-text" id="basic-addon1">Find by Blog's Title</span>
+                <input name="findTitle" type="text" class="form-control" aria-label="Username"
+                       aria-describedby="basic-addon1">
             </div>
         </form>
     </div>
@@ -34,24 +37,24 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="getBlog: ${list}">
-            <td th:text="${getBlog.title}"></td>
-            <td th:text="${getBlog.writer}"></td>
-            <td th:text="${getBlog.category}"></td>
-            <td th:text="${getBlog.postingDay}"></td>
-            <td><a th:href="@{reading/{id}/(id=${getBlog.getId()})}"> Read </a></td>
-            <td><a th:href="@{delete/{id}/(id=${getBlog.getId()})}"> Delete </a></td>
-            <td><a th:href="@{update/{id}/(id=${getBlog.getId()})}"> Update </a></td>
+        <tr th:each="blog: ${list}">
+            <td th:text="${blog.title}"></td>
+            <td th:text="${blog.writer}"></td>
+            <td th:text="${blog.category.cateName}"></td>
+            <td th:text="${blog.postingDay}"></td>
+            <td><a th:href="@{reading/{id}/(id=${blog.getId()})}"> Read </a></td>
+            <td><a th:href="@{delete/{id}/(id=${blog.getId()})}"> Delete </a></td>
+            <td><a th:href="@{update/{id}/(id=${blog.getId()})}"> Update </a></td>
 
         </tr>
         </tbody>
     </table>
     <div class="findForm">
-    <a th:href="@{'/blog'(page=${list.number - 1},findTitle =${findTitle})}"
-       th:if="${list.hasPrevious()}"> Previous</a>
-    <span th:text="${list.number+1}"> </span>  of <span th:text="${list.totalPages}"></span>
-    <a th:href="@{'/blog'(page=${list.number + 1},findTitle =${findTitle})}"
-       th:if="${list.hasNext()}"> Next</a>
+        <a th:href="@{'/blog'(page=${list.number - 1},findTitle =${findTitle})}"
+           th:if="${list.hasPrevious()}"> Previous</a>
+        <span th:text="${list.number+1}"> </span> of <span th:text="${list.totalPages}"></span>
+        <a th:href="@{'/blog'(page=${list.number + 1},findTitle =${findTitle})}"
+           th:if="${list.hasNext()}"> Next</a>
     </div>
 </div>
 <script src="js/bootstrap.js"></script>

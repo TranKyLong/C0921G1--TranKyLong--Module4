@@ -1,0 +1,38 @@
+.bg {
+    background: url("../img/hihihi.jpg") top left/cover no-repeat;
+}
+
+.centerer {
+    margin: 20px auto;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.songName, .tit{
+    margin: 3px 0;
+    color: #b6effb;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+.singer {
+    color: #00f6ff;
+    font-style: italic;
+}
+
+
+.tit{
+    margin: 15px;
+    color: ghostwhite;
+    font-weight: bold;
+    font-size: 35px;
+    text-shadow: 3px 3px 20px #ff5200;
+}
+table td{
+    padding: 5px 0 5px 10px;
+}
+

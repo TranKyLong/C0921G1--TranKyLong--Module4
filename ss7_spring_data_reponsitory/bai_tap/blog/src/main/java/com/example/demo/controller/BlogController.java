@@ -2,7 +2,10 @@ package com.example.demo.controller;
 
 
 import com.example.demo.model.Blog;
-import com.example.demo.service.IBlogService;
+import com.example.demo.model.Category;
+import com.example.demo.reponsitory.ICateReponsitory;
+import com.example.demo.service.Blog.IBlogService;
+import com.example.demo.service.category.ICateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -15,34 +18,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class BlogController {
-    static List<String> categoryList;
 
-    static {
-        categoryList = new ArrayList<>();
-        categoryList.add("Fashion Blogs");
-        categoryList.add("Food Blogs");
-        categoryList.add("Sports Blogs");
-        categoryList.add("Travel Blogs");
-        categoryList.add("Music Blogs");
-        categoryList.add("Lifestyle Blogs");
-        categoryList.add("Fitness Blogs");
-        categoryList.add("Political Blogs");
-    }
 
     @Autowired
     IBlogService iBlogService;
 
+    @Autowired
+    ICateService iCateService;
+
     @GetMapping({"", "blog"})
     public String showHomePage(Model model, RedirectAttributes ra,
                                Optional<String> findTitle,
-                               @PageableDefault(size = 8) @SortDefault(sort = "category") Pageable pageable) {
-        ra.addFlashAttribute("messenger", "");
+                               @PageableDefault(size = 8) @SortDefault(sort = "category" ) Pageable pageable) {
+        ra.addFlashAttribute("msg", "");
 
         if (!findTitle.isPresent() || findTitle.equals("")) {
             model.addAttribute("list", iBlogService.findAll(pageable));
@@ -56,28 +49,29 @@ public class BlogController {
     @GetMapping("delete/{id}")
     public String showEdit(@PathVariable Integer id, RedirectAttributes ra) {
         iBlogService.delete(id);
-        ra.addFlashAttribute("messenger", "Delete success");
+        ra.addFlashAttribute("msg", "Delete success");
         return "redirect:/blog";
     }
 
     @GetMapping("create")
     public String showCreateForm(Model model) {
+
         Blog newBlog = new Blog();
         model.addAttribute("myblog", newBlog);
-        model.addAttribute("categoryList", categoryList);
+        model.addAttribute("categoryList", iCateService.findAll());
         return "/createform";
     }
 
     @PostMapping("save")
     public String save(Blog myBlog, RedirectAttributes ra) {
         iBlogService.save(myBlog);
-        ra.addFlashAttribute("messenger", "Add new blog successfuly");
+        ra.addFlashAttribute("msg", "Add new blog successfuly");
         return "redirect:/blog";
     }
 
     @GetMapping("update/{id}")
     public ModelAndView showUpdateForm(@PathVariable Integer id, Model model) {
-        model.addAttribute("categoryList", categoryList);
+        model.addAttribute("categoryList",  iCateService.findAll());
         Optional<Blog> updateBlog = iBlogService.findById(id);
         if (updateBlog.isPresent()) {
             ModelAndView modelAndView = new ModelAndView("update");
@@ -92,7 +86,7 @@ public class BlogController {
     @PostMapping("/saveupdate")
     public String saveUpdate(Blog myBlog, RedirectAttributes ra) {
         iBlogService.save(myBlog);
-        ra.addFlashAttribute("messenger", "Update blog successfuly");
+        ra.addFlashAttribute("msg", "Update blog successfuly");
         return "redirect:/blog";
     }
 

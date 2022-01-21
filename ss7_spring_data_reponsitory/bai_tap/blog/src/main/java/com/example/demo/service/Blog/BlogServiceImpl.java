@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.service.Blog;
 
 import com.example.demo.model.Blog;
 import com.example.demo.reponsitory.IBlogRepository;

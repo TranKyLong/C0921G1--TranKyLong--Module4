@@ -9,7 +9,9 @@ public class Blog {
     private Integer id;
     private String title;
     private String writer;
-    private String category;
+
+    @ManyToOne(targetEntity = Category.class)
+    private Category category;
 
     @Column(length = 10000)
     private String Content;
@@ -18,12 +20,12 @@ public class Blog {
     public Blog() {
     }
 
-    public Blog(Integer id, String title, String writer, String category, String content, String postingDay) {
+    public Blog(Integer id, String title, String writer, Category category, String content, String postingDay) {
         this.id = id;
         this.title = title;
         this.writer = writer;
         this.category = category;
-        this.Content = content;
+        Content = content;
         this.postingDay = postingDay;
     }
 
@@ -51,11 +53,11 @@ public class Blog {
         this.writer = writer;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 

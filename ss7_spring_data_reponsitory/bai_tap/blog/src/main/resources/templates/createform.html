@@ -24,7 +24,7 @@
                 <td class="toright"> Category:</td>
                 <td>
                     <select th:field="*{category}">
-                        <option th:each="cate : ${categoryList}" th:value="${cate}" th:text="${cate}">
+                        <option th:each="cate : ${categoryList}" th:value="${cate.id}" th:text="${cate.cateName}">
                         </option>
                     </select>
                 </td>
