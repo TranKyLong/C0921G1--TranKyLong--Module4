@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/mycss.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+
+</head>
+<body>
+<div class="container">
+
+    <h1 class="home_tile"> LIBRARY HOMEPAGE</h1>
+    <div class="noti">
+        <div class="text-success" th:text="${msg}"></div>
+    </div>
+
+    <table class="table mytable ">
+
+        <tr>
+            <th>Tên sách</th>
+            <th>Tác giả</th>
+            <th>Trạng thái</th>
+            <th>Thể loại</th>
+            <th>Số lượng</th>
+            <th colspan="2" class="text-center">Hoạt động</th>
+            <th>Mã thuê</th>
+        </tr>
+        <tr th:if="${bookList.isEmpty()}">
+            <th colspan="8"> CHƯA CÓ DỮ LIỆU</th>
+        </tr>
+        <tr th:each="myBook : ${bookList}">
+            <td th:text="${myBook.bookName}"></td>
+            <td th:text="${myBook.writer}"></td>
+            <td>
+                <span th:if="${myBook.isRented() == false }">Chưa được mượn</span>
+                <span th:unless="${myBook.isRented() == false }">Đã được mượn</span>
+            </td>
+            <td th:text="${myBook.category.cateName}"></td>
+            <td th:text="${myBook.quantily}"></td>
+            <td>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Mượn sách
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header bg-black">
+                                <h5 class="modal-title text-white " id="exampleModalLabel">Xác nhận</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body bg-dark text-white">
+                                <strong> Tên sách </strong> <span th:text="${myBook.bookName}"> </span> <br>
+                                <strong> Tác giả </strong> <span th:text="${myBook.writer}"></span> <br>
+                                <strong> Thể loại </strong> <span th:text="${myBook.category.cateName}"> </span> <br>
+                                <p >Xác nhận mượn sách ?</p>
+                            </div>
+                            <div class="modal-footer bg-black">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Từ chối</button>
+                                <a type="button" class="text-decoration-none btn btn-success"
+                                   th:href="@{rentbook/{id}/(id=${myBook.bookId})}"> Đồng ý</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                    Trả sách
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header bg-black">
+                                <h5 class="modal-title text-white " id="exampleModalLabel1">Xác nhận</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+
+                            <!-- form-->
+                            <form action="/rentConfirm">
+                                <div class="modal-body bg-dark">
+                                    <label> Nhập mã thuê:
+                                        <input type="number" name="enterRentCode">
+                                    </label>
+                                    <p class="text-white">Xác nhận trả sách ?</p>
+
+                                </div>
+                                <div class="modal-footer bg-black">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Từ chối
+                                    </button>
+                                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Đồng ý
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td th:text="${myBook.rentCode}"></td>
+
+        </tr>
+    </table>
+
+    <footer>
+        <nav  aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+                <li class="page-item  " th:if="${bookList.hasPrevious()}">
+                    <a class="page-link bg-black text-light" th:href="@{'/book'(page=${bookList.number - 1})}" tabindex="-1"
+                       aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item disabled" th:unless="${bookList.hasPrevious()}">
+                    <a class="page-link  bg-dark text-muted" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item">
+                    <div class="page-link  bg-black text-light">
+                        <span th:text="${bookList.number+1}"></span> of
+                        <span th:text="${bookList.totalPages}"></span>
+                    </div>
+
+                </li>
+                <li class="page-item" th:if="${bookList.hasNext()}">
+                    <a class="page-link bg-black text-light " th:href="@{'/book'(page=${bookList.number + 1})}" tabindex="-1"
+                       aria-disabled="true">Next</a>
+                </li>
+                <li class="page-item disabled" th:unless="${bookList.hasNext()}">
+                    <a class="page-link  bg-dark text-muted" href="#" tabindex="-1" aria-disabled="true">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+</div>
+<script src="js/bootstrap.js"></script>
+</body>
+</html>

@@ -12,7 +12,7 @@
 <div class="container">
     <a class="text-decoration-none" href="/blog"><h1> Home </h1></a>
 
-    <h4 class="bg-dark" th:text="${messenger}"></h4>
+    <h4  th:text="${msg}"></h4>
 
     <a href="/create"> ADD NEW BLOG</a>
 
@@ -26,7 +26,7 @@
         </form>
     </div>
 
-    <table id="mytable">
+    <table class="table table-hover">
         <thead>
         <tr>
             <th> TITLE</th>
