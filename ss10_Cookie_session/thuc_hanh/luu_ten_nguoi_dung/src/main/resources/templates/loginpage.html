@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<body>
+<h3 th:text="${cookie.name}"></h3>
+<form action="/login" method="post" th:object="${userLogin}">
+    <label> User name:
+        <input type="text" th:field="*{userName}">
+    </label>
+    <button type="submit"> submit </button>
+</form>
+</body>
+</html>

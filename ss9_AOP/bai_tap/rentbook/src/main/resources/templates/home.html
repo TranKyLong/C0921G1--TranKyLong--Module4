@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/mycss.css">
+    <link rel="stylesheet" href="css/myTable.css">
     <link rel="stylesheet" href="css/bootstrap.css">
-
-
 </head>
 <body>
 <div class="container">
 
-    <h1 class="home_tile"> LIBRARY HOMEPAGE</h1>
+    <h1 class="home_tile"> LIBRARY'S HOMEPAGE</h1>
     <div class="noti">
         <div class="text-success" th:text="${msg}"></div>
+<!--        <div class="text-success" th:text="${mess}"></div>-->
     </div>
 
     <table class="table mytable ">
@@ -22,7 +21,6 @@
             <th>Tên sách</th>
             <th>Tác giả</th>
             <th>Trạng thái</th>
-            <th>Thể loại</th>
             <th>Số lượng</th>
             <th colspan="2" class="text-center">Hoạt động</th>
             <th>Mã thuê</th>
@@ -31,26 +29,18 @@
             <th colspan="8"> CHƯA CÓ DỮ LIỆU</th>
         </tr>
         <tr th:each="myBook : ${bookList}">
-            <td th:text="${myBook.bookName}"></td>
-            <td th:text="${myBook.writer}"></td>
+            <td th:text="${myBook.name}"></td>
+            <td th:text="${myBook.author}"></td>
             <td>
-                <span th:if="${myBook.isRented() == false }">Chưa được mượn</span>
-                <span th:unless="${myBook.isRented() == false }">Đã được mượn</span>
+                <span th:if="${myBook.rentCode == null }">Chưa được mượn</span>
+                <span th:unless="${myBook.rentCode == null }">Đã được mượn</span>
             </td>
-            <td th:text="${myBook.category.cateName}"></td>
-            <td th:text="${myBook.quantily}"></td>
+            <td th:text="${myBook.quanlity}"></td>
             <td>
-                <a type="button" class="text-decoration-none btn btn-success"
-                   th:href="@{rentbook/{id}/(id=${myBook.bookId})}"> Mượn sách</a>
+                <a type="button" class="btn-success" th:href="@{rentbook/{id}/(id=${myBook.getId()})}"> Muon sach</a>
+            </td>
             <td>
-                <form action="/returnbook">
-                    <label> Nhập mã thuê:
-                        <input type="number" name="enterRentCode">
-                    </label>
-                    <p class="text-white">Xác nhận trả sách ?</p>
-                    <input type="hidden" name="returnId" th:value="${myBook.bookId}">
-                    <button type="submit"> submit</button>
-                </form>
+                something
             </td>
             <td th:text="${myBook.rentCode}"></td>
 
@@ -58,11 +48,10 @@
     </table>
 
     <footer>
-        <nav aria-label="Page navigation example">
+        <nav  aria-label="Page navigation example">
             <ul class="pagination justify-content-end">
                 <li class="page-item  " th:if="${bookList.hasPrevious()}">
-                    <a class="page-link bg-black text-light" th:href="@{'/book'(page=${bookList.number - 1})}"
-                       tabindex="-1"
+                    <a class="page-link bg-black text-light" th:href="@{'/book'(page=${bookList.number - 1})}" tabindex="-1"
                        aria-disabled="true">Previous</a>
                 </li>
                 <li class="page-item disabled" th:unless="${bookList.hasPrevious()}">
@@ -76,8 +65,7 @@
 
                 </li>
                 <li class="page-item" th:if="${bookList.hasNext()}">
-                    <a class="page-link bg-black text-light " th:href="@{'/book'(page=${bookList.number + 1})}"
-                       tabindex="-1"
+                    <a class="page-link bg-black text-light " th:href="@{'/book'(page=${bookList.number + 1})}" tabindex="-1"
                        aria-disabled="true">Next</a>
                 </li>
                 <li class="page-item disabled" th:unless="${bookList.hasNext()}">

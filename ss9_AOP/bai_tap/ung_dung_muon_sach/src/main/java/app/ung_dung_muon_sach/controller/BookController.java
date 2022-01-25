@@ -23,60 +23,32 @@ import java.util.Random;
 
 @Controller
 public class BookController {
-
-    @Autowired
-    IBookService iBookService;
-
-    @GetMapping({"", "book"})
-    public ModelAndView showHome(@PageableDefault(size = 8) @SortDefault(sort = "category") Pageable pageable,
-                                 RedirectAttributes ra) {
-        ra.addFlashAttribute("msg", "");
-        Page<Book> bookList = iBookService.findAll(pageable);
-        for (Book b : iBookService.findAll(pageable)
-        ) {
-            if (b.getRentCode() == null) {
-                b.setRented(false);
-            }
-        }
-
-        return new ModelAndView("homepage", "bookList", bookList);
-    }
-
-    @GetMapping("rentConfirm")
-    public String confirmedRent(@RequestParam Optional<Integer> enterRentCode, RedirectAttributes ra) {
-        if (enterRentCode.isPresent()) {
-            Book backBook = iBookService.findByRentcode(enterRentCode.get());
-            if (backBook == null) {
-                ra.addFlashAttribute("msg", "Mã thuê sai, mời nhập lại");
-            } else {
-                int afterBookBack = backBook.getQuantily() + 1;
-                backBook.setQuantily(afterBookBack);
-                backBook.setRentCode(null);
-                iBookService.saveBook(backBook);
-                ra.addFlashAttribute("msg", "Trả thành công");
-            }
-        }
-        return "redirect:/book";
-    }
-
-    @GetMapping("rentbook/{id}")
-    public String rentAction(@PathVariable Integer id, Model model, RedirectAttributes ra) {
-
-        Book rentedBook = iBookService.findById(id).get();
-        if (rentedBook.getQuantily() == 0) {
-            throw new IllegalArgumentException();
-        }
-        /** sau khi mượn thì set lại số lượng sách -1*/
-        int quantilyAfter = rentedBook.getQuantily() - 1;
-        rentedBook.setQuantily(quantilyAfter);
-
-        /** cung cấp mã mượn sách */
-        rentedBook.setRentCode((int) (Math.random() * 99999 + 10000));
-        iBookService.saveBook(rentedBook);
-
-        ra.addFlashAttribute("msg", "Mượn thành công");
-        return "redirect:/book";
-    }
+//
+//    @Autowired
+//    IBookService iBookService;
+//
+//    @GetMapping({"", "book"})
+//    public ModelAndView showHome(@PageableDefault(size = 8) @SortDefault(sort = "category") Pageable pageable,
+//                                 RedirectAttributes ra) {
+//        ra.addFlashAttribute("msg", "");
+//        Page<Book> bookList = iBookService.findAll(pageable);
+//
+//        return new ModelAndView("homepage", "bookList", bookList);
+//    }
+//
+//    @GetMapping("returnbook")
+//    public String confirmedRent(@RequestParam Integer returnId,  @RequestParam (defaultValue = "0", required = true) int enterRentCode , RedirectAttributes ra) {
+//        String noti = iBookService.returnBook(enterRentCode, returnId);
+//        ra.addFlashAttribute("msg", noti);
+//        return "redirect:/book";
+//    }
+//
+//    @GetMapping("rentbook/{id}")
+//    public String rentAction(@PathVariable Integer id, Model model, RedirectAttributes ra) {
+//        iBookService.rentBook(id);
+//        ra.addFlashAttribute("msg", "Mượn thành công");
+//        return "redirect:/book";
+//    }
 
 
 }
