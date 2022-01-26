@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/myTable.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/myTable.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
 </head>
 <body>
 <div class="container">
@@ -37,10 +37,10 @@
             </td>
             <td th:text="${myBook.quanlity}"></td>
             <td>
-                <a type="button" class="btn-success" th:href="@{rentbook/{id}/(id=${myBook.getId()})}"> Muon sach</a>
+                <a type="button" class="btn btn-success" th:href="@{rentbook/{id}/(id=${myBook.getId()})}"> Mượn sách</a>
             </td>
             <td>
-                something
+                <a type="button" class="btn btn-primary" th:href="@{bookreturn/{id}/(id=${myBook.getId()})}"> Trả sách</a>
             </td>
             <td th:text="${myBook.rentCode}"></td>
 

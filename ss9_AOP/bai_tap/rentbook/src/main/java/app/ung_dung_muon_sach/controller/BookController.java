@@ -39,7 +39,11 @@ public class BookController {
 
     @GetMapping("rentbook/{id}")
     public String showRentPage(@PathVariable Integer id, Model model) {
-        model.addAttribute("rentedBook", iBookService.findById(id).get());
+        Book book =iBookService.findById(id).get();
+        if (book.getQuanlity() == 0){
+            throw new IllegalArgumentException();
+        }
+        model.addAttribute("rentedBook", book);
         return "rentbook";
     }
 
@@ -53,6 +57,34 @@ public class BookController {
         rentedBook.setQuanlity(newQuanlity);
         iBookService.save(rentedBook);
         ra.addFlashAttribute("msg", "Mượn thành công");
+        return "redirect:/book";
+    }
+
+    @GetMapping("/bookreturn/{id}")
+    public String returnBook(@PathVariable Integer id, Model model) {
+        model.addAttribute("bookReturn",iBookService.findById(id).get());
+        return "returnbook";
+    }
+
+    @PostMapping("bookReturner")
+    public String returnBook(@RequestParam Integer id, @RequestParam Integer rentCode,  RedirectAttributes ra){
+        Book returnBook = iBookService.findById(id).get();
+        int returnCode = returnBook.getRentCode();
+
+        if(rentCode == null ){
+            rentCode = -1;
+        } else {
+            if(!rentCode.equals(returnCode)){
+                throw new NullPointerException();
+            } else {
+                ra.addFlashAttribute("msg","Trả thành công");
+                int afterQuanlity = returnBook.getQuanlity()+1;
+                returnBook.setQuanlity(afterQuanlity);
+                returnBook.setRentCode(null);
+                iBookService.save(returnBook);
+            }
+
+        }
         return "redirect:/book";
     }
 
