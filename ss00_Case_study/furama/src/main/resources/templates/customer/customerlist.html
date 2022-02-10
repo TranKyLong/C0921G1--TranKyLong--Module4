@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../css/myTable.css">
+    <link rel="stylesheet" href="../../../css/bootstrap.css">
+    <script src="../../../js/bootstrap.js"></script>
+
+</head>
+<body>
+<form action="showcustomerlist" method="get">
+
+    <label> Find by name
+        <input type="text" name="findName">
+    </label>
+    <label> find by Division
+        <select name="customerType">
+            <option disabled selected> --CHOSE TYPE--</option>
+            <th:block th:each="type: ${typeList}">
+                <option th:value="${type.customerTypeId}" th:text="${type.customerTypeName}"></option>
+            </th:block>
+        </select>
+    </label>
+    <button type="submit"> submit</button>
+</form>
+<p th:text="${msg}"></p>
+<a href="/addcustomer"> Add new Customer</a>
+<table class="table">
+    <thead>
+    <tr>
+        <th> Name</th>
+        <th> Birthday</th>
+        <th> Gender</th>
+        <th> Id Card</th>
+        <th> Contact</th>
+        <th> Type</th>
+        <th colspan="2"> Action</th>
+    </tr>
+    </thead>
+    <tr th:each="cus : ${customerList}">
+        <td>
+            <div th:text="${cus.customerName}"></div>
+            <div th:text="${cus.customerCode}"></div>
+        </td>
+        <td th:text="${cus.customerBirthday}"></td>
+        <td th:if="${cus.customerGender == 0}"> Female</td>
+        <td th:unless="${cus.customerGender == 0}"> Male</td>
+
+        <td th:text="${cus.customerIdCard}"></td>
+        <td>
+            <div th:text="${cus.customerPhone}"></div>
+            <div th:text="${cus.customerEmail}"></div>
+            <div th:text="${cus.customerAdress}"></div>
+        </td>
+
+        <td th:text="${cus.customerType.customerTypeName}"></td>
+        <td>
+            <a class="btn btn-primary" th:href="@{/createcontract/{id}/(id=${cus.customerId})}"> Create contract</a>
+        </td>
+        <td>
+            <a class="btn btn-primary" th:href="@{/editcustomer/{id}/(id=${cus.customerId})}"> Edit</a>
+        </td>
+
+        <td> <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    th:attr="data-bs-target='#cusId'+${cus.customerId}">
+                Delete
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" th:id="'cusId' + ${cus.customerId}" tabindex="-1"
+                 aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">CONFIRM DELETE</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Confirm delete <span class="text-warning" th:text="${cus.customerName}"></span> ?
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <a type="button" class="btn btn-danger text-decoration-none"
+                               th:href="@{/deletecustomer/{id}/(id=${cus.customerId})}"
+                            >Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+<footer>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+            <li class="page-item  " th:if="${customerList.hasPrevious()}">
+                <a class="page-link" th:href="@{'/showcustomerlist'(page=${customerList.number - 1},findName=${findName},customerType=${customerType})}" tabindex="-1"
+                   aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item disabled" th:unless="${customerList.hasPrevious()}">
+                <a class="page-link " href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item">
+                <div class="page-link ">
+                    <span th:text="${customerList.number+1}"></span> of
+                    <span th:text="${customerList.totalPages}"></span>
+                </div>
+
+            </li>
+            <li class="page-item" th:if="${customerList.hasNext()}">
+                <a class="page-link  " th:href="@{'/showcustomerlist'(page=${customerList.number + 1},findName=${findName},customerType=${customerType})}" tabindex="-1"
+                   aria-disabled="true">Next</a>
+            </li>
+            <li class="page-item disabled" th:unless="${customerList.hasNext()}">
+                <a class="page-link  " href="#" tabindex="-1" aria-disabled="true">Next</a>
+            </li>
+        </ul>
+    </nav>
+</footer>
+
+</body>
+</html>

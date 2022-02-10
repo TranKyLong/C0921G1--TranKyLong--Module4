@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new</title>
+    <link rel="stylesheet" href="../../css/myTable.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <script src="../../js/bootstrap.js"></script>
+</head>
+<body>
+
+<form action="/savecustomer" method="post" th:object="${customerDto}">
+    <input type="hidden" th:field="*{customerId}">
+    <div class="row mb-3">
+        <label for="type" class="col-sm-2 col-form-label">Select Type</label>
+        <div class="col-sm-10">
+            <select id="type" th:field="*{customerType}">
+                <option th:each="cus : ${customerTypeList}"
+                        th:value="${{cus}}" th:text="${cus.customerTypeName}"></option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="customerCode" class="col-sm-2 col-form-label">Code</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="customerCode" th:field="*{customerCode}">
+        </div>
+        <div class="margin-10-px" th:if="${#fields.hasErrors('customerCode')}" th:errors="*{customerCode}"></div>
+    </div>
+    <div class="row mb-3">
+        <label for="customerName" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="customerName" th:field="*{customerName}">
+        </div>
+        <div class="margin-10-px" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></div>
+    </div>
+    <div class="row mb-3">
+        <label for="customerBirthday" class="col-sm-2 col-form-label">Birthday</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="customerBirthday" th:field="*{customerBirthday}">
+        </div>
+        <div class="margin-10-px" th:if="${#fields.hasErrors('customerBirthday')}" th:errors="*{customerBirthday}"></div>
+    </div>
+    <div class="row mb-3">
+        <label for="customerGender" class="col-sm-2 col-form-label">Gender</label>
+        <select id="customerGender" th:field="*{customerGender}">
+            <option value="0"> Female</option>
+            <option value="1"> Male</option>
+        </select>
+    </div>
+    <div class="row mb-3">
+        <label for="customerIdCard" class="col-sm-2 col-form-label">Id Card</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="customerIdCard" th:field="*{customerIdCard}">
+        </div>
+        <div class="margin-10-px" th:if="${#fields.hasErrors('customerIdCard')}" th:errors="*{customerIdCard}"></div>
+    </div>
+    <div class="row mb-3">
+        <label for="customerPhone" class="col-sm-2 col-form-label">Phone</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="customerPhone" th:field="*{customerPhone}">
+        </div>
+        <div class="margin-10-px" th:if="${#fields.hasErrors('customerPhone')}" th:errors="*{customerPhone}"></div>
+    </div>
+    <div class="row mb-3">
+        <label for="customerEmail" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" id="customerEmail" th:field="*{customerEmail}">
+        </div>
+        <div class="margin-10-px" th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}"></div>
+    </div>
+    <div class="row mb-3">
+        <label for="customerAdress" class="col-sm-2 col-form-label">Adress</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="customerAdress" th:field="*{customerAdress}">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

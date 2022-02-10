@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Page</title>
+    <link rel="stylesheet" href="../../css/myTable.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <script src="../../js/bootstrap.js"></script>
+
+</head>
+<body>
+<div class="my_content">
+    <table class="table">
+        <tr>
+            <td rowspan="5">
+                <img th:src="${detailPhone.imgLink}" alt="q">
+            </td>
+        </tr>
+        <tr>
+            <td><Strong>Tên: </Strong></td>
+            <td><p><span th:text="${detailPhone.name}"></span></p></td>
+        </tr>
+        <tr>
+            <td><Strong>Chi tiết: </Strong></td>
+            <td><p><span th:text="${detailPhone.detail}"></span></p></td>
+        </tr>
+        <tr>
+            <td><Strong>Màu sắc: </Strong></td>
+            <td><p><span th:text="${detailPhone.color}"></span></p></td>
+        </tr>
+        <tr>
+            <td><Strong>Giá: </Strong></td>
+            <td><p><span th:text="${detailPhone.price}"></span></p></td>
+        </tr>
+    </table>
+    <a type="button" class=" btn btn-outline-primary" href="/phone"> Trang chủ</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>You cart</title>
+    <link rel="stylesheet" href="../../css/myForm.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <script src="../../js/bootstrap.js"></script>
+</head>
+<body>
+<div class="content_cart">
+    <form action="/changeValue" method="get">
+        <table class="table">
+            <tr>
+                <th>Tên sản phẩm</th>
+                <th>Màu sắc</th>
+                <th>Số lượng</th>
+                <th>Tổng tiền</th>
+                <th>Thanh toán</th>
+            </tr>
+            <tr th:if="${phoneCart.isEmpty()}">
+                <td colspan="5"><h3 class="text-muted text-center">
+                    CHƯA CÓ SẢN PHẨM NÀO
+                </h3>
+                </td>
+            </tr>
+            <tr th:each="myPhone : ${phoneCart}">
+                <td th:text="${myPhone.getKey().name}"></td>
+                <td th:text="${myPhone.getKey().color}"></td>
+                <td>
+                    <input type="hidden" name="id" th:value="${myPhone.getKey().id}">
+                    <input type="number" onchange="this.form.submit()" name="value" min="1"
+                           th:value="${myPhone.getValue()}">
+                </td>
+
+                <td th:text="${myPhone.getKey().price * myPhone.getValue()}"></td>
+                <td><a th:href="@{/payment/{id}/(id=${myPhone.getKey().id})}"> Thanh toán</a></td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <a type="button" class=" btn btn-outline-primary"
+                       th:href="@{/payment/{id}/(id=${null})}"> Thanh toán tất cả</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <h5 class="text-success" th:text="${msg}"></h5>
+    <a type="button" class="btn btn-primary" href="/phone"> Trang chủ</a>
+</div>
+
+</body>
+</html>

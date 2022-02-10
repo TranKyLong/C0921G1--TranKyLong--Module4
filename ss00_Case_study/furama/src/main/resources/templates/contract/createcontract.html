@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../css/myTable.css">
+    <link rel="stylesheet" href="../../../css/bootstrap.css">
+
+</head>
+<body>
+<form action="/savecontract" method="post" th:object="${contractDto}">
+    <input type="hidden" th:field="*{contractId}">
+    <div th:if="${contractDto.customerId == null}">
+        <div class="row mb-3">
+            <label for="customerId" class="col-sm-2 col-form-label">Select Customer</label>
+            <div class="col-sm-10">
+                <select id="customerId" th:field="*{customerId}">
+                    <option value="-1" selected disabled>-SelectCustomer-</option>
+                    <option th:each="cus : ${customerList}"
+                            th:value="${{cus}}" th:text="${cus.customerCode +' - ' + cus.customerName }"></option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="service" class="col-sm-2 col-form-label">Select Service</label>
+        <div class="col-sm-10">
+            <select id="service" th:field="*{serviceId}">
+                <option value="-1" selected disabled>-Select service--</option>
+                <option th:each="s : ${serviceList}"
+                        th:value="${{s}}" th:text="${s.serviceName}"></option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="Employee" class="col-sm-2 col-form-label">Select Employee</label>
+        <div class="col-sm-10">
+            <select id="Employee" th:field="*{employeeId}">
+                <option value="-1" selected>-Select Employee--</option>
+                <option th:each="emp : ${employeeList}"
+                        th:value="${{emp}}" th:text="${emp.employeeName}"></option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="deposit" class="col-sm-2 col-form-label">Deposit</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="deposit" th:field="*{deposit}">
+        </div>
+        <div class="margin-10-px" th:if="${#fields.hasErrors('deposit')}" th:errors="*{deposit}"></div>
+    </div>
+    <div class="row mb-3">
+        <label for="startDate" class="col-sm-2 col-form-label">Stardate</label>
+        <div class="col-sm-10">
+            <input type="text" class="datepicker_input form-control " id="startDate" th:field="*{startDate}">
+        </div>
+        <div class="margin-10-px" th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></div>
+    </div>
+    <div class="row mb-3">
+        <label for="End" class="col-sm-2 col-form-label">End date</label>
+        <div class="col-sm-10">
+            <input type="text" class="datepicker_input form-control" id="End" th:field="*{endDate}">
+        </div>
+        <div class="margin-10-px" th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+<script src="../../../js/bootstrap.js">
+    const getDatePickerTitle = elem => {
+// From the label or the aria-label
+        const label = elem.nextElementSibling;
+        let titleText = '';
+        if (label && label.tagName === 'LABEL') {
+            titleText = label.textContent;
+        } else {
+            titleText = elem.getAttribute('aria-label') || '';
+        }
+        return titleText;
+    }
+
+    const elems = document.querySelectorAll('.datepicker_input');
+    for (const elem of elems) {
+        const datepicker = new Datepicker(elem, {
+            'format': 'dd/mm/yyyy', // UK format
+            title: getDatePickerTitle(elem)
+        });
+    }
+</script>
+</body>
+</html>

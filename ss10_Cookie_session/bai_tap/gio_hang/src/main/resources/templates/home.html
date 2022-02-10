@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <link rel="stylesheet" href="../../css/myTable.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <script src="../../js/bootstrap.js"></script>
+
+</head>
+
+<body>
+<h2 class="home_tile"> MOBILE SHOP</h2>
+<div class="text-center">
+    <a type="button" class=" btn btn-outline-primary" href="/showCart"> xem giỏ hàng</a>
+</div>
+
+<div class="my_content">
+    <table class="table border-1">
+        <tr>
+            <th>Phone Name </th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>See detail</th>
+            <th>Add to cart</th>
+        </tr>
+        <tr th:each="phone : ${phoneList}">
+            <td th:text="${phone.name}"></td>
+            <td class="fit_content">
+                <div class="align-content-center">
+                    <img class="img-fluid" th:src="${phone.imgLink}" th:alt="${phone.imgLink}">
+                </div>
+            </td>
+            <td th:text="${phone.price}"></td>
+            <td><a th:href="@{seeDetail/{id}(id=${phone.id})}">See detail</a></td>
+            <td><a th:href="@{addToCart/{id}(id=${phone.id})}">Add to cart</a>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

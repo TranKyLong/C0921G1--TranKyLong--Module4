@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+
+
+.margin-10-px {
+    color: red;
+    margin: 10px 0;
+}
+
+body{
+    min-height: 720px;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgb(232, 235, 255) 0%, rgba(185,255,254,1) 48%, rgba(193,208,255,1) 100%);
+}
+
+.noti {
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    height: 60px;
+    line-height: 30px;
+    margin: 20px 0;
+    border: 1px solid orange;
+}
+
+.home_tile {
+    margin: 25px;
+    text-align: center;
+    color: ghostwhite;
+    text-shadow: 0 0 8px darkblue;
+    font-size: 35px;
+}
+
+.content_cart {
+    width: 75%;
+    padding: 20px 40px;
+    border-radius: 25px;
+    margin: 40px auto;
+}

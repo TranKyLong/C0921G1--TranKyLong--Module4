@@ -1,0 +1,49 @@
+
+* {
+    box-sizing: border-box;
+}
+
+.my_content{
+
+    width: 75%;
+    margin: 50px auto;
+}
+.detail{
+    width: 45%;
+    margin: 50px auto;
+}
+
+.noti {
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    height: 60px;
+    line-height: 30px;
+    margin: 20px 0;
+    border: 1px solid orange;
+}
+
+td img{
+    width: 100%;
+    display: block;
+    margin: 20px auto;
+}
+
+td,table th{
+    text-align: center;
+    width: 20%;
+}
+
+.home_tile {
+    margin: 25px;
+    text-align: center;
+    color: ghostwhite;
+    text-shadow: 0 0 15px #00286c;
+    font-size: 35px;
+}
+
+body {
+    min-height: 720px;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgb(232, 235, 255) 0%, rgba(185,255,254,1) 48%, rgba(193,208,255,1) 100%);
+}

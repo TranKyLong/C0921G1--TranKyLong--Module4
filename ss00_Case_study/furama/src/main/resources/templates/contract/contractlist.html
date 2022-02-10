@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../css/myTable.css">
+    <link rel="stylesheet" href="../../../css/bootstrap.css">
+    <script src="../../../js/bootstrap.js"></script>
+</head>
+<body>
+<div th:type="${msg}"></div>
+<form action="/showcontract">
+    <label> find by Customer Name
+        <input type="text" name="cusName">
+    </label>
+    <label> find by service Name
+        <input type="text" name="serName">
+    </label>
+    <button type="submit"> submit</button>
+</form>
+<table class="table">
+    <thead>
+    <tr>
+        <th> Deposit</th>
+        <th> Star day</th>
+        <th> End day</th>
+        <th> Customer</th>
+        <th> Employee</th>
+        <th> Service</th>
+        <th> Attach Service</th>
+        <th> Quantily</th>
+        <th> Total Money</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="c : ${contractDetailList}">
+        <td th:text="${c.contractId.deposit}"></td>
+        <td th:text="${c.contractId.startDate}"></td>
+        <td th:text="${c.contractId.endDate}"></td>
+        <td th:text="${c.contractId.customerId.customerName}"></td>
+        <td th:text="${c.contractId.employeeId.employeeName}"></td>
+        <td th:text="${c.contractId.serviceId.serviceName}"></td>
+        <td th:text="${c.attachServiceId.attachName}"></td>
+        <td th:text="${c.quantity}"></td>
+        <td> ##</td>
+    </tr>
+    </tbody>
+
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+        <li class="page-item  " th:if="${contractDetailList.hasPrevious()}">
+            <a class="page-link" th:href="@{'/showcontract'(page=${contractDetailList.number - 1},cusName=${cusName},serName=${serName})}" tabindex="-1"
+               aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item disabled" th:unless="${contractDetailList.hasPrevious()}">
+            <a class="page-link " href="#" tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item">
+            <div class="page-link ">
+                <span th:text="${contractDetailList.number+1}"></span> of
+                <span th:text="${contractDetailList.totalPages}"></span>
+            </div>
+
+        </li>
+        <li class="page-item" th:if="${contractDetailList.hasNext()}">
+            <a class="page-link  " th:href="@{'/showcontract'(page=${contractDetailList.number + 1},cusName=${cusName},serName=${serName})}" tabindex="-1"
+               aria-disabled="true">Next</a>
+        </li>
+        <li class="page-item disabled" th:unless="${contractDetailList.hasNext()}">
+            <a class="page-link  " href="#" tabindex="-1" aria-disabled="true">Next</a>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>

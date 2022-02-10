@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>list service</title>
+    <link rel="stylesheet" href="../../../css/myTable.css">
+    <link rel="stylesheet" href="../../../css/bootstrap.css">
+    <script src="../../../js/bootstrap.js"></script>
+</head>
+<body>
+
+<a th:href="@{/createservice/{id}/(id=1)}">Create new Villa service</a>
+<a th:href="@{/createservice/{id}/(id=2)}">Create new House service</a>
+<a th:href="@{/createservice/{id}/(id=3)}">Create new Room service</a>
+<table class="table">
+    <thead>
+    <tr>
+        <th> Service Name</th>
+        <th> Service Area (meter)</th>
+        <th> Room infomation</th>
+        <th> Free Service</th>
+        <th> Max people</th>
+        <th> Floor number</th>
+        <th> Cost</th>
+        <th> Rent Type</th>
+        <th> Service Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="s : ${serviceList}">
+        <td>
+            <div th:text="${s.serviceName}"></div>
+            <div th:text="${s.serviceCode}"></div>
+        </td>
+        <td>
+            <Strong> Area</Strong>
+            <div th:text="${s.serviceArea}"></div>
+            <Strong> Pool Area</Strong>
+            <div th:text="${s.poolArea}"></div>
+        </td>
+        <td>
+            <div th:text="${s.standarRoom}"></div>
+            <div th:text="${s.description}"></div>
+        </td>
+        <td th:text="${s.freeService}"></td>
+        <td th:text="${s.maxPeople}"></td>
+        <td th:text="${s.floorsNumber}"></td>
+        <td th:text="${s.serviceCost}"></td>
+        <td th:text="${s.rentTypeId.rentName}"></td>
+        <td th:text="${s.serviceTypeId.serviceTypeName}"></td>
+
+    </tr>
+    </tbody>
+
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+        <li class="page-item  " th:if="${serviceList.hasPrevious()}">
+            <a class="page-link" th:href="@{'/showservice'(page=${serviceList.number - 1})}" tabindex="-1"
+               aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item disabled" th:unless="${serviceList.hasPrevious()}">
+            <a class="page-link " href="#" tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item">
+            <div class="page-link ">
+                <span th:text="${serviceList.number+1}"></span> of
+                <span th:text="${serviceList.totalPages}"></span>
+            </div>
+
+        </li>
+        <li class="page-item" th:if="${serviceList.hasNext()}">
+            <a class="page-link  " th:href="@{'/showservice'(page=${serviceList.number + 1})}" tabindex="-1"
+               aria-disabled="true">Next</a>
+        </li>
+        <li class="page-item disabled" th:unless="${serviceList.hasNext()}">
+            <a class="page-link  " href="#" tabindex="-1" aria-disabled="true">Next</a>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>

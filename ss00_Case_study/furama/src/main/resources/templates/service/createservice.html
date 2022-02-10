@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>create sevice</title>
+    <link rel="stylesheet" href="../../../css/myTable.css">
+    <link rel="stylesheet" href="../../../css/bootstrap.css">
+    <script src="../../../js/bootstrap.js"></script>.
+</head>
+<body>
+<form action="/saveservice" method="post" th:object="${newService}">
+
+    <input type="hidden" th:field="*{serviceId}">
+    <input type="hidden" th:field="*{serviceTypeId}" >
+
+    <div th:text="${newService.serviceTypeId.serviceTypeName}"></div>
+    <div class="row mb-3">
+        <label for="serviceCode" class="col-sm-2 col-form-label">Code</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="serviceCode" th:field="*{serviceCode}">
+        </div>
+        <div class="margin-10-px" th:if="${#fields.hasErrors('serviceCode')}" th:errors="*{serviceCode}"></div>
+    </div>
+    <div class="row mb-3">
+        <label for="type" class="col-sm-2 col-form-label">Rent Type</label>
+        <div class="col-sm-10">
+            <select id="type" th:field="*{rentTypeId}">
+                <option th:each="rent : ${rentType}"
+                        th:value="${{rent}}" th:text="${rent.rentName}"></option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="serviceName" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="serviceName" th:field="*{serviceName}">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="serviceArea" class="col-sm-2 col-form-label">Area</label>
+        <div class="col-sm-10">
+            <input type="number" step="0.01"  class="form-control" id="serviceArea" th:field="*{serviceArea}">
+        </div>
+    </div>
+    <div th:if="${newService.serviceTypeId.serviceTypeId == 1}">
+    <div class="row mb-3">
+        <label for="poolArea" class="col-sm-2 col-form-label">Pool area</label>
+        <div class="col-sm-10">
+            <input type="number" step="0.01" class="form-control" id="poolArea" th:field="*{poolArea}">
+        </div>
+    </div>
+    </div>
+    <div class="row mb-3">
+        <label for="maxPeople" class="col-sm-2 col-form-label">Max people</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="maxPeople" th:field="*{maxPeople}">
+        </div>
+    </div>
+<div th:unless="${newService.serviceTypeId.serviceTypeId == 3}">
+    <div class="row mb-3">
+        <label for="standarRoom" class="col-sm-2 col-form-label">Room Standar</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="standarRoom" th:field="*{standarRoom}">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="floorsNumber" class="col-sm-2 col-form-label">Floor number</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="floorsNumber" th:field="*{floorsNumber}" value="1">
+        </div>
+        <div class="margin-10-px" th:if="${#fields.hasErrors('floorsNumber')}" th:errors="*{floorsNumber}"></div>
+    </div>
+    <div class="row mb-3">
+        <label for="description" class="col-sm-2 col-form-label">Description</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="description" th:field="*{description}">
+        </div>
+    </div>
+</div>
+    <div class="row mb-3">
+        <label for="freeService" class="col-sm-2 col-form-label">Free Attach Service</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="freeService" th:field="*{freeService}">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="serviceCost" class="col-sm-2 col-form-label">Cost</label>
+        <div class="col-sm-10">
+            <input type="number" step="0.01" class="form-control" id="serviceCost" th:field="*{serviceCost}">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

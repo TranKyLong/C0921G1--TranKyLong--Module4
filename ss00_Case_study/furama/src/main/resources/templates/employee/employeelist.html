@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../css/myTable.css">
+    <link rel="stylesheet" href="../../../css/bootstrap.css">
+    <script src="../../../js/bootstrap.js"></script>
+</head>
+<body>
+
+<form action="showemployee" method="get">
+
+    <label> Find by name
+        <input type="text" name="findName">
+    </label>
+    <label> find by Division
+        <select name="divisionId">
+            <option disabled selected> --CHOSE DIVISION--</option>
+            <th:block th:each="division: ${divisionList}">
+                <option th:value="${division.divisionId}" th:text="${division.divisionName}"></option>
+            </th:block>
+        </select>
+    </label>
+
+    <button type="submit"> submit</button>
+</form>
+<p th:text="${msg}"></p>
+<a href="/addnewemployee"> Add new Employee</a>
+<table class="table">
+    <thead>
+    <tr>
+        <th> Name</th>
+        <th> Birthday</th>
+        <th> Salary</th>
+        <th> ID Card</th>
+        <th> Contact</th>
+        <th> Position</th>
+        <th> Division</th>
+        <th> Education Degree</th>
+        <!--        <th> User name</th>-->
+        <th colspan="2"> Action</th>
+    </tr>
+    </thead>
+    <tr th:each="employee : ${employeeList}">
+        <td>
+            <div th:text="${employee.employeeName}"></div>
+        </td>
+        <td th:text="${employee.employeeBirthday}"></td>
+        <td th:text="${employee.employeeSalary}"></td>
+        <td th:text="${employee.employeeIdCard}"></td>
+        <td>
+            <div th:text="${employee.employeePhone}"></div>
+            <div th:text="${employee.employeeMail}"></div>
+            <div th:text="${employee.employeeAdress}"></div>
+        </td>
+        <td th:text="${employee.posId.posName}"></td>
+        <td th:text="${employee.divisionId.divisionName}"></td>
+        <td th:text="${employee.educationDegreeId.eduName}"></td>
+        <td th:if="${employee.username == null}"> #</td>
+        <!--        <td th:unless="${employee.username == null}" th:text="${employee.username.username}"></td>-->
+
+
+        <td> <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    th:attr="data-bs-target='#empId'+${employee.employeeId}">
+                Delete
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" th:id="'empId'+${employee.employeeId}" tabindex="-1"
+                 aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">CONFIRM DELETE</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Confirm delete <span class="text-warning" th:text="${employee.employeeName}"></span> ?
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <a type="button" class="btn btn-danger text-decoration-none"
+                               th:href="@{/deleteemployee/{id}/(id=${employee.employeeId})}"
+                            >Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <a class="btn btn-primary" th:href="@{/editemployee/{id}/(id=${employee.employeeId})}"> Edit</a>
+        </td>
+    </tr>
+</table>
+<footer>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+            <li class="page-item  " th:if="${employeeList.hasPrevious()}">
+               <a class="page-link" th:href="@{'/showemployee'(page=${employeeList.number - 1},findName=${findName},divisionId=${divisionId})}" tabindex="-1"
+                   aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item disabled" th:unless="${employeeList.hasPrevious()}">
+                <a class="page-link " href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item">
+                <div class="page-link ">
+                    <span th:text="${employeeList.number+1}"></span> of
+                    <span th:text="${employeeList.totalPages}"></span>
+                </div>
+
+            </li>
+            <li class="page-item" th:if="${employeeList.hasNext()}">
+                <a class="page-link  " th:href="@{'/showemployee'(page=${employeeList.number + 1},findName=${findName},divisionId=${divisionId})}" tabindex="-1"
+                   aria-disabled="true">Next</a>
+            </li>
+            <li class="page-item disabled" th:unless="${employeeList.hasNext()}">
+                <a class="page-link  " href="#" tabindex="-1" aria-disabled="true">Next</a>
+            </li>
+        </ul>
+    </nav>
+</footer>
+
+</body>
+</html>
