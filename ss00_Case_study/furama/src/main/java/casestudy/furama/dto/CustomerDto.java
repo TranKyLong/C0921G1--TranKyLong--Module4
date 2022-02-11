@@ -131,9 +131,9 @@ public class CustomerDto implements Validator {
     public void validate(Object target, Errors errors) {
         String dateValidation = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
         CustomerDto cusDto = (CustomerDto) target;
-        if (!cusDto.customerBirthday.matches(dateValidation)) {
-            errors.rejectValue("customerBirthday", "customerBirthday.wrongCusDate", "format must be dd/mm/yyyy");
-        }
+//        if (!cusDto.customerBirthday.matches(dateValidation)) {
+//            errors.rejectValue("customerBirthday", "customerBirthday.wrongCusDate", "format must be dd/mm/yyyy");
+//        }
         if (!cusDto.customerIdCard.matches("^\\d{9,10}$")) {
             errors.rejectValue("customerIdCard", "customerIdCard.wrongCusIdCard", "The id card must be between 9 and 10 digits long");
         }

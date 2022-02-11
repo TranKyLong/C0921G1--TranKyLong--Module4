@@ -5,9 +5,11 @@ import casestudy.furama.model.ContractDetail;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface IContractService {
 
-    Page<Contract> findAll(Pageable pageable);
+    List<Contract> findAll();
 
     Page<ContractDetail> findAllContractDetail(Pageable pageable);
 
@@ -17,6 +19,7 @@ public interface IContractService {
     void deleteContract(Integer id);
 
     void saveContract(Contract contract);
+    void saveContractDetail(ContractDetail contractDetail);
 
     Page<Contract> findContractByCusName(String cusName,Pageable pageable);
 

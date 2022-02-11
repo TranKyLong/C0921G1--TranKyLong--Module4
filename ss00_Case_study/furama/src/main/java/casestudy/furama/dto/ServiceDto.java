@@ -168,5 +168,9 @@ public class ServiceDto implements Validator {
             errors.rejectValue("floorsNumber", "floorsNumber.wrongFloor",
                     "number of floors must be greater than 0");
         }
+        if (!(serviceDto.serviceCost>0)) {
+            errors.rejectValue("serviceCost", "serviceCost.wrongCost",
+                    "Service Cost must be greater than 0");
+        }
     }
 }

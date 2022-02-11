@@ -10,11 +10,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IContractRepository extends JpaRepository<Contract, Integer> {
-
-    Page<Contract> findAll(Pageable page);
-//    Page<Contract> findContractByCusName(String cusName,Pageable page);
-//    Page<Contract> findAll(Pageable page);
-//    Page<Contract> findAll(Pageable page);
-
-
 }

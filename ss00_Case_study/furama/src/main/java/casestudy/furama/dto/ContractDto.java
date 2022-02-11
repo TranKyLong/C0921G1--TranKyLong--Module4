@@ -125,19 +125,17 @@ public class ContractDto implements Validator {
         }
     }
 
-
-
     @Override
     public void validate(Object target, Errors errors) {
         String dateValidation = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
 
         ContractDto contractDto = (ContractDto) target;
-        if (!contractDto.startDate.matches(dateValidation)) {
-            errors.rejectValue("startDate", "startDate.wrongStarDate", "format must be dd/mm/yyyy");
-        }
-        if (!contractDto.endDate.matches(dateValidation)) {
-            errors.rejectValue("endDate", "endDate.wrongEndDate", "format must be dd/mm/yyyy");
-        }
+//        if (!contractDto.startDate.matches(dateValidation)) {
+//            errors.rejectValue("startDate", "startDate.wrongStarDate", "format must be dd/mm/yyyy");
+//        }
+//        if (!contractDto.endDate.matches(dateValidation)) {
+//            errors.rejectValue("endDate", "endDate.wrongEndDate", "format must be dd/mm/yyyy");
+//        }
         if (!(contractDto.deposit > 0)) {
             errors.rejectValue("deposit", "deposit.wrongDeposit", "deposit must be greater than 0");
         }
@@ -145,7 +143,7 @@ public class ContractDto implements Validator {
             if(!((distanceDay(contractDto.startDate,contractDto.endDate)) >0)){
                 errors.rejectValue("endDate", "endDate.wrongBookDate", "Please select a valid date");
             }
-        } catch (ParseException e) {
+        } catch (Exception e) {
             errors.rejectValue("endDate", "endDate.wrongParse", "Please select a valid date");
         }
     }

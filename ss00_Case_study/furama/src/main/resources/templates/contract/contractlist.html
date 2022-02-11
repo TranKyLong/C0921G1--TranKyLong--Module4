@@ -8,7 +8,10 @@
     <script src="../../../js/bootstrap.js"></script>
 </head>
 <body>
-<div th:type="${msg}"></div>
+
+<a href="/createcontract"> Create contract</a>
+<a href="/createcontractdetail"> Create contract detail</a>
+<div th:text="${msg}"></div>
 <form action="/showcontract">
     <label> find by Customer Name
         <input type="text" name="cusName">
@@ -42,7 +45,7 @@
         <td th:text="${c.contractId.serviceId.serviceName}"></td>
         <td th:text="${c.attachServiceId.attachName}"></td>
         <td th:text="${c.quantity}"></td>
-        <td> ##</td>
+        <td th:text="${c.contractId.deposit} + ${c.contractId.serviceId.serviceCost}"></td>
     </tr>
     </tbody>
 
@@ -50,7 +53,9 @@
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-end">
         <li class="page-item  " th:if="${contractDetailList.hasPrevious()}">
-            <a class="page-link" th:href="@{'/showcontract'(page=${contractDetailList.number - 1},cusName=${cusName},serName=${serName})}" tabindex="-1"
+            <a class="page-link"
+               th:href="@{'/showcontract'(page=${contractDetailList.number - 1},cusName=${cusName},serName=${serName})}"
+               tabindex="-1"
                aria-disabled="true">Previous</a>
         </li>
         <li class="page-item disabled" th:unless="${contractDetailList.hasPrevious()}">
@@ -61,10 +66,11 @@
                 <span th:text="${contractDetailList.number+1}"></span> of
                 <span th:text="${contractDetailList.totalPages}"></span>
             </div>
-
         </li>
         <li class="page-item" th:if="${contractDetailList.hasNext()}">
-            <a class="page-link  " th:href="@{'/showcontract'(page=${contractDetailList.number + 1},cusName=${cusName},serName=${serName})}" tabindex="-1"
+            <a class="page-link  "
+               th:href="@{'/showcontract'(page=${contractDetailList.number + 1},cusName=${cusName},serName=${serName})}"
+               tabindex="-1"
                aria-disabled="true">Next</a>
         </li>
         <li class="page-item disabled" th:unless="${contractDetailList.hasNext()}">

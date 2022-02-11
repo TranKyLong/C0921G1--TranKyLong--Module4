@@ -1,5 +1,6 @@
 package casestudy.furama.controller;
 
+import casestudy.furama.dto.ContractDetailDto;
 import casestudy.furama.dto.ContractDto;
 import casestudy.furama.dto.CustomerDto;
 import casestudy.furama.model.Contract;
@@ -42,12 +43,13 @@ public class ContractController {
     @Autowired
     IFuramaService iFuramaService;
 
+
     @GetMapping("showcontract")
-    public String showContractList(@PageableDefault(size = 8) Pageable pageable,
-                                   Model model,
-                                   RedirectAttributes ra,
-                                   Optional<String> cusName,
-                                   Optional<String> serName) {
+    public String showContractDetailList(@PageableDefault(size = 8) Pageable pageable,
+                                         Model model,
+                                         RedirectAttributes ra,
+                                         Optional<String> cusName,
+                                         Optional<String> serName) {
         ra.addFlashAttribute("msg", "");
         boolean namePresent = cusName.isPresent();
         boolean servicePresent = serName.isPresent();
@@ -90,24 +92,15 @@ public class ContractController {
         return "contract/contractlist";
     }
 
-    static Long getTotalPrice(int deposit, int serviceCost, Long day, int attachPrice, int quantity) {
-        return deposit + (serviceCost * day) + (attachPrice * quantity);
-    }
-
-    @GetMapping("createcontract/{id}")
-    public String createContract(@PathVariable Integer id, Model model) {
-        boolean idPresent = iCustomerService.findById(id).isPresent();
+    @GetMapping("createcontract")
+    public String createContract(Model model) {
         ContractDto contractDto = new ContractDto();
-        if (iCustomerService.findById(id).isPresent()) {
-            Customer contractCustomer = iCustomerService.findById(id).get();
-            contractDto.setCustomerId(contractCustomer);
-            model.addAttribute("serviceList", iFuramaService.findAll());
-            model.addAttribute("employeeList", iEmployeeService.findAllEmployee());
-        } else {
-            model.addAttribute("customerList", iCustomerService.findAll());
-            model.addAttribute("employeeList", iEmployeeService.findAllEmployee());
-            model.addAttribute("serviceList", iFuramaService.findAll());
-        }
+
+
+        model.addAttribute("customerList", iCustomerService.findAll());
+        model.addAttribute("employeeList", iEmployeeService.findAllEmployee());
+        model.addAttribute("serviceList", iFuramaService.findAll());
+
         model.addAttribute("contractDto", contractDto);
         return "contract/createcontract";
 
@@ -135,4 +128,32 @@ public class ContractController {
         }
     }
 
+    @GetMapping("createcontractdetail")
+    public String createContractDetail(Model model) {
+        model.addAttribute("attachServiceList", iFuramaService.findAllAttachService());
+        model.addAttribute("contractList", iContractService.findAll());
+        model.addAttribute("conractDetailDto", new ContractDetailDto());
+        return "contract/createcontractdetailpage";
+    }
+
+
+    @PostMapping("savecontractdetail")
+    public String saveContractDetail(@Validated @ModelAttribute("conractDetailDto") ContractDetailDto conractDetailDto,
+                                     BindingResult bs,
+                                     RedirectAttributes ra,
+                                     Model model) {
+        new ContractDetailDto().validate(conractDetailDto, bs);
+        if (bs.hasFieldErrors()) {
+            model.addAttribute("attachServiceList", iFuramaService.findAllAttachService());
+            model.addAttribute("contractList", iContractService.findAll());
+            return "contract/createcontractdetailpage";
+        } else {
+            ContractDetail contractDetail = new ContractDetail();
+            BeanUtils.copyProperties(conractDetailDto, contractDetail);
+            iContractService.saveContractDetail(contractDetail);
+            ra.addFlashAttribute("msg", "create new contract detail success");
+            System.out.println("tao thanh cong");
+            return "redirect:/showcontract";
+        }
+    }
 }

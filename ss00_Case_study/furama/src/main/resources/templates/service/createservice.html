@@ -90,6 +90,7 @@
         <div class="col-sm-10">
             <input type="number" step="0.01" class="form-control" id="serviceCost" th:field="*{serviceCost}">
         </div>
+        <div class="margin-10-px" th:if="${#fields.hasErrors('serviceCost')}" th:errors="*{serviceCost}"></div>
     </div>
 
     <div class="row">

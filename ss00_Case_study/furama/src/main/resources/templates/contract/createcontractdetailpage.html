@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../css/myTable.css">
+    <link rel="stylesheet" href="../../../css/bootstrap.css">
+    <script src="../../../js/bootstrap.js"></script>
+</head>
+<body>
+<form action="savecontractdetail" method="post" th:object="${conractDetailDto}">
+    <input type="hidden" th:field="*{detailId}">
+
+    <div class="row mb-3">
+        <label for="customerId" class="col-sm-2 col-form-label">Select Contract</label>
+        <div class="col-sm-10">
+            <select id="customerId" th:field="*{contractId}">
+                <option th:each="con : ${contractList}"  th:value="${{con}}" th:text="${con.customerId.customerName+' -- ' + con.serviceId.serviceName}"></option>
+
+            </select>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="service" class="col-sm-2 col-form-label">Select Attach Service</label>
+        <div class="col-sm-10">
+            <select id="service" th:field="*{attachServiceId}">
+                <option value="-1" selected>-Select Attach service--</option>
+                <option th:each="att : ${attachServiceList}"
+                        th:value="${{att}}" th:text="${att.attachName}"></option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="deposit" class="col-sm-2 col-form-label">Quantity</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="deposit" th:field="*{quantity}">
+        </div>
+        <div class="margin-10-px" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

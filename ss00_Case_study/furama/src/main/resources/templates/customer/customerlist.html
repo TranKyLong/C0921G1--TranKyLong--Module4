@@ -56,9 +56,6 @@
 
         <td th:text="${cus.customerType.customerTypeName}"></td>
         <td>
-            <a class="btn btn-primary" th:href="@{/createcontract/{id}/(id=${cus.customerId})}"> Create contract</a>
-        </td>
-        <td>
             <a class="btn btn-primary" th:href="@{/editcustomer/{id}/(id=${cus.customerId})}"> Edit</a>
         </td>
 
