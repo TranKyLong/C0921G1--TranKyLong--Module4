@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ba2f3e5e-edd8-4f41-9217-6e27dcbad9da" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../ss10_Cookie_session/demo/demo cookie session/CGDN-SpringBoot-Cookie" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss10_Cookie_session/demo/demo cookie session/CGDN-SpringBoot-Cookie" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss5_Orm/thuc_hanh/quan_ly_khach_hang/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss5_Orm/thuc_hanh/quan_ly_khach_hang/customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss7_spring_data_reponsitory/thuc_hanh/quan_ky_khach_hang/spring-customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss7_spring_data_reponsitory/thuc_hanh/quan_ky_khach_hang/spring-customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss7_spring_data_reponsitory/thuc_hanh/quan_ly_tinh/spring-customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss7_spring_data_reponsitory/thuc_hanh/quan_ly_tinh/spring-customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss9_AOP/thuc_hanh/bo_sung_aspect/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss9_AOP/thuc_hanh/bo_sung_aspect/customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss9_AOP/thuc_hanh/handler_exception/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss9_AOP/thuc_hanh/handler_exception/customer-management" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="24xWLSoIBYj0seJHwTojxiPMOB3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../ss11_webservice/thuc_hanh/quan_ly_khach_hang" />
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CodeGym\1_main_excercise\Module_4\ss12_ajax_jquery\thuc_hanh\quan_ly_khach_hang\src\main\java\app\quan_ly_khach_hang" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="QuanLyKhachHangApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="quan_ly_khach_hang.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="app.quan_ly_khach_hang.QuanLyKhachHangApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ba2f3e5e-edd8-4f41-9217-6e27dcbad9da" name="Default Changelist" comment="" />
+      <created>1644572661441</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1644572661441</updated>
+      <workItem from="1644572674264" duration="1822000" />
+      <workItem from="1644586969640" duration="699000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="574" y="148" key="#com.intellij.ide.util.MemberChooser" timestamp="1644574175768">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="574" y="148" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1644574175768" />
+    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1644587987565">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1644587987565" />
+    <state width="1493" height="365" key="GridCell.Tab.0.bottom" timestamp="1644574557379">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="365" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1644574557379" />
+    <state width="1493" height="365" key="GridCell.Tab.0.center" timestamp="1644574557379">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="365" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1644574557379" />
+    <state width="1493" height="365" key="GridCell.Tab.0.left" timestamp="1644574557379">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="365" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1644574557379" />
+    <state width="1493" height="365" key="GridCell.Tab.0.right" timestamp="1644574557379">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="365" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1644574557379" />
+    <state width="1493" height="365" key="GridCell.Tab.1.bottom" timestamp="1644574557379">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="365" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1644574557379" />
+    <state width="1493" height="365" key="GridCell.Tab.1.center" timestamp="1644574557379">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="365" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1644574557379" />
+    <state width="1493" height="365" key="GridCell.Tab.1.left" timestamp="1644574557379">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="365" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1644574557379" />
+    <state width="1493" height="365" key="GridCell.Tab.1.right" timestamp="1644574557379">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="365" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1644574557379" />
+  </component>
+</project>
