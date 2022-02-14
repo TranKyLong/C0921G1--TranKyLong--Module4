@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("blog/v1")
 public class BlogController {
@@ -39,24 +40,24 @@ public class BlogController {
         return new ResponseEntity<>(category, HttpStatus.OK);
     }
 
+    //xem danh sach bai viet
     @GetMapping("blogList")
-    public ResponseEntity<List<String>> getBlogList() {
+    public ResponseEntity<List<Blog>> getBlogList() {
         List<Blog> blogList = iBlogService.getAllBlog();
-        List<String> getAllBlog = new ArrayList<>();
-        for (Blog c : blogList) {
-            getAllBlog.add("ID : " + c.getId());
-            getAllBlog.add("Title: " + c.getTitle());
-            getAllBlog.add("Author: " + c.getAuthor());
-            getAllBlog.add("Price: " + c.getPrice());
-            getAllBlog.add("Category: " + c.getCateId().getCateName());
-            getAllBlog.add("=========================================" );
-
-        }
         if (blogList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
+        return new ResponseEntity<>(blogList, HttpStatus.OK);
+    }
 
-        return new ResponseEntity<>(getAllBlog, HttpStatus.OK);
+    //tim theo title co chua tu khoa
+    @GetMapping("findBlog/{name}")
+    public ResponseEntity<List<Blog>> getBlogList(@PathVariable String name) {
+        List<Blog> blogList = iBlogService.findByName(name);
+        if (blogList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(blogList, HttpStatus.OK);
     }
 
     //tim kiem theo category

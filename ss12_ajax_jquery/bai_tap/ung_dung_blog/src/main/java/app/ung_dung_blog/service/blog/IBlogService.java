@@ -3,6 +3,7 @@ package app.ung_dung_blog.service.blog;
 import app.ung_dung_blog.model.Blog;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IBlogService {
     List<Blog> findAll();
@@ -16,5 +17,7 @@ public interface IBlogService {
     void save(Blog blog);
 
     void delete(Integer id);
+
+    List<Blog>findByName(String name);
 
 }

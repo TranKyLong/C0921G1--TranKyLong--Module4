@@ -88,6 +88,7 @@ public class PhoneController {
         if(id != null){
             Phone paymentPhone = iPhoneService.findById(id);
             hashMap.remove(paymentPhone);
+
             ra.addFlashAttribute("msg","Thanh toán " + paymentPhone.getName() + " thành công");
             return "redirect:/showCart";
         } else {

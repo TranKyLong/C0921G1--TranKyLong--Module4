@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BlogServiceImpl implements IBlogService {
@@ -40,5 +41,10 @@ public class BlogServiceImpl implements IBlogService {
     @Override
     public void delete(Integer id) {
         iBlogRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Blog> findByName(String name) {
+        return iBlogRepository.findAllByTitleContaining(name);
     }
 }
