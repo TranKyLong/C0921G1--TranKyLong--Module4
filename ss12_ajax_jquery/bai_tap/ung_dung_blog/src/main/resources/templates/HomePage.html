@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Blog List</title>
-    <link rel="stylesheet" href="../static/css/myTable.css">
-    <link rel="stylesheet" href="../static/css/bootstrap.css">
-    <script src="../static/js/bootstrap.js"></script>
+    <!--    <link rel="stylesheet" href="../static/css/myTable.css">-->
+    <!--    <link rel="stylesheet" href="../static/css/bootstrap.css">-->
+    <!--    <script src="../static/js/bootstrap.js"></script>-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="../static/js/jquery-3.6.0.js"></script>
 </head>
@@ -31,21 +31,19 @@
 </body>
 <script>
     $(document).ready(function () { //hien thi danh sach blog
-        let result = 3;
-        $("#load").on('click',function () {
-            result = result + 3;
-            console.log(result);
 
-        })
         $.ajax({
 
                 url: "http://localhost:8080/blog/v1/blogList",
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
-                    console.log("func ----- "+ result)
+
                     let tr = [];
                     for (let i = 0; i < data.length; i++) {
+                        console.log(data[i].id);
+                        console.log(data[i].title);
+                        console.log(data[i].author);
                         tr.push('<tr>');
                         tr.push('<td>' + data[i].id + '</td>');
                         tr.push('<td>' + data[i].title + '</td>');
@@ -73,9 +71,10 @@
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
-                        console.log(data);
+
                         let tr = [];
                         for (let i = 0; i < data.length; i++) {
+
                             tr.push('<tr>');
                             tr.push('<td>' + data[i].id + '</td>');
                             tr.push('<td>' + data[i].title + '</td>');
@@ -83,6 +82,9 @@
                             // tr.push('<td>' + data[i].cateId.cateName + '</td>');
                             tr.push('<td>' + data[i].price + '</td>');
                             tr.push('</tr>');
+                            console.log(data[i].id)
+                            console.log(data[i].title)
+                            console.log(data[i].author)
                         }
                         $('table').append($(tr.join('')));
                     }
@@ -97,7 +99,7 @@
                     success: function (data) {
                         console.log(data);
                         let tr = [];
-                        for (let i = 0; i < 3; i++) {
+                        for (let i = 0; i < data.length; i++) {
                             tr.push('<tr>');
                             tr.push('<td>' + data[i].id + '</td>');
                             tr.push('<td>' + data[i].title + '</td>');

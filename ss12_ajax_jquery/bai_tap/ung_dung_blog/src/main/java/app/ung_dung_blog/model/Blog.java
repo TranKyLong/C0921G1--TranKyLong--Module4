@@ -73,4 +73,16 @@ public class Blog {
     public void setReview(String review) {
         this.review = review;
     }
+
+    @Override
+    public String toString() {
+        return "Blog{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                ", author='" + author + '\'' +
+                ", review='" + review + '\'' +
+                ", cateId=" +
+                '}';
+    }
 }

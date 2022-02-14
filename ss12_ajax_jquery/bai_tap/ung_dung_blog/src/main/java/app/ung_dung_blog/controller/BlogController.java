@@ -44,6 +44,10 @@ public class BlogController {
     @GetMapping("blogList")
     public ResponseEntity<List<Blog>> getBlogList() {
         List<Blog> blogList = iBlogService.getAllBlog();
+        for (Blog b : blogList) {
+            System.out.println("\n");
+            System.out.println(b.toString());
+        }
         if (blogList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -71,7 +75,7 @@ public class BlogController {
             getAllBlog.add("Author: " + c.getAuthor());
             getAllBlog.add("Price: " + c.getPrice());
             getAllBlog.add("Category: " + c.getCateId().getCateName());
-            getAllBlog.add("=========================================" );
+            getAllBlog.add("=========================================");
 
         }
         if (blogList.isEmpty()) {
@@ -86,7 +90,7 @@ public class BlogController {
         List<Blog> blogList = iBlogService.getDetailById(id);
         List<String> getAllBlog = new ArrayList<>();
         for (Blog c : blogList) {
-            getAllBlog.add("<|==================================================|>" );
+            getAllBlog.add("<|==================================================|>");
             getAllBlog.add("   ID : " + c.getId());
             getAllBlog.add("   Title: " + c.getTitle());
             getAllBlog.add("   Author: " + c.getAuthor());
@@ -94,7 +98,7 @@ public class BlogController {
             getAllBlog.add("   Review: " + c.getReview());
             getAllBlog.add("   Category Id: " + c.getCateId().getCateId());
             getAllBlog.add("   Category: " + c.getCateId().getCateName());
-            getAllBlog.add("<|==================================================|>" );
+            getAllBlog.add("<|==================================================|>");
 
         }
         if (blogList.isEmpty()) {
@@ -102,4 +106,5 @@ public class BlogController {
         }
         return new ResponseEntity<>(getAllBlog, HttpStatus.OK);
     }
+
 }
