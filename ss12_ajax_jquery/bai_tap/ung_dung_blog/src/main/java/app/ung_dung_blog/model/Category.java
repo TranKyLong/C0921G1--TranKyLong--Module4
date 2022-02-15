@@ -1,16 +1,17 @@
 package app.ung_dung_blog.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.List;
 
-
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "cateId"
-)
+//
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.PropertyGenerator.class,
+//        property = "cateId"
+//)
 
 @Entity
 public class Category {
@@ -20,6 +21,7 @@ public class Category {
     private String cateName;
 
     @OneToMany(mappedBy = "cateId")
+    @JsonBackReference
     private List<Blog> blogList;
 
     public Category() {

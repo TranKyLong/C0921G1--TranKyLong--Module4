@@ -15,10 +15,10 @@ public interface IBlogRepository extends JpaRepository<Blog, Integer> {
     Blog findAllById(Integer id);
 
     @Query(value = "  select * from blog b " +
-            " LEFT join category c on b.cate_id_cate_id = c.cate_id ",
+            " LEFT join category c on b.cate_id_cate_id = c.cate_id limit :num ",
 
             nativeQuery = true)
-    List<Blog> getBlogList();
+    List<Blog> getBlogList(@Param("num") int num);
 
     @Query(value = "  select * from blog b " +
             " LEFT join category c on b.cate_id_cate_id = c.cate_id where c.cate_id = :cateId ",

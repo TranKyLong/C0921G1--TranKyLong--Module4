@@ -21,9 +21,15 @@
     background: rgb(190, 255, 255);
 }
 
-/*.mytable th, .mytable td {*/
-/*    color: rgb(255, 255, 255);*/
-/*}*/
+.my_content {
+    overflow: auto;
+    background: url("../img/light.jpg") top left/cover no-repeat;
+    padding: 20px 40px;
+    border-radius: 10px;
+    margin: 40px auto;
+    width: 90%;
+    height: 500px;
+}
 
 
 .home_tile {

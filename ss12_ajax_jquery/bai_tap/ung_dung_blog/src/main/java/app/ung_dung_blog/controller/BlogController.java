@@ -26,24 +26,24 @@ public class BlogController {
 
 
     //xem danh sach category
-    @GetMapping("cateList")
-    public ResponseEntity<List<String>> getCateList() {  //String để chống lỗi đệ quy mà không cần chỉnh sửa ở Model
-        List<Category> categoryList = iCategoryService.findAll();
-        List<String> category = new ArrayList<>();
-        for (Category c : categoryList) {
-            category.add("| ID: " + c.getCateId() + " / " + "Name: " + c.getCateName());
-        }
-        if (categoryList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
-        return new ResponseEntity<>(category, HttpStatus.OK);
-    }
+//    @GetMapping("cateList")
+//    public ResponseEntity<List<String>> getCateList() {  //String để chống lỗi đệ quy mà không cần chỉnh sửa ở Model
+//        List<Category> categoryList = iCategoryService.findAll();
+//        List<String> category = new ArrayList<>();
+//        for (Category c : categoryList) {
+//            category.add("| ID: " + c.getCateId() + " / " + "Name: " + c.getCateName());
+//        }
+//        if (categoryList.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//
+//        return new ResponseEntity<>(category, HttpStatus.OK);
+//    }
 
     //xem danh sach bai viet
-    @GetMapping("blogList")
-    public ResponseEntity<List<Blog>> getBlogList() {
-        List<Blog> blogList = iBlogService.getAllBlog();
+    @GetMapping("blogList/{number}")
+    public ResponseEntity<List<Blog>> getBlogList(@PathVariable int number) {
+        List<Blog> blogList = iBlogService.getAllBlog(number);
         for (Blog b : blogList) {
             System.out.println("\n");
             System.out.println(b.toString());
@@ -85,26 +85,26 @@ public class BlogController {
     }
 
     //xem chi tiet
-    @GetMapping("getDetail/{id}")
-    public ResponseEntity<List<String>> getDetail(@PathVariable int id) {
-        List<Blog> blogList = iBlogService.getDetailById(id);
-        List<String> getAllBlog = new ArrayList<>();
-        for (Blog c : blogList) {
-            getAllBlog.add("<|==================================================|>");
-            getAllBlog.add("   ID : " + c.getId());
-            getAllBlog.add("   Title: " + c.getTitle());
-            getAllBlog.add("   Author: " + c.getAuthor());
-            getAllBlog.add("   Price: " + c.getPrice());
-            getAllBlog.add("   Review: " + c.getReview());
-            getAllBlog.add("   Category Id: " + c.getCateId().getCateId());
-            getAllBlog.add("   Category: " + c.getCateId().getCateName());
-            getAllBlog.add("<|==================================================|>");
-
-        }
-        if (blogList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(getAllBlog, HttpStatus.OK);
-    }
+//    @GetMapping("getDetail/{id}")
+//    public ResponseEntity<List<String>> getDetail(@PathVariable int id) {
+//        List<Blog> blogList = iBlogService.getDetailById(id);
+//        List<String> getAllBlog = new ArrayList<>();
+//        for (Blog c : blogList) {
+//            getAllBlog.add("<|==================================================|>");
+//            getAllBlog.add("   ID : " + c.getId());
+//            getAllBlog.add("   Title: " + c.getTitle());
+//            getAllBlog.add("   Author: " + c.getAuthor());
+//            getAllBlog.add("   Price: " + c.getPrice());
+//            getAllBlog.add("   Review: " + c.getReview());
+//            getAllBlog.add("   Category Id: " + c.getCateId().getCateId());
+//            getAllBlog.add("   Category: " + c.getCateId().getCateName());
+//            getAllBlog.add("<|==================================================|>");
+//
+//        }
+//        if (blogList.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<>(getAllBlog, HttpStatus.OK);
+//    }
 
 }

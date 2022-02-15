@@ -3,61 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Blog List</title>
-    <!--    <link rel="stylesheet" href="../static/css/myTable.css">-->
-    <!--    <link rel="stylesheet" href="../static/css/bootstrap.css">-->
-    <!--    <script src="../static/js/bootstrap.js"></script>-->
+    <link rel="stylesheet" href="../../css/myTable.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <script src="../../js/bootstrap.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script src="../static/js/jquery-3.6.0.js"></script>
+    <script src="../../js/jquery-3.6.0.js"></script>
 </head>
 <body>
 <!--<form action="search">-->
-<label> search by name
-    <input id="search" type="text" name="key">
-</label>
+
 <!--</form>-->
+<div >
+    <div class="my_content">
+        <label> search by name
+            <input id="search" type="text" name="key">
+        </label>
+        <br>
 
-<table class="table mytable">
-    <tr>
-        <th> Id</th>
-        <th> Title</th>
-        <th> Author</th>
-        <!--        <th> Category</th>-->
-        <th> Price</th>
-    </tr>
+        <table class="table mytable">
+            <tr>
+                <th> Id</th>
+                <th> Title</th>
+                <th> Author</th>
+                <th> Category</th>
+                <th> Price</th>
+            </tr>
 
-</table>
+        </table>
 
-<button id="load">Load More</button>
+        <button id="loadmore">Load More</button>
+    </div>
+</div>
 </body>
 <script>
-    $(document).ready(function () { //hien thi danh sach blog
 
-        $.ajax({
-
-                url: "http://localhost:8080/blog/v1/blogList",
-                type: "GET",
-                dataType: "json",
-                success: function (data) {
-
-                    let tr = [];
-                    for (let i = 0; i < data.length; i++) {
-                        console.log(data[i].id);
-                        console.log(data[i].title);
-                        console.log(data[i].author);
-                        tr.push('<tr>');
-                        tr.push('<td>' + data[i].id + '</td>');
-                        tr.push('<td>' + data[i].title + '</td>');
-                        tr.push('<td>' + data[i].author + '</td>');
-                        // tr.push('<td>' + data[i].cateId.cateName + '</td>');
-                        tr.push('<td>' + data[i].price + '</td>');
-                        tr.push('</tr>');
-
-                    }
-                    $('table').append($(tr.join('')));
-                }
-            }
-        )
-    })
 
     $("#search").keyup(function () {
         let value = $(this).val();
@@ -79,12 +58,9 @@
                             tr.push('<td>' + data[i].id + '</td>');
                             tr.push('<td>' + data[i].title + '</td>');
                             tr.push('<td>' + data[i].author + '</td>');
-                            // tr.push('<td>' + data[i].cateId.cateName + '</td>');
+                            tr.push('<td>' + data[i].cateId.cateName + '</td>');
                             tr.push('<td>' + data[i].price + '</td>');
                             tr.push('</tr>');
-                            console.log(data[i].id)
-                            console.log(data[i].title)
-                            console.log(data[i].author)
                         }
                         $('table').append($(tr.join('')));
                     }
@@ -92,6 +68,7 @@
             )
         }
         if (value.length === 0) {
+
             $.ajax({
                     url: "http://localhost:8080/blog/v1/blogList",
                     type: "GET",
@@ -104,7 +81,7 @@
                             tr.push('<td>' + data[i].id + '</td>');
                             tr.push('<td>' + data[i].title + '</td>');
                             tr.push('<td>' + data[i].author + '</td>');
-                            // tr.push('<td>' + data[i].cateId.cateName + '</td>');
+                            tr.push('<td>' + data[i].cateId.cateName + '</td>');
                             tr.push('<td>' + data[i].price + '</td>');
                             tr.push('</tr>');
                         }
@@ -116,5 +93,67 @@
 
     })
 
+    let valueNumber = 5;
+    //hien thi danh sach blog
+    $(document).ready(function () {
+        $('table').empty();
+        $.ajax({
+                // url: "http://localhost:8080/blog/v1/blogList",
+                url: "http://localhost:8080/blog/v1/blogList/" + valueNumber,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    let tr = [];
+
+                    for (let i = 0; i < data.length; i++) {
+
+                        tr.push('<tr>');
+                        tr.push('<td>' + data[i].id + '</td>');
+                        tr.push('<td>' + data[i].title + '</td>');
+                        tr.push('<td>' + data[i].author + '</td>');
+                        tr.push('<td>' + data[i].cateId.cateName + '</td>');
+                        tr.push('<td>' + data[i].price + '</td>');
+                        tr.push('</tr>');
+                    }
+                    $('table').append($(tr.join('')));
+                }
+            }
+        )
+    })
+
+    $('#loadmore').click(function () {
+        valueNumber = valueNumber + 5; // tăng số lượng blog hiển thị lên
+        $('table').empty();
+        $.ajax({
+                // url: "http://localhost:8080/blog/v1/blogList",
+                url: "http://localhost:8080/blog/v1/blogList/" + valueNumber,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    let tr = [];
+                    tr.push('<tr>');
+                    tr.push('<th>' + ID + '</th>');
+                    tr.push('<th>' + TITLE + '</th>');
+                    tr.push('<th>' + ATUHOR + '</th>');
+                    tr.push('<th>' + CATEGORY + '</th>');
+                    tr.push('<th>' + PRICE + '</th>');
+                    tr.push('</tr>');
+                    for (let i = 0; i < data.length; i++) {
+
+                        tr.push('<tr>');
+                        tr.push('<td>' + data[i].id + '</td>');
+                        tr.push('<td>' + data[i].title + '</td>');
+                        tr.push('<td>' + data[i].author + '</td>');
+                        tr.push('<td>' + data[i].cateId.cateName + '</td>');
+                        tr.push('<td>' + data[i].price + '</td>');
+                        tr.push('</tr>');
+
+                    }
+                    $('table').append($(tr.join('')));
+
+                }
+            }
+        )
+    })
 </script>
 </html>

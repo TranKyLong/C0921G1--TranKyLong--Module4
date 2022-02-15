@@ -19,8 +19,8 @@ public class BlogServiceImpl implements IBlogService {
     }
 
     @Override
-    public List<Blog> getAllBlog() {
-        return iBlogRepository.getBlogList();
+    public List<Blog> getAllBlog(int number) {
+        return iBlogRepository.getBlogList(number);
     }
 
     @Override

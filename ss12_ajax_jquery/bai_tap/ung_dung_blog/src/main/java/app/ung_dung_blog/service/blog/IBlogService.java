@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface IBlogService {
     List<Blog> findAll();
 
-    List<Blog> getAllBlog();
+    List<Blog> getAllBlog(int number);
 
     List<Blog> getDetailById(Integer id);
 

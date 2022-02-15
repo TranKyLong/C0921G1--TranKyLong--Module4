@@ -3,9 +3,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>List Smartphone</title>
+    <link rel="stylesheet" href="../../css/myTable.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <script src="../../js/bootstrap.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
-
         function addNewSmartPhone() {
             //lay du lieu
             let producer = $('#producer').val();
@@ -44,6 +46,7 @@
                 success: function (data) {
                     // hien thi danh sach o day
                     let content = '    <tr>\n' +
+                        '        <td>ID</td>\n' +
                         '        <td>Producer</td>\n' +
                         '        <td>Model</td>\n' +
                         '        <td>Price</td>\n' +
@@ -59,8 +62,8 @@
         }
 
         function getSmartphone(smartphone) {
-            return `<tr><td >${smartphone.producer}</td><td >${smartphone.model}</td><td >${smartphone.price}</td>` +
-                `<td><a class="deleteSmartphone" href="${smartphone.id}">Delete</a></td>`+
+            return `<tr><td >${smartphone.id}</td><td >${smartphone.producer}</td><td >${smartphone.model}</td><td >${smartphone.price}</td>` +
+                `<td><a class="deleteSmartphone" href="${smartphone.id}">Delete</a></td>` +
                 `<td><a class="updateSmartphone" href="${smartphone.id}">Update</a></td></tr>`;
         }
 
@@ -93,7 +96,7 @@
                 let model = $('#modelUpdate').val();
                 let price = $('#priceUpdate').val();
                 let newSmartphone = {
-                    id : id,
+                    id: id,
                     producer: producer,
                     model: model,
                     price: price
@@ -136,29 +139,65 @@
     </script>
 </head>
 <body>
-<form id="add-smartphone">
-    <table>
-        <tr>
-            <td>Producer:</td>
-            <td><input type="text" id="producer" placeholder="producer"></td>
-        </tr>
-        <tr>
-            <td>Model:</td>
-            <td><input type="text" id="model" placeholder="model"></td>
-        </tr>
-        <tr>
-            <td>Price:</td>
-            <td><input type="text" id="price" placeholder="price"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" value="Add" onclick="addNewSmartPhone()"></td>
-        </tr>
-    </table>
-</form>
+<div class="row">
+    <div class="col-12">
+        <div class="bg-light">
+            <div class="col-6">
+                <form id="add-smartphone">
+                    <table>
+                        <tr>
+                            <td>Producer:</td>
+                            <td><input type="text" id="producer" placeholder="producer"></td>
+                        </tr>
+                        <tr>
+                            <td>Model:</td>
+                            <td><input type="text" id="model" placeholder="model"></td>
+                        </tr>
+                        <tr>
+                            <td>Price:</td>
+                            <td><input type="text" id="price" placeholder="price"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="submit" value="Add" onclick="addNewSmartPhone()"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="col-6">
+                <form id="update-smartphone" style="display: none">
+                    <table>
+                        <tr>
+                            <td>ID:</td>
+                            <td><input type="text" id="idProduct"></td>
+                        </tr>
+                        <tr>
+                            <td>Producer:</td>
+                            <td><input type="text" id="producerUpdate"></td>
+                        </tr>
+                        <tr>
+                            <td>Model:</td>
+                            <td><input type="text" id="modelUpdate"></td>
+                        </tr>
+                        <tr>
+                            <td>Price:</td>
+                            <td><input type="text" id="priceUpdate"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="submit" value="Update" id="updateSmartphone"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <h1>Smartphone List</h1>
-<table id="smartphoneList" border="1">
+<table class="table table-hover" id="smartphoneList" border="1">
     <tr>
+        <td>ID</td>
         <td>Producer</td>
         <td>Model</td>
         <td>Price</td>
@@ -167,6 +206,7 @@
     </tr>
     <th:block th:each="smartphone: ${smartphones}">
         <tr>
+            <td th:text="${smartphone.id}"></td>
             <td th:text="${smartphone.producer}"></td>
             <td th:text="${smartphone.model}"></td>
             <td th:text="${smartphone.price}"></td>
@@ -175,29 +215,6 @@
         </tr>
     </th:block>
 </table>
-<form id="update-smartphone" style="display: none">
-    <table>
-        <tr>
-            <td>Id:</td>
-            <td><input id="idProduct" type="text" ></td>
-        </tr>
-        <tr>
-            <td>Producer:</td>
-            <td><input type="text" id="producerUpdate" ></td>
-        </tr>
-        <tr>
-            <td>Model:</td>
-            <td><input type="text" id="modelUpdate" ></td>
-        </tr>
-        <tr>
-            <td>Price:</td>
-            <td><input type="text" id="priceUpdate" ></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" value="Update" id="updateSmartphone"></td>
-        </tr>
-    </table>
-</form>
+
 </body>
 </html>
