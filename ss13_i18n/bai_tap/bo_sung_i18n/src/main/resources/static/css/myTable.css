@@ -1,0 +1,45 @@
+
+* {
+    box-sizing: border-box;
+}
+
+/*.noti {*/
+/*    padding: 15px;*/
+/*    background: rgba(0, 0, 0, 0.8);*/
+/*    border-radius: 20px;*/
+/*    height: 60px;*/
+/*    line-height: 30px;*/
+/*    margin: 20px 0;*/
+/*    border: 1px solid orange;*/
+/*}*/
+
+/*.mytable {*/
+/*    background: rgba(0, 0, 0, 0.82);*/
+/*}*/
+
+.mytable tr:hover {
+    background: rgb(190, 255, 255);
+}
+
+.my_content {
+    overflow: auto;
+    background: url("../img/light.jpg") top left/cover no-repeat;
+    padding: 20px 40px;
+    border-radius: 10px;
+    margin: 40px auto;
+    width: 90%;
+    height: 500px;
+}
+
+
+.home_tile {
+    margin: 25px;
+    text-align: center;
+    color: ghostwhite;
+    text-shadow: 0 0 10px #b400ff;
+    font-size: 35px;
+}
+
+body {
+    background: url("../img/hihihi.jpg") top left/cover no-repeat;
+}

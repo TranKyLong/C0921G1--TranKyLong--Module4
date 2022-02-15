@@ -3,31 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../../css/myTable.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <script src="../../js/bootstrap.js"></script>
 </head>
 <body>
-<table border="1">
-    <h3 th:text="#{customerlist}"></h3>
-    <tr>
-        <th> ID</th>
-        <th th:text="#{name}"></th>
-        <th th:text="#{age}"></th>
-        <th th:text="#{delete}"></th>
-    </tr>
-    <tr th:each="cus : ${customerList}">
-        <td th:text="${cus.id}"></td>
-        <td th:text="${cus.name}"></td>
-        <td th:text="${cus.age}"></td>
-        <td>
-            <a th:href="@{/delete/{id}/(id=${cus.id})}" th:text="#{delete}"></a>
-        </td>
-    </tr>
+<div class="my_content">
+    <table class="table table-light table-hover">
+        <h3 th:text="#{customerlist}"></h3>
+        <tr>
+            <th> ID</th>
+            <th th:text="#{name}"></th>
+            <th th:text="#{age}"></th>
+            <th th:text="#{delete}"></th>
+        </tr>
+        <tr th:each="cus : ${customerList}">
+            <td th:text="${cus.id}"></td>
+            <td th:text="${cus.name}"></td>
+            <td th:text="${cus.age}"></td>
+            <td>
+                <a th:href="@{/delete/{id}/(id=${cus.id})}" th:text="#{delete}"></a>
+            </td>
+        </tr>
 
-</table>
-<div style="border: 1px solid pink">
-    <h4 th:text="#{changelang}"></h4>
-    <a href="?lang=vi"> VI </a> ||
-    <a href="?lang=us"> US </a>
+    </table>
+    <div class="border-dark">
+        <h4 th:text="#{changelang}"></h4>
+        <a href="?lang=vi"> VI </a> ||
+        <a href="?lang=us"> US </a>
 
+    </div>
 </div>
 </body>
 </html>
