@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+}
+
+.my_content {
+    background: rgb(201,201,201);
+    background: linear-gradient(236deg, rgba(201,201,201,1) 0%, rgba(255,255,255,1) 59%, rgba(204,204,204,1) 100%) top left/cover no-repeat;
+    padding: 20px 50px;
+    border-radius: 10px;
+    margin: 40px auto;
+    width: 90%;
+
+}
+
+table td th {
+    padding: 20px;
+}
+
+table th{
+    background: orangered !important;
+    color: white;
+}
+
+
+
+.page_hover, .page_list {
+    background: orangered !important;
+    color: white;
+}
+
+.page_hover:hover{
+    border: solid 1px orangered;
+    background: white;
+    color: orangered;
+}
+.page_dis{
+    color: #c1d6cc;
+    background: rgba(255, 69, 0, 0.3) !important;
+}
+

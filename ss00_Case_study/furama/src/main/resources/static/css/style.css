@@ -665,7 +665,9 @@ button {
 .test_box {
      padding: 30px 25px;
      background: #d7530a;
+     height: 202px;
 }
+
 
 .testimonial_Carousel .test_box h4 {
      font-size: 17px;
