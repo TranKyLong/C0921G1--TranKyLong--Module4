@@ -1,9 +1,6 @@
 package casestudy.furama.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -13,9 +10,8 @@ public class User {
     private String password;
     private boolean isDisable;
 
-    @ManyToMany(mappedBy = "users")
-    private Set<Role> employeeUser;
-
+    @ManyToMany(mappedBy = "users" ,fetch = FetchType.EAGER)
+    private Set<Role> role;
 
     public User() {
     }
@@ -28,12 +24,12 @@ public class User {
         this.isDisable = disable;
     }
 
-    public Set<Role> getEmployeeUser() {
-        return employeeUser;
+    public Set<Role> getRoles() {
+        return role;
     }
 
-    public void setEmployeeUser(Set<Role> employeeUser) {
-        this.employeeUser = employeeUser;
+    public void setRole(Set<Role> employeeUser) {
+        this.role = employeeUser;
     }
 
     public String getUsername() {

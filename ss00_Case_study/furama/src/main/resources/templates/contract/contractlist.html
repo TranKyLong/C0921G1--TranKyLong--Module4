@@ -9,10 +9,10 @@
 </head>
 <body>
 
-<a href="/createcontract"> Create contract</a>
-<a href="/createcontractdetail"> Create contract detail</a>
+<a href="/contract/create"> Create contract</a>
+<a href="/contractdetail/create"> Create contract detail</a>
 <div th:text="${msg}"></div>
-<form action="/showcontract">
+<form action="/contract/show">
     <label> find by Customer Name
         <input type="text" name="cusName">
     </label>

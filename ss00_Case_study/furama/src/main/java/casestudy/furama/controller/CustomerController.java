@@ -13,10 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -28,43 +25,18 @@ public class CustomerController {
     @Autowired
     ICustomerService iCustomerService;
 
+    @GetMapping({"showcustomerlist"})
+    public String getAllCustomer(Model model,
+                                 RedirectAttributes ra,
+                                 @PageableDefault(value = 8) Pageable pageable,
+                                 @RequestParam(defaultValue = "") String findName,
+                                 @RequestParam(defaultValue = "") String findcode,
+                                 @RequestParam(defaultValue = "") String findtype) {
 
-    @GetMapping("showcustomerlist")
-    public ModelAndView showCustomerList(@PageableDefault(size = 8) Pageable pageable,
-                                         RedirectAttributes ra,
-                                         Model model,
-                                         Optional<String> findName,
-                                         Optional<Integer> customerType) {
-        ra.addFlashAttribute("msg", "");
-        Page<Customer> customerList = iCustomerService.finAll(pageable);
+        model.addAttribute("customerList", iCustomerService.searchCustomer(findName, findcode, findtype, pageable));
         model.addAttribute("typeList", iCustomerService.getAllCustomerType());
-        boolean present = findName.isPresent();
-        if (present) {
-            if (findName.get().equals("")) {
-                present = false;
-            }
-        }
-
-        if (present) {
-            if (customerType.isPresent()) {
-                model.addAttribute("findName", findName.get());
-                model.addAttribute("customerType", customerType.get());
-                String resultName = "%" + findName.get() + "%";
-                Page<Customer> findByNameAndType = iCustomerService.findByNameAndType(resultName, customerType.get(), pageable);
-                return new ModelAndView("customer/customerlist", "customerList", findByNameAndType);
-            } else {
-                model.addAttribute("findName", findName.get());
-                Page<Customer> findByName = iCustomerService.findByCustomerNameContaining(findName.get(), pageable);
-                return new ModelAndView("customer/customerlist", "customerList", findByName);
-            }
-        } else {
-            if (customerType.isPresent()) {
-                model.addAttribute("customerType", customerType.get());
-                Page<Customer> findByType = iCustomerService.findByCusType(customerType.get(), pageable);
-                return new ModelAndView("customer/customerlist", "customerList", findByType);
-            }
-        }
-        return new ModelAndView("customer/customerlist", "customerList", customerList);
+        ra.addFlashAttribute("msg", "");
+        return "customer/customerlist";
     }
 
     @GetMapping("addcustomer")
@@ -108,7 +80,7 @@ public class CustomerController {
             BeanUtils.copyProperties(customer, customerDto);
             model.addAttribute("editCustomer", customerDto);
             model.addAttribute("customerTypeList", iCustomerService.getAllCustomerType());
-            return "editcustomer";
+            return "customer/editcustomer";
         }
         return "customer/customerlist";
     }

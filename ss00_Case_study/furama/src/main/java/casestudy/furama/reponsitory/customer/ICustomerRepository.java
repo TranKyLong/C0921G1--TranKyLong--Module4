@@ -25,4 +25,17 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
             countQuery = "  select count(*) from customer  where customer_name like :cusName and customer.customer_type_customer_type_id = :id ",
             nativeQuery = true)
     Page<Customer> findByNameAndType(@Param("cusName") String cusName, @Param("id") Integer id, Pageable pageable);
+
+    @Query(value="SELECT * FROM customer where customer_name like concat('%',:customerName,'%') \n" +
+            "and customer_code like concat('%',:cusCode,'%')  \n" +
+            "and customer_type_customer_type_id like  concat('%',:customerTypeId,'%')" ,
+            countQuery = "  select count(*) from customer  where customer_name like concat('%',:customerName,'%') \n" +
+                    " and customer_code like concat('%',:cusCode,'%')  \n" +
+                    " and customer_type_customer_type_id like  concat('%',:customerTypeId,'%')" ,
+            nativeQuery=true)
+    Page<Customer> searchCustomer(@Param("customerName") String customerName,
+                                  @Param("cusCode") String cusCode,
+                                  @Param("customerTypeId") String customerTypeId,
+                                  Pageable pagle);
 }
+

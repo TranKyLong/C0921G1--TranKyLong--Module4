@@ -16,21 +16,25 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginController {
     @Autowired
     IUserService iUserService;
+
     @ModelAttribute("user")
     public User getUser() {
         return new User();
     }
 
-    @GetMapping("login")
-    public String Index(@CookieValue(value = "setUser", defaultValue = "") String setUser, Model model) {
-        Cookie cookie = new Cookie("setUser", setUser);
-        model.addAttribute("cookieValue", cookie);
+    @GetMapping("/login")
+    public String getLogin() {
         return "loginpage";
     }
-
-    @PostMapping("login")
-    public String saveLogin(@RequestParam String userName, @RequestParam String password) {
-
-        return "redirect:/showuser";
+    @GetMapping( {"","/home"})
+    public String getHome() {
+        return "home";
     }
+
+
+//    @PostMapping("login")
+//    public String saveLogin(@RequestParam String userName, @RequestParam String password) {
+//
+//        return "redirect:/showuser";
+//    }
 }

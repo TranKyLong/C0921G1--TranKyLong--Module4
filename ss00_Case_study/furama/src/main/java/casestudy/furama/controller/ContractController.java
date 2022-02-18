@@ -2,11 +2,8 @@ package casestudy.furama.controller;
 
 import casestudy.furama.dto.ContractDetailDto;
 import casestudy.furama.dto.ContractDto;
-import casestudy.furama.dto.CustomerDto;
 import casestudy.furama.model.Contract;
 import casestudy.furama.model.ContractDetail;
-import casestudy.furama.model.Customer;
-import casestudy.furama.reponsitory.furama_service.IServiceTypeRepository;
 import casestudy.furama.service.contract.IContractService;
 import casestudy.furama.service.customer.ICustomerService;
 import casestudy.furama.service.employee.IEmployeeService;
@@ -22,7 +19,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -44,7 +40,7 @@ public class ContractController {
     IFuramaService iFuramaService;
 
 
-    @GetMapping("showcontract")
+    @GetMapping("contract/show")
     public String showContractDetailList(@PageableDefault(size = 8) Pageable pageable,
                                          Model model,
                                          RedirectAttributes ra,
@@ -92,7 +88,7 @@ public class ContractController {
         return "contract/contractlist";
     }
 
-    @GetMapping("createcontract")
+    @GetMapping("contract/create")
     public String createContract(Model model) {
         ContractDto contractDto = new ContractDto();
 
@@ -107,7 +103,7 @@ public class ContractController {
     }
 
 
-    @PostMapping("savecontract")
+    @PostMapping("contract/save")
     public String saveContract(@Validated @ModelAttribute("contractDto") ContractDto contractDto,
                                BindingResult bs,
                                RedirectAttributes ra,
@@ -124,11 +120,11 @@ public class ContractController {
             iContractService.saveContract(contract);
             ra.addFlashAttribute("msg", "create new contract success");
             System.out.println("tao thanh cong" + contract.getContractId());
-            return "redirect:/showcontract";
+            return "redirect:/contract/show";
         }
     }
 
-    @GetMapping("createcontractdetail")
+    @GetMapping("contractdetail/create")
     public String createContractDetail(Model model) {
         model.addAttribute("attachServiceList", iFuramaService.findAllAttachService());
         model.addAttribute("contractList", iContractService.findAll());
@@ -137,7 +133,7 @@ public class ContractController {
     }
 
 
-    @PostMapping("savecontractdetail")
+    @PostMapping("contractdetail/save")
     public String saveContractDetail(@Validated @ModelAttribute("conractDetailDto") ContractDetailDto conractDetailDto,
                                      BindingResult bs,
                                      RedirectAttributes ra,
@@ -153,7 +149,7 @@ public class ContractController {
             iContractService.saveContractDetail(contractDetail);
             ra.addFlashAttribute("msg", "create new contract detail success");
             System.out.println("tao thanh cong");
-            return "redirect:/showcontract";
+            return "redirect:/contract/show";
         }
     }
 }

@@ -12,10 +12,11 @@ public class Role {
 
     @ManyToMany
     @JoinTable(name = "user_role",
-    joinColumns = @JoinColumn(name = "roleId"),
-    inverseJoinColumns = @JoinColumn(name="userName")
+            joinColumns = @JoinColumn(name = "roleId"),
+            inverseJoinColumns = @JoinColumn(name = "userName")
     )
     private Set<User> users;
+
     public Role() {
     }
 

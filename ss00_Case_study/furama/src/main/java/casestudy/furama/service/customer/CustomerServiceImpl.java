@@ -26,14 +26,23 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     @Override
+    public List<Customer> findAll() {
+        return iCustomerRepository.findAll();
+    }
+
+    @Override
     public List<CustomerType> getAllCustomerType() {
         return iCustomerTypeRepository.findAll();
     }
 
     @Override
-    public List<Customer> findAll() {
-        return iCustomerRepository.findAll();
+    public Page<Customer> searchCustomer(String customerName,
+                                         String cusCode,
+                                         String customerTypeId,
+                                         Pageable pageable) {
+        return iCustomerRepository.searchCustomer(customerName,cusCode,customerTypeId,pageable);
     }
+
 
     @Override
     public void saveCustomer(Customer customer) {

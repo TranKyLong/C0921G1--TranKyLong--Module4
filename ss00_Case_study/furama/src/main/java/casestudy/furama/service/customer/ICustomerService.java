@@ -11,8 +11,13 @@ import java.util.Optional;
 public interface ICustomerService {
     Page<Customer> finAll(Pageable pageable);
 
+    List<Customer>findAll();
     List<CustomerType> getAllCustomerType();
-    List<Customer> findAll();
+
+    Page<Customer> searchCustomer(String customerName,
+                                  String cusCode,
+                                  String customerTypeId,
+                                  Pageable pageable);
 
     void saveCustomer(Customer customer);
 

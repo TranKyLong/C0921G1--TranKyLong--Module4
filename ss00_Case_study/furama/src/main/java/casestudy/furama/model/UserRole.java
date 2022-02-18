@@ -4,8 +4,6 @@ import javax.persistence.*;
 
 
 public class UserRole {
-
-
     private Role roleId;
     private User username;
 

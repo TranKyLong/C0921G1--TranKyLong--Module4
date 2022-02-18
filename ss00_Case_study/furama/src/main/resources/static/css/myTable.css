@@ -1,39 +1,137 @@
-*{
+* {
     box-sizing: border-box;
 }
 
 .my_content {
-    background: rgb(201,201,201);
-    background: linear-gradient(236deg, rgba(201,201,201,1) 0%, rgba(255,255,255,1) 59%, rgba(204,204,204,1) 100%) top left/cover no-repeat;
+    /* margin-bottom: 40px; */
+    background: rgb(201, 201, 201);
+    background: linear-gradient(236deg, rgba(201, 201, 201, 0.9) 0%, rgba(255, 255, 255, 1) 59%, rgba(204, 204, 204, 0.9) 100%) top left/cover no-repeat;
     padding: 20px 50px;
     border-radius: 10px;
-    margin: 40px auto;
+    margin: 0px auto 40px auto;
     width: 90%;
 
+}
+
+.msg {
+    color: red;
+    font-size: 20px;
+    width: fit-content;
+    /* padding: 0 25px; */
+    border-radius: 20px;
+}
+
+.myIcon {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.backGr {
+    background: orangered;
+}
+
+.margin-10-px{
+    color: red;
+}
+.buttonBg {
+    line-height: 19px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px !important;
+}
+
+.organtedbtn {
+    border-radius: 45px !important;
+}
+
+.organtedbtn, .buttonBg {
+    text-decoration: none;
+    border: solid 1px white;
+
+    background: orangered;
+    margin: 15px 0;
+    color: white !important;
+    padding: 10px;
+}
+
+.mytitle {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white !important;
+    background: orangered;
+    height: 12%;
+    border-radius: 30px 30px 0px 0px;
+    padding: 10px;
+    box-shadow: 0px 3px 5px grey;
+    top: 11px;
+    width: 90%;
+    margin: auto;
+}
+
+.margin_10 {
+    margin: 15px 0;
+}
+
+.organtedbtn:hover, .buttonBg:hover {
+    border: solid 1px #000000;
+    background: darkorange;
+}
+
+.yelow_organe {
+    color: #ff9c19;
+}
+
+.red_purple {
+    color: #953553
+}
+
+.green_blue {
+    color: #00a591
+}
+
+.the_name {
+    color: orangered;
+}
+
+.the_code {
+    color: #00a591;
+    font-style: italic;
+
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    background: rgb(255, 106, 57);
+    background: linear-gradient(140deg, rgba(255, 106, 57, 1) 0%, rgba(255, 238, 194, 1) 22%, rgba(255, 102, 0, 1) 82%) top left/cover no-repeat;;
 }
 
 table td th {
     padding: 20px;
 }
 
-table th{
+table th {
     background: orangered !important;
     color: white;
 }
 
-
+table {
+    box-shadow: 0px 0px 15px;
+}
 
 .page_hover, .page_list {
     background: orangered !important;
     color: white;
 }
 
-.page_hover:hover{
+.page_hover:hover {
     border: solid 1px orangered;
     background: white;
     color: orangered;
 }
-.page_dis{
+
+.page_dis {
     color: #c1d6cc;
     background: rgba(255, 69, 0, 0.3) !important;
 }
