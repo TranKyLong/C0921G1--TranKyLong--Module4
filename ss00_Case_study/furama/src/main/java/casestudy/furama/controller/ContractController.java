@@ -17,14 +17,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
 
 @Controller
+@RequestMapping("contract")
 public class ContractController {
 
     @Autowired
@@ -40,7 +39,7 @@ public class ContractController {
     IFuramaService iFuramaService;
 
 
-    @GetMapping("contract/show")
+    @GetMapping("/show")
     public String showContractDetailList(@PageableDefault(size = 8) Pageable pageable,
                                          Model model,
                                          RedirectAttributes ra,
@@ -88,11 +87,9 @@ public class ContractController {
         return "contract/contractlist";
     }
 
-    @GetMapping("contract/create")
+    @GetMapping("/create")
     public String createContract(Model model) {
         ContractDto contractDto = new ContractDto();
-
-
         model.addAttribute("customerList", iCustomerService.findAll());
         model.addAttribute("employeeList", iEmployeeService.findAllEmployee());
         model.addAttribute("serviceList", iFuramaService.findAll());
@@ -102,8 +99,21 @@ public class ContractController {
 
     }
 
+    @GetMapping("/adddetail/{id}")
+    public String addDetail(@PathVariable Integer id, Model model) {
 
-    @PostMapping("contract/save")
+        ContractDetail contractDetail = iContractService.findDetailById(id).get();
+        ContractDetailDto contractDetailDto = new ContractDetailDto();
+        BeanUtils.copyProperties(contractDetail, contractDetailDto);
+
+        model.addAttribute("attachServiceList", iFuramaService.findAllAttachService());
+        model.addAttribute("contractList", iContractService.findAll());
+
+        model.addAttribute("conractDetailDto", contractDetailDto);
+        return "contract/createcontractdetailpage";
+    }
+
+    @PostMapping("/save")
     public String saveContract(@Validated @ModelAttribute("contractDto") ContractDto contractDto,
                                BindingResult bs,
                                RedirectAttributes ra,
@@ -115,10 +125,17 @@ public class ContractController {
             model.addAttribute("serviceList", iFuramaService.findAll());
             return "contract/createcontract";
         } else {
+            ContractDetail newContractdetail = new ContractDetail();
             Contract contract = new Contract();
             BeanUtils.copyProperties(contractDto, contract);
+
+            contract.getServiceId().setRent(true);
+
             iContractService.saveContract(contract);
+            newContractdetail.setContractId(contract);
+            iContractService.saveContractDetail(newContractdetail);
             ra.addFlashAttribute("msg", "create new contract success");
+            System.err.println(contract.getDeposit());
             System.out.println("tao thanh cong" + contract.getContractId());
             return "redirect:/contract/show";
         }

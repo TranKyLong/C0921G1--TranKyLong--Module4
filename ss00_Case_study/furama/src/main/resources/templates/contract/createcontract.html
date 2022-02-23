@@ -9,69 +9,74 @@
 
 </head>
 <body>
-<form action="/contract/save" method="post" th:object="${contractDto}">
-    <input type="hidden" th:field="*{contractId}">
+<div class="container">
+    <div class="mytitle">
+        <h1> CREATE CONTRACT </h1>
+    </div>
 
-        <div class="row mb-3">
-            <label for="customerId" class="col-sm-2 col-form-label">Select Customer</label>
-            <div class="col-sm-10">
-                <select id="customerId" th:field="*{customerId}">
+    <div class="my_content">
+
+        <form action="/contract/save" method="post" th:object="${contractDto}" class="row">
+            <input type="hidden" th:field="*{contractId}">
+
+            <div class="col-md-4 margin_10">
+                <label for="startDate" class="col-sm-2 col-form-label">Stardate</label>
+
+                <input type="date" class="datepicker_input form-control " id="startDate" th:field="*{startDate}">
+
+<!--                <div class="margin-10-px" th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></div>-->
+            </div>
+            <div class="col-md-4 margin_10">
+                <label for="endDate" class="col-sm-2 col-form-label">Enddate</label>
+                <input type="date" class="datepicker_input form-control " id="endDate" th:field="*{endDate}">
+            </div>
+
+            <div class="col-md-4 margin_10">
+                <label for="deposit" class="col-sm-2 col-form-label">Deposit</label>
+                <input type="number" class="form-control" id="deposit" th:field="*{deposit}">
+
+            </div>
+
+            <div class="col-md-8 margin-10-px text-center">
+                <div th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></div>
+            </div>
+            <div class="col-md-4  margin-10-px " >
+                <div th:if="${#fields.hasErrors('deposit')}" th:errors="*{deposit}"></div>
+            </div>
+            <br>
+            <div class="col-md-6 margin_10">
+                <span for="customerId" class="col-sm-2 col-form-label">Customer</span>
+                <select class="form-control" id="customerId" th:field="*{customerId}">
                     <option value="-1" selected disabled>-SelectCustomer-</option>
                     <option th:each="cus : ${customerList}"
                             th:value="${{cus}}" th:text="${cus.customerCode +' -- ' + cus.customerName }"></option>
                 </select>
             </div>
-        </div>
+            <div class="col-md-6 margin_10">
+                <span for="Employee" class="col-sm-2 col-form-label">Employee</span>
+                <select class="form-control" id="Employee" th:field="*{employeeId}">
+                    <option value="-1" selected>-Select Employee--</option>
+                    <option th:each="emp : ${employeeList}"
+                            th:value="${{emp}}" th:text="${emp.employeeName}"></option>
+                </select>
+            </div>
+            <div class="col-md-12 margin_10">
+                <span for="service" class="col-sm-2 col-form-label">Select Service</span>
+                <select class="form-control" id="service" th:field="*{serviceId}">
+                    <option value="-1" selected disabled>-Select service--</option>
+                    <option th:each="s : ${serviceList}"
+                            th:value="${{s}}" th:text="${s.serviceName}"></option>
+                </select>
+            </div>
 
-    <div class="row mb-3">
-        <label for="service" class="col-sm-2 col-form-label">Select Service</label>
-        <div class="col-sm-10">
-            <select id="service" th:field="*{serviceId}">
-                <option value="-1" selected disabled>-Select service--</option>
-                <option th:each="s : ${serviceList}"
-                        th:value="${{s}}" th:text="${s.serviceName}"></option>
-            </select>
-        </div>
-    </div>
-    <div class="row mb-3">
-        <label for="Employee" class="col-sm-2 col-form-label">Select Employee</label>
-        <div class="col-sm-10">
-            <select id="Employee" th:field="*{employeeId}">
-                <option value="-1" selected>-Select Employee--</option>
-                <option th:each="emp : ${employeeList}"
-                        th:value="${{emp}}" th:text="${emp.employeeName}"></option>
-            </select>
-        </div>
-    </div>
-    <div class="row mb-3">
-        <label for="deposit" class="col-sm-2 col-form-label">Deposit</label>
-        <div class="col-sm-10">
-            <input type="number" class="form-control" id="deposit" th:field="*{deposit}">
-        </div>
-        <div class="margin-10-px" th:if="${#fields.hasErrors('deposit')}" th:errors="*{deposit}"></div>
-    </div>
-    <div class="row mb-3">
-        <label for="startDate" class="col-sm-2 col-form-label">Stardate</label>
-        <div class="col-sm-10">
-            <input type="date" class="datepicker_input form-control " id="startDate" th:field="*{startDate}">
-        </div>
-        <div class="margin-10-px" th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></div>
-    </div>
-    <div class="row mb-3">
-        <label for="endDate" class="col-sm-2 col-form-label">Enddate</label>
-        <div class="col-sm-10">
-            <input type="date" class="datepicker_input form-control " id="endDate" th:field="*{endDate}">
-        </div>
-        <div class="margin-10-px" th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></div>
-    </div>
+            <div class="col-md-12 margin_10 ">
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
 
-    <div class="row">
-        <div class="col-sm-10 offset-sm-2">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
     </div>
-</form>
-
-
+</div>
 </body>
 </html>

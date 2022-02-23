@@ -14,9 +14,9 @@ import java.util.Set;
 public class ServiceDto implements Validator {
     private Integer serviceId;
 
-
     private String serviceCode;
 
+    @NotBlank(message = "Service name must not be blank")
     private String serviceName;
     private String freeService;
 
@@ -35,6 +35,7 @@ public class ServiceDto implements Validator {
     private Double poolArea;
     private int floorsNumber;
 
+    private boolean isRent;
 
     public ServiceDto() {
     }
@@ -45,6 +46,14 @@ public class ServiceDto implements Validator {
 
     public String getFreeService() {
         return freeService;
+    }
+
+    public boolean isRent() {
+        return isRent;
+    }
+
+    public void setRent(boolean rent) {
+        isRent = rent;
     }
 
     public void setFreeService(String freeService) {
@@ -164,13 +173,40 @@ public class ServiceDto implements Validator {
         if (!serviceDto.serviceCode.matches("^(DV-)[0-9]{4}$")) {
             errors.rejectValue("serviceCode", "serviceCode.wrongSerCode", "Service Code format is DV-XXXX (X is number 0-9)");
         }
-        if (!(serviceDto.floorsNumber>0)) {
-            errors.rejectValue("floorsNumber", "floorsNumber.wrongFloor",
-                    "number of floors must be greater than 0");
+
+        if ((serviceDto.serviceTypeId.getServiceTypeId() != 3)) {
+            if (!(serviceDto.floorsNumber > 0)) {
+                errors.rejectValue("floorsNumber", "floorsNumber.wrongFloor",
+                        "number of floors must be greater than 0");
+            }
+
+            if(serviceDto.poolArea==null){
+                errors.rejectValue("poolArea", "poolArea.nullPool","pool area must be greater than 0");
+            }
+           else if (!(serviceDto.poolArea < 0)) {
+                errors.rejectValue("floorsNumber", "floorsNumber.wrongPool",
+                        "Pool area must be greater than 0");
+            }
         }
-        if (!(serviceDto.serviceCost>0)) {
+
+        if (!serviceDto.serviceName.matches("^[\\p{Lu}\\p{Ll}\\s0-9]*$")) {
+            errors.rejectValue("serviceName", "serviceName.wrongSername", "Can not contain special characters");
+        }
+
+        if (serviceDto.serviceCost == null) {
+            errors.rejectValue("serviceCost", "serviceCost.nullCost",
+                    "Service Cost must not be blank");
+        } else if (!(serviceDto.serviceCost > 0)) {
             errors.rejectValue("serviceCost", "serviceCost.wrongCost",
                     "Service Cost must be greater than 0");
+        }
+
+        if (serviceDto.serviceArea == null) {
+            errors.rejectValue("serviceArea", "serviceArea.nullArea",
+                    "Service area must not be blank");
+        } else if (!(serviceDto.serviceCost > 0)) {
+            errors.rejectValue("serviceArea", "serviceArea.wrongArea",
+                    "Service area must be greater than 0");
         }
     }
 }

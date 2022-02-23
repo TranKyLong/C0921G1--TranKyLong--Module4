@@ -10,10 +10,25 @@ public class User {
     private String password;
     private boolean isDisable;
 
-    @ManyToMany(mappedBy = "users" ,fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
     private Set<Role> role;
 
+    @OneToOne(targetEntity = Employee.class,cascade = CascadeType.ALL)
+    private Employee employeeId;
+
     public User() {
+    }
+
+    public Set<Role> getRole() {
+        return role;
+    }
+
+    public Employee getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Employee employeeId) {
+        this.employeeId = employeeId;
     }
 
     public boolean isDisable() {

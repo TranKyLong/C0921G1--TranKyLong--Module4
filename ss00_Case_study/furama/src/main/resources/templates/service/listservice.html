@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="layout::head">
     <meta charset="UTF-8">
-    <title>list service</title>
-    <style>
 
-    </style>
-    <link rel="stylesheet" href="../../../css/myTable.css">
-    <link rel="stylesheet" href="../../../css/bootstrap.css">
-    <script src="../../../js/bootstrap.js"></script>
+
 </head>
+<title>list service</title>
 <body>
+<header th:replace="layout::header">
+
+
+</header>
+
 <div class="my_content">
-    <div class="d-flex justify-content-between">
-        <div class="mb-auto p-2 bd-highlight">
-            <a th:href="@{/createservice/{id}/(id=1)}">Create new Villa service</a>
-        </div>
-        <div class="p-2 bd-highlight">
-            <a th:href="@{/createservice/{id}/(id=2)}">Create new House service</a>
-        </div>
-        <div class="p-2 bd-highlight">
-            <a th:href="@{/createservice/{id}/(id=3)}">Create new Room service</a>
-        </div>
-
-
+    <div class="list_title">
+        <h1> SERVICE LIST </h1>
     </div>
 
-    <table class="table table-hover">
+    <div class="d-flex justify-content-between margin_10">
+        <div class="mb-auto p-2 bd-highlight">
+            <a th:href="@{/service/createservice/{id}/(id=1)}" class="organtedbtn">Create new Villa service</a>
+        </div>
+        <div class="p-2 bd-highlight">
+            <a th:href="@{/service/createservice/{id}/(id=2)}" class="organtedbtn">Create new House service</a>
+        </div>
+        <div class="p-2 bd-highlight">
+            <a th:href="@{/service/createservice/{id}/(id=3)}" class="organtedbtn">Create new Room service</a>
+        </div>
+    </div>
+
+    <p class="msg" th:text="${msg}"></p>
+
+    <table class="table table-hover table-striped">
         <thead>
         <tr>
             <th> Service Name</th>
@@ -38,23 +43,31 @@
             <th> Cost</th>
             <th> Rent Type</th>
             <th> Service Type</th>
+            <th> Status</th>
+            <th colspan="2"> Action</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="s : ${serviceList}">
+
             <td>
-                <div th:text="${s.serviceName}"></div>
-                <div th:text="${s.serviceCode}"></div>
+                <div class="the_name"><i class="fa-solid fa-building myIcon"></i> <span
+                        th:text="${s.serviceName}"></span></div>
+                <div class="the_code"><i class="fa-solid fa-barcode myIcon"></i> <span
+                        th:text="${s.serviceCode}"></span></div>
+            <td>
+                <div><strong> Area </strong> <span
+                        th:text="${s.serviceArea}"> </span></div>
+                <div><Strong> Pool Area</Strong> <span
+                        th:text="${s.poolArea}"> </span></div>
             </td>
             <td>
-                <Strong> Area</Strong>
-                <div th:text="${s.serviceArea}"></div>
-                <Strong> Pool Area</Strong>
-                <div th:text="${s.poolArea}"></div>
-            </td>
-            <td>
-                <div th:text="${s.standarRoom}"></div>
-                <div th:text="${s.description}"></div>
+                <div class="red_purple"><i class="fa-solid fa-clipboard-list-check myIcon"></i><span
+                        th:text="${s.standarRoom}"> </span></div>
+
+                <div class="green_blue"><i class="fa-solid fa-square-info myIcon"></i><span
+                        th:text="${s.description}"> </span></div>
+
             </td>
             <td th:text="${s.freeService}"></td>
             <td th:text="${s.maxPeople}"></td>
@@ -62,17 +75,70 @@
             <td th:text="${s.serviceCost}"></td>
             <td th:text="${s.rentTypeId.rentName}"></td>
             <td th:text="${s.serviceTypeId.serviceTypeName}"></td>
+            <td>
+                <div th:if="${s.isRent()}"> was rented</div>
+                <div th:unless="${s.isRent()}"> not yet rented</div>
+            </td>
+
+            <td> <!-- Button trigger modal -->
+
+                <!-- cap nhat -->
+                <a class="btn btn-primary" th:href="@{/service/editService/{id}/(id=${s.serviceId})}">
+                    <i class="fa-solid fa-user-pen"></i>
+                </a>
+            </td>
+            <td>
+                <!-- xoa -->
+                <button type="button" class="btn btn-danger"
+                        data-bs-toggle="modal"
+                        th:attr="data-bs-target='#empId'+${s.serviceId}">
+                    <i class="fa-solid fa-user-xmark"></i>
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" th:id="'empId'+${s.serviceId}" tabindex="-1"
+                     aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">CONFIRM DELETE</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div th:unless="${s.isRent()}">
+                                    Confirm delete <span class="text-warning" th:text="${s.serviceName}"></span> ?
+                                </div>
+                                <div th:if="${s.isRent()}">
+                                    <div class="msg" th:text="${deleteFail}"></div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <div th:unless="${s.isRent()}">
+                                    <a type="button" class="btn btn-danger text-decoration-none"
+                                       th:href="@{/service/deleteService/{id}/(id=${s.serviceId})}"
+                                    >Delete</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
 
         </tr>
         </tbody>
 
     </table>
     <nav aria-label="Page navigation example">
-
         <ul class="pagination justify-content-end page_border">
 
             <li class="page-item  " th:if="${serviceList.hasPrevious()}">
-                <a class="page-link page_hover" th:href="@{'/showservice'(page=${serviceList.number - 1})}" tabindex="-1"
+                <a class="page-link page_hover" th:href="@{'/showservice'(page=${serviceList.number - 1})}"
+                   tabindex="-1"
                    aria-disabled="true">Previous</a>
             </li>
             <li class="page-item disabled page_dis" th:unless="${serviceList.hasPrevious()}">
@@ -86,7 +152,8 @@
 
             </li>
             <li class="page-item" th:if="${serviceList.hasNext()}">
-                <a class="page-link page_hover " th:href="@{'/showservice'(page=${serviceList.number + 1})}" tabindex="-1"
+                <a class="page-link page_hover " th:href="@{'/showservice'(page=${serviceList.number + 1})}"
+                   tabindex="-1"
                    aria-disabled="true">Next</a>
             </li>
             <li class="page-item disabled page_dis" th:unless="${serviceList.hasNext()}">
@@ -97,4 +164,8 @@
     </nav>
 </div>
 </body>
+<link rel="stylesheet" href="../../../css/myTable.css">
+<link rel="stylesheet" href="../../../css/bootstrap.css">
+<script src="../../../js/bootstrap.js"></script>
+<script src="../../../js/fontAnwesome.js" crossorigin="anonymous"></script>
 </html>

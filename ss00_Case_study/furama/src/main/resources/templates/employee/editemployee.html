@@ -6,97 +6,102 @@
     <link rel="stylesheet" href="../../../css/myTable.css">
     <link rel="stylesheet" href="../../../css/bootstrap.css">
     <script src="../../../js/bootstrap.js"></script>
+<!--    <form action="/saveeditemployee" method="post" th:object="${editEmployee}">-->
 </head>
 <body>
 
-
-<form action="/saveeditemployee" method="post" th:object="${editEmployee}">
-    <input type="hidden" th:field="*{employeeId}">
-    <div class="row mb-3">
-        <label for="employeeName" class="col-sm-2 col-form-label">Name</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="employeeName" th:field="*{employeeName}">
-        </div>
-        <div class="margin-10-px" th:if="${#fields.hasErrors('employeeName')}" th:errors="*{employeeName}"></div>
-
-    </div>
-    <div class="row mb-3">
-        <label for="employeeBirthday" class="col-sm-2 col-form-label">Birth day</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="employeeBirthday" th:field="*{employeeBirthday}">
-        </div>
-        <div class="margin-10-px" th:if="${#fields.hasErrors('employeeBirthday')}" th:errors="*{employeeBirthday}"></div>
-    </div>
-    <div class="row mb-3">
-        <label for="employeeIdCard" class="col-sm-2 col-form-label">ID Card</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="employeeIdCard" th:field="*{employeeIdCard}">
-        </div>
-        <div class="margin-10-px" th:if="${#fields.hasErrors('employeeIdCard')}" th:errors="*{employeeIdCard}"></div>
-
-    </div>
-    <div class="row mb-3">
-        <label for="employeeSalary" class="col-sm-2 col-form-label">Salary</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="employeeSalary" th:field="*{employeeSalary}">
-        </div>
-        <div class="margin-10-px" th:if="${#fields.hasErrors('employeeSalary')}" th:errors="*{employeeSalary}"></div>
-
-    </div>
-    <div class="row mb-3">
-        <label for="employeePhone" class="col-sm-2 col-form-label">Phone</label>
-        <div class="col-sm-10">
-            <input type="number" class="form-control" id="employeePhone" th:field="*{employeePhone}">
-        </div>
-        <div class="margin-10-px" th:if="${#fields.hasErrors('employeePhone')}" th:errors="*{employeePhone}"></div>
-
-    </div>
-    <div class="row mb-3">
-        <label for="employeeMail" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
-            <input type="email" class="form-control" id="employeeMail" th:field="*{employeeMail}">
-        </div>
-        <div class="margin-10-px" th:if="${#fields.hasErrors('employeeMail')}" th:errors="*{employeeMail}"></div>
-    </div>
-    <div class="row mb-3">
-        <label for="employeeAdress" class="col-sm-2 col-form-label">Adress</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="employeeAdress" th:field="*{employeeAdress}">
-        </div>
+<div class="container">
+    <div class="mytitle">
+        <h1> CREATE EMPLOYEE </h1>
     </div>
 
-    <div class="row mb-3">
-        <label for="type3" class="col-sm-2 col-form-label">Select Education Degree</label>
-        <div class="col-sm-10">
-            <select id="type3" th:field="*{educationDegreeId}">
-                <option th:each="edu : ${eduList}"
-                        th:value="${{edu}}" th:text="${edu.eduName}"></option>
-            </select>
-        </div>
+    <div class="my_content">
+        <form action="/employee/saveeditemployee" class="row" method="post" th:object="${editEmployee}">
+
+            <input type="hidden" th:field="*{employeeId}">
+            <div class="col-md-6 margin_10">
+                <label for="employeeName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="employeeName" th:field="*{employeeName}">
+                <div class="margin-10-px" th:if="${#fields.hasErrors('employeeName')}"
+                     th:errors="*{employeeName}"></div>
+            </div>
+
+            <div class="col-md-6 margin_10">
+                <label for="employeeBirthday" class="form-label">Birthday</label>
+                <input type="date" class="form-control" id="employeeBirthday" th:field="*{employeeBirthday}">
+                <div class="margin-10-px" th:if="${#fields.hasErrors('employeeBirthday')}"
+                     th:errors="*{employeeBirthday}"></div>
+            </div>
+
+            <div class="col-12 margin_10">
+                <label for="employeeIdCard" class="form-label">Id card</label>
+                <input type="number" class="form-control" id="employeeIdCard" th:field="*{employeeIdCard}">
+                <div class="margin-10-px" th:if="${#fields.hasErrors('employeeIdCard')}"
+                     th:errors="*{employeeIdCard}"></div>
+            </div>
+
+            <div class="col-12 margin_10">
+                <label for="employeeSalary" class="form-label">Salary</label>
+                <input type="number" class="form-control" id="employeeSalary" th:field="*{employeeSalary}">
+                <div class="margin-10-px" th:if="${#fields.hasErrors('employeeSalary')}"
+                     th:errors="*{employeeSalary}"></div>
+            </div>
+
+            <div class="col-12 margin_10">
+                <label for="employeePhone" class="form-label">Phone</label>
+                <input type="number" class="form-control" id="employeePhone" th:field="*{employeePhone}">
+                <div class="margin-10-px" th:if="${#fields.hasErrors('employeePhone')}"
+                     th:errors="*{employeePhone}"></div>
+            </div>
+
+
+            <div class="col-12 margin_10">
+                <label for="employeeMail" class="form-label">Mail</label>
+                <input type="email" class="form-control" id="employeeMail" th:field="*{employeeMail}">
+                <div class="margin-10-px" th:if="${#fields.hasErrors('employeeMail')}"
+                     th:errors="*{employeeMail}"></div>
+            </div>
+
+            <div class="col-md-6 margin_10 ">
+                <label for="employeeAdress" class="form-label">Adress</label>
+                <input type="text" class="form-control" id="employeeAdress" th:field="*{employeeAdress}">
+                <div class="margin-10-px" th:if="${#fields.hasErrors('employeeAdress')}"
+                     th:errors="*{employeeAdress}"></div>
+            </div>
+
+            <div class="col-md-12 margin_10">
+                <label for="educationDegreeId">Education Degree</label>
+                <select class="form-control" id="educationDegreeId" th:field="*{educationDegreeId}">
+                    <option th:each="edu : ${eduList}"
+                            th:value="${{edu}}" th:text="${edu.eduName}"></option>
+                </select>
+            </div>
+
+
+            <div class="col-md-12 margin_10">
+                <label for="posId">Select Position</label>
+                <select class="form-control" id="posId" th:field="*{posId}">
+                    <option th:each="pos : ${posList}"
+                            th:value="${{pos}}" th:text="${pos.posName}"></option>
+                </select>
+            </div>
+
+            <div class="col-md-12 margin_10">
+                <label for="divisionId">Select Division</label>
+                <select class="form-control" id="divisionId" th:field="*{divisionId}">
+                    <option th:each="division : ${divisionList}"
+                            th:value="${{division}}" th:text="${division.divisionName}"></option>
+                </select>
+            </div>
+
+            <div class="col-md-12 margin_10 ">
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+            </div>
+        </form>
     </div>
-    <div class="row mb-3">
-        <label for="type2" class="col-sm-2 col-form-label">Select Position</label>
-        <div class="col-sm-10">
-            <select id="type2" th:field="*{posId}">
-                <option th:each="pos : ${posList}"
-                        th:value="${{pos}}" th:text="${pos.posName}"></option>
-            </select>
-        </div>
-    </div>
-    <div class="row mb-3">
-        <label for="type" class="col-sm-2 col-form-label">Select Division</label>
-        <div class="col-sm-10">
-            <select id="type" th:field="*{divisionId}">
-                <option th:each="divi : ${divisionList}"
-                        th:value="${{divi}}" th:text="${divi.divisionName}"></option>
-            </select>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-10 offset-sm-2">
-            <button type="submit" class="btn btn-primary">Apply Change</button>
-        </div>
-    </div>
-</form>
+</div>
 </body>
 </html>

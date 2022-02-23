@@ -1,6 +1,9 @@
 package casestudy.furama.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -9,7 +12,10 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer employeeId;
     private String employeeName;
-    private String employeeBirthday;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date employeeBirthday;
+
     private String employeeIdCard;
     private Double employeeSalary;
     private String employeePhone;
@@ -24,13 +30,11 @@ public class Employee {
     @ManyToOne(targetEntity = Division.class)
     private Division divisionId;
 
-    @ManyToOne(targetEntity = User.class)
+    @OneToOne(mappedBy = "employeeId")
     private User username;
 
     @OneToMany(mappedBy = "employeeId")
     private Set<Contract> contractSet;
-
-
 
     public Employee() {
     }
@@ -51,11 +55,11 @@ public class Employee {
         this.employeeName = employeeName;
     }
 
-    public String getEmployeeBirthday() {
+    public Date getEmployeeBirthday() {
         return employeeBirthday;
     }
 
-    public void setEmployeeBirthday(String employeeBirthday) {
+    public void setEmployeeBirthday(Date employeeBirthday) {
         this.employeeBirthday = employeeBirthday;
     }
 

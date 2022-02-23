@@ -29,7 +29,15 @@ public class FuramaService {
     private String description;
     private Double poolArea;
     private int floorsNumber;
+    private boolean isRent;
 
+    public boolean isRent() {
+        return isRent;
+    }
+
+    public void setRent(boolean rent) {
+        isRent = rent;
+    }
 
     public Integer getServiceId() {
         return serviceId;

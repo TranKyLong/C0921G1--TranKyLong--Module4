@@ -2,36 +2,31 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
+
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="../../css/loginForm.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/fontAnwesome.js" crossorigin="anonymous"></script>
+
 </head>
-<body>
-<form action="/login" method="post">
-    <table>
-        <tr>
-            <td>UserName</td>
-            <td>
-                <input type="text" name="username">
-            </td>
-        </tr>
-        <tr>
-            <td>Password</td>
-            <td>
-                <input type="text" name="password">
-            </td>
-        </tr>
-        <tr>
-            <td>Remember me</td>
-            <td>
-                <input type="checkbox" name="remember-me">
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <button type="submit">Login</button>
-            </td>
-        </tr>
-    </table>
-</form>
+<body class="loginbg">
+<div class="login_body">
+    <div>
+        <h2 class="welcome"> Welcome</h2>
+    </div>
+    <form action="/login" method="post">
+        <input class="myForminput " placeholder=" username" type="text" name="username">
+        <input class="myForminput " type="text" placeholder=" password" name="password">
+        <p th:if="${param.error}" style="color: red;margin-bottom: -3px">User name or password incorrect.</p>
+        <div><input class="margin_10" type="checkbox" name="remember-me"> Remember me</div>
+        <div>
+            <button class="margin_10" type="submit">Login</button>
+        </div>
+
+
+    </form>
+</div>
 </body>
 </html>

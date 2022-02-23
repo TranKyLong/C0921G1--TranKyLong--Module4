@@ -12,6 +12,11 @@ import java.util.Optional;
 
 public interface IEmployeeService {
     Page<Employee> findAll(Pageable pageable);
+    Page<Employee> searchEmployee(String empName,
+                                  String division,
+                                  String edu,
+                                  String pos,
+                                  Pageable pageable);
 
     List<Division> findAllDivision();
 
@@ -26,9 +31,9 @@ public interface IEmployeeService {
 
     Optional<Employee> findById(Integer id);
 
-    Page<Employee> findByName(String name, Pageable pageable);
-
-    Page<Employee> findByDivision(Integer divisionId, Pageable pageable);
-
-    Page<Employee> findByNameAndDivision(String name, Integer id, Pageable pageable);
+//    Page<Employee> findByName(String name, Pageable pageable);
+//
+//    Page<Employee> findByDivision(Integer divisionId, Pageable pageable);
+//
+//    Page<Employee> findByNameAndDivision(String name, Integer id, Pageable pageable);
 }

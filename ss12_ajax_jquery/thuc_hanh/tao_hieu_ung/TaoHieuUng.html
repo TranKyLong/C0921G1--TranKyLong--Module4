@@ -7,10 +7,11 @@
     <script>
         // -- thay đổi kích cỡ chữ --
         $(document).ready(function () {
-            $("#button01").click(function () {
+            $("#button01").hover(function () {
                 var div = $("#hello");
-                div.animate({left: '100px'}, "slow");
-                div.animate({fontSize: '100px'}, "slow");
+                // div.animate({left: '100px'}, "slow").toggle();
+                div.animate({fontSize: '100px'}, "slow").toggle();
+                div.animate({fontSize: '50px'}, "slow");
             });
         });
         // --Bật/tắt text--

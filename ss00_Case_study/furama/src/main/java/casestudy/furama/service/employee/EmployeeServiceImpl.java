@@ -37,6 +37,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
+    public Page<Employee> searchEmployee(String empName, String division, String edu, String pos, Pageable pageable) {
+        return iEmployeeRepository.searchEmployee(empName, division, edu, pos, pageable);
+    }
+
+    @Override
     public List<Division> findAllDivision() {
         return iDivionRepository.findAll();
     }
@@ -72,18 +77,18 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
 
-    @Override
-    public Page<Employee> findByName(String name, Pageable pageable) {
-        return iEmployeeRepository.findByEmployeeNameContaining(name, pageable);
-    }
-
-    @Override
-    public Page<Employee> findByDivision(Integer divisionId, Pageable pageable) {
-        return iEmployeeRepository.findByDivId(divisionId, pageable);
-    }
+//    @Override
+//    public Page<Employee> findByName(String name, Pageable pageable) {
+//        return iEmployeeRepository.findByEmployeeNameContaining(name, pageable);
+//    }
 //
-    @Override
-    public Page<Employee> findByNameAndDivision(String name, Integer id, Pageable pageable) {
-        return iEmployeeRepository.theoTenVaDiv(name,id,pageable);
-    }
+//    @Override
+//    public Page<Employee> findByDivision(Integer divisionId, Pageable pageable) {
+//        return iEmployeeRepository.findByDivId(divisionId, pageable);
+//    }
+//
+//    @Override
+//    public Page<Employee> findByNameAndDivision(String name, Integer id, Pageable pageable) {
+//        return iEmployeeRepository.theoTenVaDiv(name,id,pageable);
+//    }
 }

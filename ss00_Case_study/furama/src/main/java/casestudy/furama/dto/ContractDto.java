@@ -4,6 +4,7 @@ import casestudy.furama.model.ContractDetail;
 import casestudy.furama.model.Customer;
 import casestudy.furama.model.Employee;
 import casestudy.furama.model.FuramaService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -12,13 +13,19 @@ import javax.persistence.OneToMany;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Period;
 import java.util.Date;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class ContractDto implements Validator {
     private Integer contractId;
-    private String startDate;
-    private String endDate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date startDate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date endDate;
     private Double deposit;
     private Double totalMoney;
     private Employee employeeId;
@@ -42,19 +49,19 @@ public class ContractDto implements Validator {
         this.contractId = contractId;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
@@ -136,15 +143,28 @@ public class ContractDto implements Validator {
 //        if (!contractDto.endDate.matches(dateValidation)) {
 //            errors.rejectValue("endDate", "endDate.wrongEndDate", "format must be dd/mm/yyyy");
 //        }
-        if (!(contractDto.deposit > 0)) {
+
+        if (contractDto.deposit == null) {
+            errors.rejectValue("deposit", "deposit.nullDeposit", "deposit must not be blank");
+        } else if (!(contractDto.deposit > 0)) {
             errors.rejectValue("deposit", "deposit.wrongDeposit", "deposit must be greater than 0");
         }
+
+        if (contractDto.deposit > contractDto.serviceId.getServiceCost()) {
+            errors.rejectValue("deposit", "deposit.notSuitableDeposit", "deposit must not greater than service cost");
+        }
+
         try {
-            if(!((distanceDay(contractDto.startDate,contractDto.endDate)) >0)){
+            long getDiff = contractDto.endDate.getTime() - contractDto.startDate.getTime();
+
+            long getDaysDiff = TimeUnit.MILLISECONDS.toDays(getDiff);
+            if (!((getDaysDiff) > 0)) {
                 errors.rejectValue("endDate", "endDate.wrongBookDate", "Please select a valid date");
+                errors.rejectValue("startDate", "startDate.wrongBookDate", "Please select a valid date");
             }
         } catch (Exception e) {
             errors.rejectValue("endDate", "endDate.wrongParse", "Please select a valid date");
         }
+
     }
 }

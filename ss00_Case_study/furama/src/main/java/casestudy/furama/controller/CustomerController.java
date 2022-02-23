@@ -17,23 +17,38 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/customer")
 public class CustomerController {
 
     @Autowired
-    ICustomerService iCustomerService;
+    private ICustomerService iCustomerService;
 
-    @GetMapping({"showcustomerlist"})
+    private  boolean isCodeavailable(CustomerDto customerDto, BindingResult bs) {
+        List<Customer> customerList = iCustomerService.findAll();
+        for (Customer cus : customerList) {
+            if (customerDto.getCustomerCode().equals(cus.getCustomerCode())) {
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    @GetMapping("/showcustomerlist")
     public String getAllCustomer(Model model,
                                  RedirectAttributes ra,
                                  @PageableDefault(value = 8) Pageable pageable,
                                  @RequestParam(defaultValue = "") String findName,
                                  @RequestParam(defaultValue = "") String findcode,
-                                 @RequestParam(defaultValue = "") String findtype) {
-
-        model.addAttribute("customerList", iCustomerService.searchCustomer(findName, findcode, findtype, pageable));
+                                 @RequestParam(defaultValue = "") String customerType) {
+        model.addAttribute("findName", findName);
+        model.addAttribute("findcode", findcode);
+        model.addAttribute("customerType", customerType);
+        model.addAttribute("customerList", iCustomerService.searchCustomer(findName, findcode, customerType, pageable));
         model.addAttribute("typeList", iCustomerService.getAllCustomerType());
         ra.addFlashAttribute("msg", "");
         return "customer/customerlist";
@@ -56,6 +71,10 @@ public class CustomerController {
                                BindingResult bs,
                                RedirectAttributes ra,
                                Model model) {
+        if(isCodeavailable(customerDto,bs)){
+            bs.rejectValue("customerCode", "customerCode.duplicateCode",
+                    "Customer Code is available, please enter another code");
+        }
         new CustomerDto().validate(customerDto, bs);
         if (bs.hasFieldErrors()) {
             model.addAttribute("customerTypeList", iCustomerService.getAllCustomerType());
@@ -90,6 +109,11 @@ public class CustomerController {
                            BindingResult bs,
                            RedirectAttributes ra,
                            Model model) {
+
+        if(isCodeavailable(editCustomer,bs)){
+            bs.rejectValue("customerCode", "customerCode.duplicateCode",
+                    "Customer Code is available, please enter another code");
+        }
 
         new CustomerDto().validate(editCustomer, bs);
         if (bs.hasFieldErrors()) {

@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -24,6 +25,11 @@ public class ContractServiceImpl implements IContractService {
     @Override
     public List<Contract> findAll() {
         return iContractRepository.findAll();
+    }
+
+    @Override
+    public Page<Contract> searchContract(String customerName, String empId, String serId, Pageable pagle) {
+        return iContractRepository.searchContract(customerName,empId,serId,pagle);
     }
 
     @Override
@@ -44,6 +50,11 @@ public class ContractServiceImpl implements IContractService {
     @Override
     public void deleteContract(Integer id) {
         iContractRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<ContractDetail> findDetailById(Integer id) {
+        return iContractDetail.findById(id);
     }
 
     @Override

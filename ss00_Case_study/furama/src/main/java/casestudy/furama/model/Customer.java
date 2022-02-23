@@ -1,6 +1,9 @@
 package casestudy.furama.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -12,7 +15,10 @@ public class Customer {
     private CustomerType customerType;
     private String customerCode;
     private String customerName;
-    private String customerBirthday;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date customerBirthday;
+
     private Integer customerGender; // 0 female, 1 male;
     private String customerIdCard;
     private String customerPhone;
@@ -65,11 +71,11 @@ public class Customer {
         this.customerName = customerName;
     }
 
-    public String getCustomerBirthday() {
+    public Date getCustomerBirthday() {
         return customerBirthday;
     }
 
-    public void setCustomerBirthday(String customerBirthday) {
+    public void setCustomerBirthday(Date customerBirthday) {
         this.customerBirthday = customerBirthday;
     }
 

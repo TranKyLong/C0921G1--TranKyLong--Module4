@@ -6,13 +6,18 @@
     <link rel="stylesheet" href="../../../css/myTable.css">
     <link rel="stylesheet" href="../../../css/bootstrap.css">
     <script src="../../../js/bootstrap.js"></script>
-    <script src="https://kit.fontawesome.com/726762a457.js" crossorigin="anonymous"></script>
+    <script src="../../../js/fontAnwesome.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <div class="my_content">
+    <div class="list_title">
+        <h1 > CUSTOMER LIST </h1>
+    </div>
+
     <div class="row">
         <div class="formfind">
-            <form action="showcustomerlist" method="get">
+            <form action="/customer/showcustomerlist" method="get">
 
                 <label> Find by name
                     <input class="form-control-sm" type="text" name="findName">
@@ -20,8 +25,8 @@
                 <label> Find by customer code:
                     <input class="form-control-sm" type="text" name="findcode">
                 </label>
-                <label> find by Division
-                    <select class="form-control-sm" name="findtype">
+                <label> find by Customertype
+                    <select class="form-control-sm" name="customerType">
                         <option disabled selected> --CHOSE TYPE--</option>
                         <th:block th:each="type: ${typeList}">
                             <option th:value="${type.customerTypeId}" th:text="${type.customerTypeName}"></option>
@@ -29,9 +34,9 @@
                     </select>
                 </label>
 
-                    <button class=" buttonBg" type="submit">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
+                <button class=" buttonBg" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
 
             </form>
         </div>
@@ -57,7 +62,8 @@
                 <div class="the_code"><i class="fa-solid fa-barcode myIcon"></i> <span
                         th:text="${cus.customerCode}"> </span></div>
             </td>
-            <td th:text="${cus.customerBirthday}"></td>
+<!--            <td th:text="${cus.customerBirthday}"></td>-->
+            <td th:text="${#calendars.format(cus.customerBirthday,'dd/MM/yyyy')}"></td>
             <td th:if="${cus.customerGender == 0}"> Female</td>
             <td th:unless="${cus.customerGender == 0}"> Male</td>
 
@@ -117,7 +123,10 @@
             <ul class="pagination justify-content-end">
                 <li class="page-item  " th:if="${customerList.hasPrevious()}">
                     <a class="page-link"
-                       th:href="@{'/showcustomerlist'(page=${customerList.number - 1},findName=${findName},customerType=${customerType})}"
+                       th:href="@{'/showcustomerlist'(page=${customerList.number - 1},
+                       findName=${findName},
+                       customerType=${customerType},
+                       findcode=${findcode})}"
                        tabindex="-1"
                        aria-disabled="true">Previous</a>
                 </li>
@@ -133,7 +142,10 @@
                 </li>
                 <li class="page-item" th:if="${customerList.hasNext()}">
                     <a class="page-link  "
-                       th:href="@{'/showcustomerlist'(page=${customerList.number + 1},findName=${findName},customerType=${customerType})}"
+                       th:href="@{'/showcustomerlist'(page=${customerList.number + 1},
+                       findName=${findName},
+                       customerType=${customerType},
+                       findcode=${findcode})}"
                        tabindex="-1"
                        aria-disabled="true">Next</a>
                 </li>

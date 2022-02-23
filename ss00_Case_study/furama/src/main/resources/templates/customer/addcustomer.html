@@ -16,11 +16,11 @@
     </div>
     <div class="my_content">
 
-        <form class="row" action="/savecustomer" method="post" th:object="${customerDto}">
+        <form class="row" action="/customer/savecustomer" method="post" th:object="${customerDto}">
             <input type="hidden" th:field="*{customerId}">
             <div class="col-md-6 margin_10">
                 <label for="customerCode" class="form-label">Code</label>
-                <input type="email" class="form-control" id="customerCode" th:field="*{customerCode}">
+                <input type="text" class="form-control" id="customerCode" th:field="*{customerCode}">
                 <div class="margin-10-px" th:if="${#fields.hasErrors('customerCode')}"
                      th:errors="*{customerCode}"></div>
             </div>
@@ -40,15 +40,12 @@
             </div>
 
             <div class="col-md-12 margin_10">
-
                 <div class=" form-label">Gender
                     <span>
                  <input type="radio" value="0" th:field="*{customerGender}" th:text="Female">
                 <input type="radio" value="1" th:field="*{customerGender}" th:text="Male">
                 </span>
-
                 </div>
-
             </div>
             <div class="col-md-12 margin_10">
                 <label for="type">Select Type</label>
@@ -89,7 +86,6 @@
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
-
             </div>
         </form>
 

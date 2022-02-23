@@ -17,6 +17,7 @@ public interface IFuramaService {
     List<RentType> findAllRentType();
     List<FuramaService> findAll();
 
+    void deleteById(Integer id);
     List<AttachService> findAllAttachService();
 
     Optional<AttachService> findAttachService(Integer id);
@@ -26,6 +27,8 @@ public interface IFuramaService {
     Optional<RentType> findRentType(Integer id);
 
     void saveService(FuramaService furamaService);
+
+    Optional<FuramaService> findById(Integer id);
 
 
 

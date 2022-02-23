@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("employee")
 public class EmployeeController {
 
     @Autowired
@@ -32,41 +33,20 @@ public class EmployeeController {
     public ModelAndView showEmployee(@PageableDefault(size = 8) Pageable pageable,
                                      RedirectAttributes ra,
                                      Model model,
-                                     @RequestParam Optional<String> findName,
-                                     @RequestParam Optional<Integer> divisionId
-    ) {
+                                     @RequestParam(defaultValue = "") String findName,
+                                     @RequestParam(defaultValue = "") String divisionId,
+                                     @RequestParam(defaultValue = "") String education,
+                                     @RequestParam(defaultValue = "") String position) {
         ra.addFlashAttribute("msg", "");
+        model.addAttribute("findName",findName);
+        model.addAttribute("divisionId",divisionId);
+        model.addAttribute("education",education);
+        model.addAttribute("position",position);
+
         model.addAttribute("divisionList", iEmployeeService.findAllDivision());
-        Page<Employee> employeeList = iEmployeeService.findAll(pageable);
-        System.err.println(findName + " / " + divisionId);
-        System.err.println(findName.isPresent() + " --------------- " + divisionId.isPresent());
-
-        boolean present = findName.isPresent();
-        if (present) {
-            if (findName.get().equals("")) {
-                present = false;
-            }
-        }
-
-        if (present) {
-            if (divisionId.isPresent()) {
-                model.addAttribute("findName", findName.get());
-                model.addAttribute("divisionId", divisionId.get());
-                String resultName = "%" + findName.get() + "%";
-                Page<Employee> listByNameId = iEmployeeService.findByNameAndDivision(resultName, divisionId.get(), pageable);
-                return new ModelAndView("employee/employeelist", "employeeList", listByNameId);
-            } else {
-                model.addAttribute("findName", findName.get());
-                Page<Employee> listByName = iEmployeeService.findByName(findName.get(), pageable);
-                return new ModelAndView("employee/employeelist", "employeeList", listByName);
-            }
-        } else {
-            if (divisionId.isPresent()) {
-                model.addAttribute("divisionId", divisionId.get());
-                Page<Employee> listByDivision = iEmployeeService.findByDivision(divisionId.get(), pageable);
-                return new ModelAndView("employee/employeelist", "employeeList", listByDivision);
-            }
-        }
+        model.addAttribute("educationList", iEmployeeService.findAllEdu());
+        model.addAttribute("positionList", iEmployeeService.findAllPos());
+        Page<Employee> employeeList = iEmployeeService.searchEmployee(findName, divisionId, education, position,pageable);
 
         return new ModelAndView("employee/employeelist", "employeeList", employeeList);
     }
@@ -90,7 +70,7 @@ public class EmployeeController {
                                Model model) {
         new EmployeeDto().validate(employeeDto, bs);
         if (bs.hasFieldErrors()) {
-            model.addAttribute("employeeDto", employeeDto);
+//            model.addAttribute("employeeDto", employeeDto);
             model.addAttribute("eduList", iEmployeeService.findAllEdu());
             model.addAttribute("posList", iEmployeeService.findAllPos());
             model.addAttribute("divisionList", iEmployeeService.findAllDivision());
@@ -101,7 +81,7 @@ public class EmployeeController {
             iEmployeeService.saveEmployee(saveThisEmployee);
             ra.addFlashAttribute("msg", "add new employee success");
             System.out.println("tao thanh cong" + saveThisEmployee.getEmployeeName());
-            return "redirect:/showemployee";
+            return "redirect:/employee/showemployee";
         }
     }
 
@@ -140,7 +120,7 @@ public class EmployeeController {
             iEmployeeService.saveEmployee(saveThisEmployee);
             ra.addFlashAttribute("msg", "edit employee success");
             System.out.println("edit thanh cong" + saveThisEmployee.getEmployeeName());
-            return "redirect:/showemployee";
+            return "redirect:/employee/showemployee";
         }
     }
 
@@ -154,11 +134,11 @@ public class EmployeeController {
             iEmployeeService.deleteEmployeeById(id);
             System.out.println("xoa thanh cong employee ::: " + id);
             ra.addFlashAttribute("msg", "delete employee success");
-            return "redirect:/showemployee";
+            return "redirect:/employee/showemployee";
         } else {
             ra.addFlashAttribute("msg", "fail to delete employee");
             System.out.println("ko tim thay empployee");
-            return "redirect:/showemployee";
+            return "redirect:/employee/showemployee";
         }
     }
 

@@ -1,21 +1,29 @@
 package casestudy.furama.dto;
 
 import casestudy.furama.model.*;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Set;
 
 public class EmployeeDto implements Validator {
     private Integer employeeId;
 
-
+    @NotBlank(message = "Name must not be blank")
     private String employeeName;
-    private String employeeBirthday;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date employeeBirthday;
 
 
     private String employeeIdCard;
@@ -55,11 +63,11 @@ public class EmployeeDto implements Validator {
         this.employeeName = employeeName;
     }
 
-    public String getEmployeeBirthday() {
+    public Date getEmployeeBirthday() {
         return employeeBirthday;
     }
 
-    public void setEmployeeBirthday(String employeeBirthday) {
+    public void setEmployeeBirthday(Date employeeBirthday) {
         this.employeeBirthday = employeeBirthday;
     }
 
@@ -152,9 +160,12 @@ public class EmployeeDto implements Validator {
     public void validate(Object target, Errors errors) {
         String dateValidation = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
         EmployeeDto employeeDto = (EmployeeDto) target;
-//        if (!employeeDto.employeeBirthday.matches(dateValidation)) {
+//        String birthday = String.valueOf(employeeDto.employeeBirthday);
+//        System.out.println();
+//        if (!birthday.matches(dateValidation)) {
 //            errors.rejectValue("employeeBirthday", "employeeBirthday.wrongDate", "format must be dd/mm/yyyy");
 //        }
+
         if (!employeeDto.employeeName.matches("^[\\p{Lu}\\p{Ll}\\s0-9]*$")) {
             errors.rejectValue("employeeName", "employeeName.wrongChar", "Can not contain special characters");
         }
@@ -163,12 +174,17 @@ public class EmployeeDto implements Validator {
         }
 
         if (employeeDto.employeeSalary == null) {
-            employeeDto.setEmployeeSalary(0.0);
+//
+//            employeeDto.setEmployeeSalary(0.0);
             errors.rejectValue("employeeSalary", "employeeSalary.nullSalary", "salary must not be blank");
-        }
-        if (employeeDto.employeeSalary < 0) {
+        } else if (employeeDto.employeeSalary < 0) {
             errors.rejectValue("employeeSalary", "employeeSalary.wrongSalary", "salary must be positive");
         }
+        if (employeeDto.employeePhone == null) {
+            employeeDto.setEmployeePhone("0");
+            errors.rejectValue("employeePhone", "employeePhone.nullPhone", "phone number must not be blank");
+        }
+
         if (!(employeeDto.employeePhone.matches("^(84+|0)(90|91)[0-9]{7}$"))) {
             errors.rejectValue("employeePhone", "employeePhone.wrongPhone",
                     "Phone number must be in the correct format 090xxxxxxx or 091xxxxxxx or (84) + 90xxxxxxx or (84) + 91xxxxxxx");
@@ -177,7 +193,21 @@ public class EmployeeDto implements Validator {
             errors.rejectValue("employeeMail", "employeeMail.wrongMail", "Wrong format Email");
         }
 
+        // validate inputs ...
+        if(employeeDto.employeeBirthday == null){
+            errors.rejectValue("employeeBirthday", "employeeBirthday.wrongBirth", "Birthday must no be blank");
+        } else {
+            DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+            long millis=System.currentTimeMillis();
+            Date curDate = new java.sql.Date(millis);
+            int empBirth = Integer.parseInt(formatter.format(employeeDto.employeeBirthday));
+            int curentDate = Integer.parseInt(formatter.format(curDate));
 
+            int age = (curentDate - empBirth) / 10000;
+            if(age < 18){
+                errors.rejectValue("employeeBirthday", "employeeBirthday.wrongAge", "Employee age must not smaller than 18");
+            }
+        }
 
 
     }

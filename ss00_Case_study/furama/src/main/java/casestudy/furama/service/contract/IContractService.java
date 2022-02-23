@@ -6,10 +6,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IContractService {
 
     List<Contract> findAll();
+
+    Page<Contract>searchContract(String customerName,
+                                 String empId,
+                                 String serId,
+                                 Pageable pagle);
+
 
     Page<ContractDetail> findAllContractDetail(Pageable pageable);
 
@@ -18,6 +25,7 @@ public interface IContractService {
 
     void deleteContract(Integer id);
 
+    Optional<ContractDetail>findDetailById(Integer id);
     void saveContract(Contract contract);
     void saveContractDetail(ContractDetail contractDetail);
 

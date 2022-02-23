@@ -46,6 +46,11 @@ public class FuramaServiceImpl implements IFuramaService {
     }
 
     @Override
+    public void deleteById(Integer id) {
+        iFuramaServiceRepository.deleteById(id);
+    }
+
+    @Override
     public List<AttachService> findAllAttachService() {
         return iAttachServiceRepository.findAll();
     }
@@ -68,6 +73,11 @@ public class FuramaServiceImpl implements IFuramaService {
     @Override
     public void saveService(FuramaService furamaService) {
         iFuramaServiceRepository.save(furamaService);
+    }
+
+    @Override
+    public Optional<FuramaService> findById(Integer id) {
+        return iFuramaServiceRepository.findById(id);
     }
 
 }

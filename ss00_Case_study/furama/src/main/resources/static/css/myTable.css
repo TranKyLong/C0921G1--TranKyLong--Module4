@@ -1,5 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+
 * {
     box-sizing: border-box;
+}
+
+button[type=submit] {
+    color: white !important;
+    background: orangered;
+    border: solid 1px transparent;
+}
+
+button[type=submit]:hover {
+    color: orangered !important;
+    background: white;
+    border: solid 1px transparent;
+    box-shadow: 0px 0px 5px orangered !important;
+}
+
+.form-control, .form-control-sm {
+    background: white !important;
+    margin: 0 5px;
+    border: solid 1px darkgrey !important;
+    box-shadow: 0px 0px 5px transparent !important;
+}
+
+.form-control:focus, .form-control-sm:focus {
+    outline: none !important;
+    margin: 0 5px;
+    border: solid 1px transparent !important;
+    box-shadow: 0px 0px 10px orangered !important;
+}
+
+
+select {
+    margin: 15px 0 !important;
+}
+
+.mytitle {
+
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white !important;
+    background: orangered;
+    height: 12%;
+    border-radius: 30px 30px 0px 0px;
+    padding: 15px;
+    box-shadow: 0px 3px 5px grey;
+    top: 46px;
+    width: 90%;
+    margin: auto;
+}
+
+.list_title {
+    font-family: 'Cinzel Decorative', cursive;
+
+    margin: 20px auto;
+    text-align: center;
+}
+
+.list_title h1 {
+    color: orangered !important;
 }
 
 .my_content {
@@ -8,9 +69,8 @@
     background: linear-gradient(236deg, rgba(201, 201, 201, 0.9) 0%, rgba(255, 255, 255, 1) 59%, rgba(204, 204, 204, 0.9) 100%) top left/cover no-repeat;
     padding: 20px 50px;
     border-radius: 10px;
-    margin: 0px auto 40px auto;
+    margin: 130px auto 40px auto;
     width: 90%;
-
 }
 
 .msg {
@@ -30,9 +90,14 @@
     background: orangered;
 }
 
-.margin-10-px{
+.margin-10-px {
     color: red;
 }
+
+.dateError{
+    margin-left: 25% ;
+}
+
 .buttonBg {
     line-height: 19px;
     width: 40px;
@@ -54,27 +119,13 @@
     padding: 10px;
 }
 
-.mytitle {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    color: white !important;
-    background: orangered;
-    height: 12%;
-    border-radius: 30px 30px 0px 0px;
-    padding: 10px;
-    box-shadow: 0px 3px 5px grey;
-    top: 11px;
-    width: 90%;
-    margin: auto;
-}
 
 .margin_10 {
     margin: 15px 0;
 }
 
 .organtedbtn:hover, .buttonBg:hover {
-    border: solid 1px #000000;
+    border: solid 1px #393939;
     background: darkorange;
 }
 
@@ -87,7 +138,7 @@
 }
 
 .green_blue {
-    color: #00a591
+    color: #007855
 }
 
 .the_name {
@@ -95,7 +146,7 @@
 }
 
 .the_code {
-    color: #00a591;
+    color: #085e72;
     font-style: italic;
 
 }
@@ -103,8 +154,10 @@
 body {
     min-height: 100vh;
     width: 100%;
+
     background: rgb(255, 106, 57);
     background: linear-gradient(140deg, rgba(255, 106, 57, 1) 0%, rgba(255, 238, 194, 1) 22%, rgba(255, 102, 0, 1) 82%) top left/cover no-repeat;;
+
 }
 
 table td th {

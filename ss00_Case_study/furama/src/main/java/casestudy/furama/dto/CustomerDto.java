@@ -2,11 +2,13 @@ package casestudy.furama.dto;
 
 import casestudy.furama.model.Contract;
 import casestudy.furama.model.CustomerType;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Date;
 import java.util.Set;
 
 public class CustomerDto implements Validator {
@@ -18,7 +20,8 @@ public class CustomerDto implements Validator {
 
     private String customerName;
 
-    private String customerBirthday;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date customerBirthday;
     private Integer customerGender;
 
     private String customerIdCard;
@@ -32,7 +35,6 @@ public class CustomerDto implements Validator {
 
     public CustomerDto() {
     }
-
 
     public Integer getCustomerId() {
         return customerId;
@@ -66,11 +68,11 @@ public class CustomerDto implements Validator {
         this.customerName = customerName;
     }
 
-    public String getCustomerBirthday() {
+    public Date getCustomerBirthday() {
         return customerBirthday;
     }
 
-    public void setCustomerBirthday(String customerBirthday) {
+    public void setCustomerBirthday(Date customerBirthday) {
         this.customerBirthday = customerBirthday;
     }
 
@@ -141,6 +143,7 @@ public class CustomerDto implements Validator {
             errors.rejectValue("customerCode", "customerCode.wrongCusCode",
                     "must be in the format KH-XXXX (X is the number 0-9)");
         }
+
         if (!cusDto.customerName.matches("^[\\p{Lu}\\p{Ll}\\s0-9]*$")) {
             errors.rejectValue("customerName", "customerName.wrongCusName", "Can not contain special characters");
         }
