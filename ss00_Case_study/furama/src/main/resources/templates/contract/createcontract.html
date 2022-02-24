@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="layout::head">
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="../../../css/myTable.css">
-    <link rel="stylesheet" href="../../../css/bootstrap.css">
-    <script src="../../../js/bootstrap.js"></script>
-
 </head>
+<title>Create contract</title>
 <body>
+<header th:replace="layout::header">
+</header>
 <div class="container">
     <div class="mytitle">
         <h1> CREATE CONTRACT </h1>
@@ -24,7 +22,7 @@
 
                 <input type="date" class="datepicker_input form-control " id="startDate" th:field="*{startDate}">
 
-<!--                <div class="margin-10-px" th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></div>-->
+                <!--                <div class="margin-10-px" th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></div>-->
             </div>
             <div class="col-md-4 margin_10">
                 <label for="endDate" class="col-sm-2 col-form-label">Enddate</label>
@@ -40,7 +38,7 @@
             <div class="col-md-8 margin-10-px text-center">
                 <div th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></div>
             </div>
-            <div class="col-md-4  margin-10-px " >
+            <div class="col-md-4  margin-10-px ">
                 <div th:if="${#fields.hasErrors('deposit')}" th:errors="*{deposit}"></div>
             </div>
             <br>
@@ -79,4 +77,8 @@
     </div>
 </div>
 </body>
+<link rel="stylesheet" href="../../../css/myTable.css">
+<link rel="stylesheet" href="../../../css/bootstrap.css">
+<script src="../../../js/bootstrap.js"></script>
+<script src="../../../js/fontAnwesome.js" crossorigin="anonymous"></script>
 </html>

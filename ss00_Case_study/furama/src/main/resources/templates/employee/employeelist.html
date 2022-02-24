@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head >
+<head th:replace="layout::head">
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="../../../css/myTable.css">
-    <link rel="stylesheet" href="../../../css/bootstrap.css">
-    <script src="../../../js/bootstrap.js"></script>
-    <script src="../../../js/fontAnwesome.js" crossorigin="anonymous"></script>
 </head>
+<title>Employee list</title>
 <body>
+<header th:replace="layout::header">
+</header>
 <div class="my_content">
     <div class="list_title">
         <h1> EMPLOYEE LIST </h1>
@@ -48,7 +46,7 @@
         </button>
     </form>
 
-<!--    add new-->
+    <!--    add new-->
     <p th:text="${msg}" class="msg"></p>
     <a href="/employee/addnewemployee" class="organtedbtn" type="button"> Add new Employee</a>
 
@@ -136,7 +134,7 @@
             <ul class="pagination justify-content-end">
                 <li class="page-item  " th:if="${employeeList.hasPrevious()}">
                     <a class="page-link"
-                       th:href="@{'/showemployee'(page=${employeeList.number - 1},findName=${findName},
+                       th:href="@{'/employee/showemployee'(page=${employeeList.number - 1},findName=${findName},
                        divisionId=${divisionId},
                        education=${education},
                        position=${position})}"
@@ -154,7 +152,7 @@
                 </li>
                 <li class="page-item" th:if="${employeeList.hasNext()}">
                     <a class="page-link  "
-                       th:href="@{'/showemployee'(page=${employeeList.number + 1},findName=${findName},
+                       th:href="@{'/employee/showemployee'(page=${employeeList.number + 1},findName=${findName},
                        divisionId=${divisionId},
                        education=${education},
                        position=${position})}"
@@ -169,4 +167,8 @@
     </footer>
 </div>
 </body>
+<link rel="stylesheet" href="../../../css/myTable.css">
+<link rel="stylesheet" href="../../../css/bootstrap.css">
+<script src="../../../js/bootstrap.js"></script>
+<script src="../../../js/fontAnwesome.js" crossorigin="anonymous"></script>
 </html>

@@ -33,7 +33,6 @@
 }
 
 
-
 .form-control, .myForminput {
 
     width: 100% !important;
@@ -60,12 +59,13 @@
     margin: 10px;
 }
 
-.margin_10{
+.margin_10 {
     margin: 20px auto;
 }
-table td {
-    width: fit-content;
-}
+
+/*table td {*/
+/*    width: fit-content;*/
+/*}*/
 
 .fa-solid {
     margin-left: 56%;
@@ -74,22 +74,23 @@ table td {
 }
 
 button[type=submit] {
+
     margin: 0 auto;
     padding: 1px 10px;
     width: 100%;
     color: white !important;
     background: orange;
     border: solid 1px transparent;
-}
-
-table {
-    width: 100%;
+    transition: color 800ms, background-color 800ms;
 }
 
 button[type=submit]:hover {
     color: orange !important;
-    background: white;
+    background-color: white;
     border: solid 1px transparent;
     box-shadow: 0px 0px 5px orange !important;
 }
 
+.errorbg {
+    background: url("../images/image403.jpg") top left/cover no-repeat;
+}

@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="layout::head">
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="../../../css/myTable.css">
-    <link rel="stylesheet" href="../../../css/bootstrap.css">
-    <script src="../../../js/bootstrap.js"></script>
-    <script src="../../../js/fontAnwesome.js" crossorigin="anonymous"></script>
-
 </head>
+<title>Customer list</title>
 <body>
+<header th:replace="layout::header">
+</header>
 <div class="my_content">
     <div class="list_title">
-        <h1 > CUSTOMER LIST </h1>
+        <h1> CUSTOMER LIST </h1>
     </div>
 
     <div class="row">
@@ -42,7 +39,7 @@
         </div>
     </div>
     <p class="msg" th:text="${msg}"></p>
-    <a type="button" class="organtedbtn" href="/addcustomer"> Add new Customer</a>
+    <a type="button" class="organtedbtn" href="/customer/addcustomer"> Add new Customer</a>
     <table class="table table-striped table-hover">
         <thead>
         <tr>
@@ -62,7 +59,7 @@
                 <div class="the_code"><i class="fa-solid fa-barcode myIcon"></i> <span
                         th:text="${cus.customerCode}"> </span></div>
             </td>
-<!--            <td th:text="${cus.customerBirthday}"></td>-->
+            <!--            <td th:text="${cus.customerBirthday}"></td>-->
             <td th:text="${#calendars.format(cus.customerBirthday,'dd/MM/yyyy')}"></td>
             <td th:if="${cus.customerGender == 0}"> Female</td>
             <td th:unless="${cus.customerGender == 0}"> Male</td>
@@ -123,7 +120,7 @@
             <ul class="pagination justify-content-end">
                 <li class="page-item  " th:if="${customerList.hasPrevious()}">
                     <a class="page-link"
-                       th:href="@{'/showcustomerlist'(page=${customerList.number - 1},
+                       th:href="@{'/customer/showcustomerlist'(page=${customerList.number - 1},
                        findName=${findName},
                        customerType=${customerType},
                        findcode=${findcode})}"
@@ -142,7 +139,7 @@
                 </li>
                 <li class="page-item" th:if="${customerList.hasNext()}">
                     <a class="page-link  "
-                       th:href="@{'/showcustomerlist'(page=${customerList.number + 1},
+                       th:href="@{'/customer/showcustomerlist'(page=${customerList.number + 1},
                        findName=${findName},
                        customerType=${customerType},
                        findcode=${findcode})}"
@@ -157,4 +154,8 @@
     </footer>
 </div>
 </body>
+<link rel="stylesheet" href="../../../css/myTable.css">
+<link rel="stylesheet" href="../../../css/bootstrap.css">
+<script src="../../../js/bootstrap.js"></script>
+<script src="../../../js/fontAnwesome.js" crossorigin="anonymous"></script>
 </html>

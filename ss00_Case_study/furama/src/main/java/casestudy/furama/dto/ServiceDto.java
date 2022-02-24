@@ -179,12 +179,13 @@ public class ServiceDto implements Validator {
                 errors.rejectValue("floorsNumber", "floorsNumber.wrongFloor",
                         "number of floors must be greater than 0");
             }
+        }
 
-            if(serviceDto.poolArea==null){
-                errors.rejectValue("poolArea", "poolArea.nullPool","pool area must be greater than 0");
-            }
-           else if (!(serviceDto.poolArea < 0)) {
-                errors.rejectValue("floorsNumber", "floorsNumber.wrongPool",
+        if ((serviceDto.serviceTypeId.getServiceTypeId() == 1)) {
+            if (serviceDto.poolArea == null) {
+                errors.rejectValue("poolArea", "poolArea.nullPool", "pool area must not be blank");
+            } else if (!(serviceDto.poolArea > 0)) {
+                errors.rejectValue("poolArea", "poolArea.wrongPool",
                         "Pool area must be greater than 0");
             }
         }

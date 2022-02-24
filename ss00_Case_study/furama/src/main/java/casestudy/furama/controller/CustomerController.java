@@ -48,6 +48,7 @@ public class CustomerController {
         model.addAttribute("findName", findName);
         model.addAttribute("findcode", findcode);
         model.addAttribute("customerType", customerType);
+
         model.addAttribute("customerList", iCustomerService.searchCustomer(findName, findcode, customerType, pageable));
         model.addAttribute("typeList", iCustomerService.getAllCustomerType());
         ra.addFlashAttribute("msg", "");

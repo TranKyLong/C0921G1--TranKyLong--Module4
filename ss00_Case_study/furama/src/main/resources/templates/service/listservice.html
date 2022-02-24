@@ -2,14 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout::head">
     <meta charset="UTF-8">
-
-
 </head>
 <title>list service</title>
 <body>
 <header th:replace="layout::header">
-
-
 </header>
 
 <div class="my_content">
@@ -19,13 +15,13 @@
 
     <div class="d-flex justify-content-between margin_10">
         <div class="mb-auto p-2 bd-highlight">
-            <a th:href="@{/service/createservice/{id}/(id=1)}" class="organtedbtn">Create new Villa service</a>
+            <a th:href="@{/service/createservice/{id}(id=1)}" class="organtedbtn">Create new Villa service</a>
         </div>
         <div class="p-2 bd-highlight">
-            <a th:href="@{/service/createservice/{id}/(id=2)}" class="organtedbtn">Create new House service</a>
+            <a th:href="@{/service/createservice/{id}(id=2)}" class="organtedbtn">Create new House service</a>
         </div>
         <div class="p-2 bd-highlight">
-            <a th:href="@{/service/createservice/{id}/(id=3)}" class="organtedbtn">Create new Room service</a>
+            <a th:href="@{/service/createservice/{id}(id=3)}" class="organtedbtn">Create new Room service</a>
         </div>
     </div>
 
@@ -35,16 +31,14 @@
         <thead>
         <tr>
             <th> Service Name</th>
-            <th> Service Area (meter)</th>
-            <th> Room infomation</th>
-            <th> Free Service</th>
+            <th> Service Area</th>
             <th> Max people</th>
             <th> Floor number</th>
             <th> Cost</th>
             <th> Rent Type</th>
             <th> Service Type</th>
             <th> Status</th>
-            <th colspan="2"> Action</th>
+            <th> Action</th>
         </tr>
         </thead>
         <tbody>
@@ -55,21 +49,8 @@
                         th:text="${s.serviceName}"></span></div>
                 <div class="the_code"><i class="fa-solid fa-barcode myIcon"></i> <span
                         th:text="${s.serviceCode}"></span></div>
-            <td>
-                <div><strong> Area </strong> <span
-                        th:text="${s.serviceArea}"> </span></div>
-                <div><Strong> Pool Area</Strong> <span
-                        th:text="${s.poolArea}"> </span></div>
             </td>
-            <td>
-                <div class="red_purple"><i class="fa-solid fa-clipboard-list-check myIcon"></i><span
-                        th:text="${s.standarRoom}"> </span></div>
-
-                <div class="green_blue"><i class="fa-solid fa-square-info myIcon"></i><span
-                        th:text="${s.description}"> </span></div>
-
-            </td>
-            <td th:text="${s.freeService}"></td>
+            <td th:text="${s.serviceArea}"></td>
             <td th:text="${s.maxPeople}"></td>
             <td th:text="${s.floorsNumber}"></td>
             <td th:text="${s.serviceCost}"></td>
@@ -80,19 +61,45 @@
                 <div th:unless="${s.isRent()}"> not yet rented</div>
             </td>
 
-            <td> <!-- Button trigger modal -->
+            <td>
+                <button type="button" class="btn btn-success viewBtn"
+                        data-bs-toggle="modal" data-bs-target="#viewModal">
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+                <input type="hidden" th:value="${s.serviceId}">
 
+                <!-- Modal -->
+                <div class="modal fade" id="viewModal" tabindex="-1"
+                     aria-labelledby="exampleModalLabel1"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <!--                                <h5 class="modal-title" id="exampleModalLabel1">CONFIRM DELETE</h5>-->
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body viewbody">
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- cap nhat -->
                 <a class="btn btn-primary" th:href="@{/service/editService/{id}/(id=${s.serviceId})}">
-                    <i class="fa-solid fa-user-pen"></i>
+                    <i class="fa-solid fa-pen"></i>
                 </a>
-            </td>
-            <td>
+
                 <!-- xoa -->
                 <button type="button" class="btn btn-danger"
                         data-bs-toggle="modal"
                         th:attr="data-bs-target='#empId'+${s.serviceId}">
-                    <i class="fa-solid fa-user-xmark"></i>
+                    <i class="fa-solid fa-eraser"></i>
                 </button>
 
                 <!-- Modal -->
@@ -137,7 +144,7 @@
         <ul class="pagination justify-content-end page_border">
 
             <li class="page-item  " th:if="${serviceList.hasPrevious()}">
-                <a class="page-link page_hover" th:href="@{'/showservice'(page=${serviceList.number - 1})}"
+                <a class="page-link page_hover" th:href="@{'service/showservice'(page=${serviceList.number - 1})}"
                    tabindex="-1"
                    aria-disabled="true">Previous</a>
             </li>
@@ -152,7 +159,7 @@
 
             </li>
             <li class="page-item" th:if="${serviceList.hasNext()}">
-                <a class="page-link page_hover " th:href="@{'/showservice'(page=${serviceList.number + 1})}"
+                <a class="page-link page_hover " th:href="@{'service/showservice'(page=${serviceList.number + 1})}"
                    tabindex="-1"
                    aria-disabled="true">Next</a>
             </li>
@@ -168,4 +175,23 @@
 <link rel="stylesheet" href="../../../css/bootstrap.css">
 <script src="../../../js/bootstrap.js"></script>
 <script src="../../../js/fontAnwesome.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".viewBtn").click(function () {
+            let id = $(this).next().val();
+            console.log(id);
+            $.ajax({
+                type: "GET",
+                dataType: "HTML",
+                url: "/service/showview/" + id,
+                success: function (data) {
+                    console.log(data)
+                    $(".viewbody").html(data)
+                    $("#viewModal").modal("show")
+                }
+            })
+        })
+    })
+</script>
 </html>

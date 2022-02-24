@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="layout::head">
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="../../../css/myTable.css">
-    <link rel="stylesheet" href="../../../css/bootstrap.css">
-    <script src="../../../js/bootstrap.js"></script>
+
 </head>
+<title>Create detail</title>
 <body>
+<header th:replace="layout::header">
+</header>
 <div class="container">
     <div class="mytitle">
         <h1> CREATE CONTRACT DETAIL </h1>
@@ -18,11 +18,11 @@
 
             <div class="col-md-12 margin_10">
                 <div>
-                    <strong class="the_name"> Customer name:  </strong>
+                    <strong class="the_name"> Customer name: </strong>
                     <span th:text="${conractDetailDto.contractId.customerId.customerName}"></span>
                 </div>
                 <div>
-                    <strong class="the_name"> Customer code:  </strong>
+                    <strong class="the_name"> Customer code: </strong>
                     <span th:text="${conractDetailDto.contractId.customerId.customerCode}"></span>
                 </div>
 
@@ -39,7 +39,7 @@
 
             <div class="col-md-12 margin_10">
                 <label for="deposit" class="col-sm-2 col-form-label">Quantity</label>
-                <input  type="number" class="form-control" id="deposit" th:field="*{quantity}">
+                <input type="number" class="form-control" id="deposit" th:field="*{quantity}">
                 <div class="margin-10-px" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></div>
             </div>
             <div class="col-md-12 margin_10 ">
@@ -51,4 +51,8 @@
     </div>
 </div>
 </body>
+<link rel="stylesheet" href="../../../css/myTable.css">
+<link rel="stylesheet" href="../../../css/bootstrap.css">
+<script src="../../../js/bootstrap.js"></script>
+<script src="../../../js/fontAnwesome.js" crossorigin="anonymous"></script>
 </html>

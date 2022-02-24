@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="layout::head">
     <meta charset="UTF-8">
     <title>Edit sevice</title>
-    <link rel="stylesheet" href="../../../css/myTable.css">
-    <link rel="stylesheet" href="../../../css/bootstrap.css">
-    <script src="../../../js/bootstrap.js"></script>
+
 </head>
 <body>
+<header th:replace="layout::header">
+</header>
+
 <div class="container">
     <div class="mytitle" th:object="${editService}">
         <div th:if="${editService.serviceTypeId.serviceTypeId == 1}">
@@ -117,4 +118,7 @@
     </div>
 </div>
 </body>
+<link rel="stylesheet" href="../../../css/myTable.css">
+<link rel="stylesheet" href="../../../css/bootstrap.css">
+<script src="../../../js/bootstrap.js"></script>
 </html>

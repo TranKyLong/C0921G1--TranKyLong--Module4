@@ -26,7 +26,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Controller
-@RequestMapping("service")
+@RequestMapping("/service")
 public class ServiceController {
     @Autowired
     private IFuramaService iFuramaService;
@@ -41,7 +41,7 @@ public class ServiceController {
         return false;
     }
 
-    @GetMapping("showservice")
+    @GetMapping("/showservice")
     public ModelAndView showService(@PageableDefault(size = 8) Pageable pageable,
                                     RedirectAttributes ra, Model model) {
         Page<FuramaService> serviceList = iFuramaService.findAllService(pageable);
@@ -51,7 +51,13 @@ public class ServiceController {
                 "serviceList", serviceList);
     }
 
-    @GetMapping("createservice/{id}")
+    @GetMapping("/showview/{id}")
+    public String viewDetail(@PathVariable Integer id, Model model) {
+        model.addAttribute("viewService", iFuramaService.findById(id).get());
+        return "/service/viewdetail";
+    }
+
+    @GetMapping("/createservice/{id}")
     public String showCreateService(@PathVariable Integer id, Model model, RedirectAttributes ra) {
         System.out.println("da vao create");
         Optional<ServiceType> serviceType = iFuramaService.findServiceType(id);
@@ -127,15 +133,12 @@ public class ServiceController {
         if (id != null) {
             if (!furamaService.isRent()) {
                 iFuramaService.deleteById(id);
-            } else {
-                return "redirect:/service/showservice";
             }
+        } else {
+            System.out.println("ko tim thay service");
         }
 
-        ra.addFlashAttribute("msg", "fail to delete service");
-        System.out.println("ko tim thay service");
         return "redirect:/service/showservice";
-
     }
 
 }

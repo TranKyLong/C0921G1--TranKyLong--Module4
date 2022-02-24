@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="layout::head">
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="../../../css/myTable.css">
-    <link rel="stylesheet" href="../../../css/bootstrap.css">
-    <script src="../../../js/bootstrap.js"></script>
-    <style>
-        input{
-            border: solid 1px orangered;
-        }
-    </style>
-</head>
-<body>
 
+</head>
+<title>Add Employee</title>
+<body>
+<header th:replace="layout::header">
+</header>
 <div class="container">
     <div class="mytitle">
         <h1> CREATE EMPLOYEE </h1>
@@ -109,4 +103,8 @@
     </div>
 </div>
 </body>
+<link rel="stylesheet" href="../../../css/myTable.css">
+<link rel="stylesheet" href="../../../css/bootstrap.css">
+<script src="../../../js/bootstrap.js"></script>
+<script src="../../../js/fontAnwesome.js" crossorigin="anonymous"></script>
 </html>

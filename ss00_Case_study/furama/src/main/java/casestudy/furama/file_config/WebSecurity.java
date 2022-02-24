@@ -39,9 +39,12 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/home","/","/**/*.js", "/**/*.css", "/**/*.jpg","/**/*.map", "/**/*.gif","/**/*.jpeg","/**/*.png").permitAll() /*không cần xác thực.*/
+                .antMatchers("/**/*.min.css").permitAll() /*không cần xác thực.*/
                 .antMatchers("/contract/show").hasRole("EMPLOYEE")
-                .antMatchers("/customer/showcustomer5list").hasRole("EMPLOYEE")
+                .antMatchers("/contract/create").hasRole("EMPLOYEE")
+                .antMatchers("/customer/showcustomerlist").hasRole("EMPLOYEE")
                 .antMatchers("/service/showservice").hasRole("EMPLOYEE")
+                .antMatchers("/service/createservice/*").hasAnyRole("ADMIN","EMPLOYEE")
                 .antMatchers("/employee/**").hasAnyRole("ADMIN", "EMPLOYEE")
                 .antMatchers("/**").hasRole("ADMIN")
 
@@ -52,7 +55,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().and().rememberMe()
                 .tokenRepository(this.persistentTokenRepository()).tokenValiditySeconds(60*60*24);
 
-        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/error/error403");
+        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/templates/error/error403.html");
+
     }
 
     /*Cấu hình nơi lưu thông tin login*/

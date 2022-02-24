@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="layout::head">
     <meta charset="UTF-8">
-    <title>Edit</title>
-    <link rel="stylesheet" href="../../css/myTable.css">
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <script src="../../js/bootstrap.js"></script>
 
 </head>
+<title>Edit Customer</title>
 <body>
-
+<header th:replace="layout::header">
+</header>
 <div class="container">
     <div class="mytitle">
         <h1> EDIT CUSTOMER </h1>
@@ -97,4 +95,8 @@
 </div>
 
 </body>
+<link rel="stylesheet" href="../../../css/myTable.css">
+<link rel="stylesheet" href="../../../css/bootstrap.css">
+<script src="../../../js/bootstrap.js"></script>
+<script src="../../../js/fontAnwesome.js" crossorigin="anonymous"></script>
 </html>
